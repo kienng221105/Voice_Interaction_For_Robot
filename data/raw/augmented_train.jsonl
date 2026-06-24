@@ -1,0 +1,110 @@
+{"text": "thêm pepsi rồi thanh toán luôn", "label": "payment"}
+{"text": "thêm 7up rồi trả tiền nhé", "label": "payment"}
+{"text": "thêm coca rồi quét mã giúp", "label": "payment"}
+{"text": "thêm sting rồi thanh toán nha", "label": "payment"}
+{"text": "thêm aquafina rồi trả tiền luôn", "label": "payment"}
+{"text": "cho tôi pepsi rồi thanh toán luôn", "label": "payment"}
+{"text": "cho em coca rồi trả tiền nha", "label": "payment"}
+{"text": "cho mình sting rồi quét mã nhé bạn", "label": "payment"}
+{"text": "cho tui aquafina rồi thanh toán giúp", "label": "payment"}
+{"text": "cho chị 7up rồi trả tiền luôn", "label": "payment"}
+{"text": "mua pepsi rồi thanh toán nha", "label": "payment"}
+{"text": "mua coca rồi trả tiền giùm", "label": "payment"}
+{"text": "mua sting rồi quét mã luôn", "label": "payment"}
+{"text": "lấy 7up rồi thanh toán nhé", "label": "payment"}
+{"text": "lấy aquafina rồi trả tiền nha bạn", "label": "payment"}
+{"text": "đổi sang pepsi rồi thanh toán luôn", "label": "payment"}
+{"text": "đổi sang coca rồi trả tiền nha", "label": "payment"}
+{"text": "đổi sang 7up rồi quét mã giúp", "label": "payment"}
+{"text": "đổi sang sting rồi thanh toán nhé bạn", "label": "payment"}
+{"text": "đổi sang aquafina rồi trả tiền luôn", "label": "payment"}
+{"text": "à thôi đổi pepsi sang coca rồi thanh toán luôn", "label": "payment"}
+{"text": "à thôi đổi 7up sang sting rồi trả tiền nha", "label": "payment"}
+{"text": "không lấy pepsi nữa cho coca rồi thanh toán", "label": "payment"}
+{"text": "không lấy 7up nữa cho sting rồi quét mã", "label": "payment"}
+{"text": "bỏ coca đi cho pepsi rồi trả tiền luôn", "label": "payment"}
+{"text": "thêm 2 pepsi rồi thanh toán nhé", "label": "payment"}
+{"text": "thêm 3 coca rồi quét mã nha bạn", "label": "payment"}
+{"text": "cho 2 lon sting rồi trả tiền giúp", "label": "payment"}
+{"text": "mua 3 aquafina rồi thanh toán luôn", "label": "payment"}
+{"text": "lấy 5 7up rồi trả tiền nha", "label": "payment"}
+{"text": "cho pepsi với coca rồi thanh toán", "label": "payment"}
+{"text": "cho 7up với sting rồi trả tiền luôn", "label": "payment"}
+{"text": "mua aquafina với pepsi rồi quét mã", "label": "payment"}
+{"text": "cho 2 lon coca với 3 pepsi rồi thanh toán nha", "label": "payment"}
+{"text": "mua 1 sting với 2 7up rồi trả tiền giúp", "label": "payment"}
+{"text": "cho tui bép si", "label": "buy_product"}
+{"text": "mua bảy áp nha", "label": "buy_product"}
+{"text": "lấy cô ka giúp", "label": "buy_product"}
+{"text": "cho mình xtinh nhé", "label": "buy_product"}
+{"text": "cho em aqua fina giùm", "label": "buy_product"}
+{"text": "mua pét si luôn", "label": "buy_product"}
+{"text": "lấy sê ven áp nhé bạn", "label": "buy_product"}
+{"text": "cho tôi cô ca cô la", "label": "buy_product"}
+{"text": "cần mua pép xì nha", "label": "buy_product"}
+{"text": "bán em se vừn ắp giùm", "label": "buy_product"}
+{"text": "cho tui a qua phi na nhé", "label": "buy_product"}
+{"text": "lấy xì tin giúp", "label": "buy_product"}
+{"text": "mua coca cô la nè", "label": "buy_product"}
+{"text": "bán mình 2 bép si nha", "label": "buy_product"}
+{"text": "cho tui 3 cô ka giùm", "label": "buy_product"}
+{"text": "lấy 5 xtinh nhé bạn", "label": "buy_product"}
+{"text": "mua 2 bảy áp luôn", "label": "buy_product"}
+{"text": "cho em 1 pét si nha", "label": "buy_product"}
+{"text": "bán tui 4 aqua fina giúp", "label": "buy_product"}
+{"text": "cần 3 sê ven áp nhé", "label": "buy_product"}
+{"text": "thêm xì tin giùm", "label": "add_product"}
+{"text": "thêm bép si luôn", "label": "add_product"}
+{"text": "cho thêm cô ka nha", "label": "add_product"}
+{"text": "mua thêm xtinh nhé bạn", "label": "add_product"}
+{"text": "lấy thêm aqua fina giúp", "label": "add_product"}
+{"text": "thêm 2 pét si nữa nha", "label": "add_product"}
+{"text": "cho thêm 3 bảy áp giùm", "label": "add_product"}
+{"text": "mua thêm sê ven áp nhé", "label": "add_product"}
+{"text": "cộng thêm coca cô la luôn", "label": "add_product"}
+{"text": "kèm thêm a qua phi na nha bạn", "label": "add_product"}
+{"text": "đổi sang bép si nhé", "label": "change_product"}
+{"text": "đổi sang cô ka giúp", "label": "change_product"}
+{"text": "thay bằng xtinh luôn", "label": "change_product"}
+{"text": "chuyển qua aqua fina nha", "label": "change_product"}
+{"text": "đổi qua pét si nhé bạn", "label": "change_product"}
+{"text": "thôi đổi sang bảy áp đi", "label": "change_product"}
+{"text": "đổi thành sê ven áp giùm", "label": "change_product"}
+{"text": "lấy coca cô la thay vì cái kia", "label": "change_product"}
+{"text": "chọn lại a qua phi na nhé", "label": "change_product"}
+{"text": "đổi lại xì tin nha bạn", "label": "change_product"}
+{"text": "không lấy bép si nữa nha", "label": "cancel"}
+{"text": "bỏ cô ka đi giùm", "label": "cancel"}
+{"text": "thôi không mua xtinh nữa", "label": "cancel"}
+{"text": "hủy aqua fina nhé", "label": "cancel"}
+{"text": "xóa pét si đi nha", "label": "cancel"}
+{"text": "không mua bảy áp nữa đâu", "label": "cancel"}
+{"text": "bỏ sê ven áp giúp", "label": "cancel"}
+{"text": "thôi bỏ coca cô la đi", "label": "cancel"}
+{"text": "không lấy a qua phi na nữa", "label": "cancel"}
+{"text": "cancel xì tin giùm", "label": "cancel"}
+{"text": "cho pepsi với 7up nhé", "label": "buy_product"}
+{"text": "mua coca với sting giùm", "label": "buy_product"}
+{"text": "lấy aquafina với pepsi luôn", "label": "buy_product"}
+{"text": "cho 7up với coca nha bạn", "label": "buy_product"}
+{"text": "mua sting với aquafina nhé", "label": "buy_product"}
+{"text": "cho 2 pepsi với 3 coca giúp", "label": "buy_product"}
+{"text": "mua 1 sting với 2 7up nha", "label": "buy_product"}
+{"text": "lấy 3 aquafina với 1 pepsi nhé bạn", "label": "buy_product"}
+{"text": "cho 5 coca với 2 sting giùm", "label": "buy_product"}
+{"text": "mua 2 7up và 4 aquafina luôn", "label": "buy_product"}
+{"text": "thêm pepsi với 7up luôn", "label": "add_product"}
+{"text": "cho thêm coca với sting nhé", "label": "add_product"}
+{"text": "mua thêm aquafina với pepsi giùm", "label": "add_product"}
+{"text": "thêm 2 7up với 1 coca nha", "label": "add_product"}
+{"text": "cho thêm 3 sting với 2 aquafina nhé bạn", "label": "add_product"}
+{"text": "thêm xtinh rồi thanh toán giúp", "label": "payment"}
+{"text": "thêm bép si rồi quét mã nha", "label": "payment"}
+{"text": "cho cô ka rồi trả tiền luôn", "label": "payment"}
+{"text": "mua aqua fina rồi thanh toán nhé bạn", "label": "payment"}
+{"text": "lấy pét si rồi trả tiền giùm", "label": "payment"}
+{"text": "đổi sang bảy áp rồi thanh toán nha", "label": "payment"}
+{"text": "đổi sang sê ven áp rồi quét mã luôn", "label": "payment"}
+{"text": "không lấy xtinh nữa cho bép si rồi thanh toán", "label": "payment"}
+{"text": "cho 2 aqua fina với 3 cô ka rồi trả tiền", "label": "payment"}
+{"text": "à thôi đổi pét si sang xì tin rồi thanh toán luôn", "label": "payment"}

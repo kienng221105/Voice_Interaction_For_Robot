@@ -1,0 +1,1960 @@
+{"text": "chọn thêm 9 7up đó", "label": "add_product", "split": "test_normal"}
+{"text": "hỗ trợ nhé", "label": "help", "split": "test_normal"}
+{"text": "khoan đã với", "label": "payment", "split": "test_normal"}
+{"text": "ai là chủ tịch nước ạ", "label": "unknown", "split": "test_normal"}
+{"text": "chốt đơn giùm", "label": "payment", "split": "test_normal"}
+{"text": "bao nhiêu tiền đi", "label": "payment", "split": "test_normal"}
+{"text": "pepsi nhé với", "label": "buy_product", "split": "test_normal"}
+{"text": "bán bác pép xì ạ", "label": "buy_product", "split": "test_normal"}
+{"text": "thêm 1 pepsi nữa đi", "label": "add_product", "split": "test_normal"}
+{"text": "bán tui 8 hộp 7up nè", "label": "buy_product", "split": "test_normal"}
+{"text": "có gì uống không lun", "label": "show_menu", "split": "test_normal"}
+{"text": "không chọn nữa đi", "label": "cancel", "split": "test_normal"}
+{"text": "xem danh sách nước nè", "label": "show_menu", "split": "test_normal"}
+{"text": "đang mua mà thôi đổi pepsi với", "label": "change_product", "split": "test_normal"}
+{"text": "thoát với", "label": "cancel", "split": "test_normal"}
+{"text": "hủy nha bạn", "label": "cancel", "split": "test_normal"}
+{"text": "xuất cho anh 4 chai pepsi nè", "label": "buy_product", "split": "test_normal"}
+{"text": "menu có gì nha", "label": "show_menu", "split": "test_normal"}
+{"text": "bán tui 7up ạ", "label": "buy_product", "split": "test_normal"}
+{"text": "cần 4 chai bép si nè", "label": "buy_product", "split": "test_normal"}
+{"text": "không lấy pepsi nữa nhé bạn", "label": "cancel", "split": "test_normal"}
+{"text": "cần 7 sting giùm", "label": "buy_product", "split": "test_normal"}
+{"text": "tui chọn 7up ạ", "label": "buy_product", "split": "test_normal"}
+{"text": "có những nước gì giùm", "label": "show_menu", "split": "test_normal"}
+{"text": "hỗ trợ giúp", "label": "help", "split": "test_normal"}
+{"text": "thoát luôn", "label": "cancel", "split": "test_normal"}
+{"text": "lấy chị 5 ly aquafina giùm", "label": "buy_product", "split": "test_normal"}
+{"text": "hoàn tất thanh toán nghen", "label": "payment", "split": "test_normal"}
+{"text": "order 10 ly 7up nhé bạn", "label": "buy_product", "split": "test_normal"}
+{"text": "ai là chủ tịch nước giúp", "label": "unknown", "split": "test_normal"}
+{"text": "lấy tui 6 lon aquafina giúp", "label": "buy_product", "split": "test_normal"}
+{"text": "hiển thị menu ạ", "label": "show_menu", "split": "test_normal"}
+{"text": "cho tao coca giùm", "label": "buy_product", "split": "test_normal"}
+{"text": "lấy giùm 5 pepsi với", "label": "buy_product", "split": "test_normal"}
+{"text": "chào buổi tối nhé", "label": "greeting", "split": "test_normal"}
+{"text": "thêm 9 chai pepsi nha", "label": "add_product", "split": "test_normal"}
+{"text": "cộng thêm 10 pepsi giùm", "label": "add_product", "split": "test_normal"}
+{"text": "hôm qua thứ mấy nhé bạn", "label": "unknown", "split": "test_normal"}
+{"text": "lấy giùm 2 hộp sting đi", "label": "buy_product", "split": "test_normal"}
+{"text": "cancel giùm", "label": "cancel", "split": "test_normal"}
+{"text": "cancel nhé", "label": "cancel", "split": "test_normal"}
+{"text": "tao muốn thêm aquafina với", "label": "add_product", "split": "test_normal"}
+{"text": "cho chú sting rồi thanh toán luôn lun", "label": "buy_product", "split": "test_normal"}
+{"text": "máy khỏe không nhé", "label": "greeting", "split": "test_normal"}
+{"text": "cancel lun", "label": "cancel", "split": "test_normal"}
+{"text": "thêm coca rồi thanh toán luôn nè", "label": "add_product", "split": "test_normal"}
+{"text": "có bán gì không nghen", "label": "show_menu", "split": "test_normal"}
+{"text": "tính tiền nha máy", "label": "payment", "split": "test_normal"}
+{"text": "cho chú thêm 2 hộp 7up nha", "label": "add_product", "split": "test_normal"}
+{"text": "tổng cộng bao nhiêu nha bạn", "label": "payment", "split": "test_normal"}
+{"text": "thanh toán với", "label": "payment", "split": "train_gold"}
+{"text": "thay cho tui bằng 7up ạ", "label": "change_product", "split": "train_gold"}
+{"text": "trả tiền nha", "label": "payment", "split": "train_gold"}
+{"text": "chào buổi trưa", "label": "greeting", "split": "train_gold"}
+{"text": "lấy dùm coca đi", "label": "buy_product", "split": "train_gold"}
+{"text": "mua 7 lon cô ca nghen", "label": "buy_product", "split": "train_gold"}
+{"text": "dừng lại nè", "label": "cancel", "split": "train_gold"}
+{"text": "hát một bài đi giúp", "label": "unknown", "split": "train_gold"}
+{"text": "bán tui coca nhé", "label": "buy_product", "split": "train_gold"}
+{"text": "đổi thành sting nhé bạn", "label": "change_product", "split": "train_gold"}
+{"text": "kết thúc nha bạn", "label": "payment", "split": "train_gold"}
+{"text": "lấy em 1 chai aquafina nè", "label": "buy_product", "split": "train_gold"}
+{"text": "chào buổi sáng đi", "label": "greeting", "split": "train_gold"}
+{"text": "làm sao để mua nha máy", "label": "help", "split": "train_gold"}
+{"text": "ở đây có bán gì với", "label": "show_menu", "split": "train_gold"}
+{"text": "đổi sang aquafina rồi trả tiền ạ", "label": "change_product", "split": "train_gold"}
+{"text": "tổng cộng bao nhiêu nha máy", "label": "payment", "split": "train_gold"}
+{"text": "bán chú 3 chai sting nghen", "label": "buy_product", "split": "train_gold"}
+{"text": "bán tui 9 hộp pepsi nghen", "label": "buy_product", "split": "train_gold"}
+{"text": "máy bị gì vậy ạ", "label": "help", "split": "train_gold"}
+{"text": "hello máy bán hàng", "label": "greeting", "split": "train_gold"}
+{"text": "máy nuốt tiền giúp", "label": "help", "split": "train_gold"}
+{"text": "mua thêm sting nhé", "label": "add_product", "split": "train_gold"}
+{"text": "thay bằng aquafina nè", "label": "change_product", "split": "train_gold"}
+{"text": "xóa nha nè", "label": "cancel", "split": "train_gold"}
+{"text": "chị chọn aquafina đi", "label": "buy_product", "split": "train_gold"}
+{"text": "tính tổng tiền luôn", "label": "payment", "split": "train_gold"}
+{"text": "cậu đổi lấy 7up giùm", "label": "change_product", "split": "train_gold"}
+{"text": "thêm aquafina rồi quét mã luôn", "label": "add_product", "split": "train_gold"}
+{"text": "hôm qua thứ mấy lun", "label": "unknown", "split": "train_gold"}
+{"text": "thôi đổi sang 5 coca nha", "label": "change_product", "split": "train_gold"}
+{"text": "thanh toán giúp đó", "label": "payment", "split": "train_gold"}
+{"text": "tính tổng tiền giùm", "label": "payment", "split": "train_gold"}
+{"text": "hiển thị menu nhé bạn", "label": "show_menu", "split": "train_gold"}
+{"text": "aloo với", "label": "greeting", "split": "train_gold"}
+{"text": "bán tui 3 lon sting giúp", "label": "buy_product", "split": "train_gold"}
+{"text": "lấy dùm 8 lon pepsi nha máy", "label": "buy_product", "split": "train_gold"}
+{"text": "coi thử có gì nghen", "label": "show_menu", "split": "train_gold"}
+{"text": "hiển thị menu nghen", "label": "show_menu", "split": "train_gold"}
+{"text": "hỗ trợ khách hàng nha", "label": "help", "split": "train_gold"}
+{"text": "cộng thêm 8 ly sting", "label": "add_product", "split": "train_gold"}
+{"text": "chọn lại aquafina đi", "label": "change_product", "split": "train_gold"}
+{"text": "hello máy bán hàng nha", "label": "greeting", "split": "train_gold"}
+{"text": "đợi chút luôn", "label": "payment", "split": "train_gold"}
+{"text": "ê nha máy", "label": "greeting", "split": "train_gold"}
+{"text": "chọn thêm 8 sting nha máy", "label": "add_product", "split": "train_gold"}
+{"text": "cần 6 coca nè", "label": "buy_product", "split": "train_gold"}
+{"text": "làm sao để mua giúp", "label": "help", "split": "train_gold"}
+{"text": "thanh toan nè", "label": "payment", "split": "train_gold"}
+{"text": "lấy thêm 3 ly sờ tinh nha bạn", "label": "add_product", "split": "train_gold"}
+{"text": "sos đó", "label": "help", "split": "train_gold"}
+{"text": "xuất cho em 6 seven up nghen", "label": "buy_product", "split": "train_gold"}
+{"text": "cho cậu pepsi luôn", "label": "buy_product", "split": "train_gold"}
+{"text": "máy nuốt tiền nghen", "label": "help", "split": "train_gold"}
+{"text": "xong rồi giúp", "label": "payment", "split": "train_gold"}
+{"text": "thanh toán giúp giúp", "label": "payment", "split": "train_gold"}
+{"text": "có những nước gì nghen", "label": "show_menu", "split": "train_gold"}
+{"text": "xem danh sách nước đi", "label": "show_menu", "split": "train_gold"}
+{"text": "giá vàng hôm nay giúp", "label": "unknown", "split": "train_gold"}
+{"text": "có bán gì không đó", "label": "show_menu", "split": "train_gold"}
+{"text": "ai giúp với với", "label": "help", "split": "train_gold"}
+{"text": "thanh toán giúp", "label": "payment", "split": "train_gold"}
+{"text": "mua 9 lon aquafina đi", "label": "buy_product", "split": "train_gold"}
+{"text": "cho tui aquafina với", "label": "buy_product", "split": "train_gold"}
+{"text": "clear hết lun", "label": "cancel", "split": "train_gold"}
+{"text": "coi menu xíu với", "label": "show_menu", "split": "train_gold"}
+{"text": "chào buổi tối giùm", "label": "greeting", "split": "train_gold"}
+{"text": "coi menu xíu nhé", "label": "show_menu", "split": "train_gold"}
+{"text": "có những loại nào với", "label": "show_menu", "split": "train_gold"}
+{"text": "lấy dùm 5 ly 7up nha bạn", "label": "buy_product", "split": "train_gold"}
+{"text": "thay cho tui bằng 7up nè", "label": "change_product", "split": "train_gold"}
+{"text": "đang mua mà thôi đổi coca đó", "label": "change_product", "split": "train_gold"}
+{"text": "bán chú aquafina nha máy", "label": "buy_product", "split": "train_gold"}
+{"text": "thay cho tui bằng sting luôn", "label": "change_product", "split": "train_gold"}
+{"text": "hủy giúp", "label": "cancel", "split": "train_gold"}
+{"text": "bill đâu nhé", "label": "payment", "split": "train_gold"}
+{"text": "đổi qua coca nhé bạn", "label": "change_product", "split": "train_gold"}
+{"text": "cộng thêm 7up ạ", "label": "add_product", "split": "train_gold"}
+{"text": "thêm coca rồi thanh toán luôn nha bạn", "label": "add_product", "split": "train_gold"}
+{"text": "đổi thành 10 lon 7up ạ", "label": "change_product", "split": "train_gold"}
+{"text": "lấy coca thay vì cái kia nghen", "label": "change_product", "split": "train_gold"}
+{"text": "chọn pepsi nghen", "label": "buy_product", "split": "train_gold"}
+{"text": "đổi lại 7up nhé", "label": "change_product", "split": "train_gold"}
+{"text": "chị muốn thanh toán nghen", "label": "payment", "split": "train_gold"}
+{"text": "1 cộng 1 bằng mấy", "label": "unknown", "split": "train_gold"}
+{"text": "ê nhé bạn", "label": "greeting", "split": "train_gold"}
+{"text": "bán tui 10 sting giùm", "label": "buy_product", "split": "train_gold"}
+{"text": "chỉ cách xài nhé bạn", "label": "help", "split": "train_gold"}
+{"text": "hello giùm", "label": "greeting", "split": "train_gold"}
+{"text": "đổi sang pép xì", "label": "change_product", "split": "train_gold"}
+{"text": "cho anh thêm 9 coca nghen", "label": "add_product", "split": "train_gold"}
+{"text": "có ai không", "label": "greeting", "split": "train_gold"}
+{"text": "lấy anh 5 ly 7up nha máy", "label": "buy_product", "split": "train_gold"}
+{"text": "lấy dùm 3 ly 7up lun", "label": "buy_product", "split": "train_gold"}
+{"text": "thôi đổi sang aquafina", "label": "change_product", "split": "train_gold"}
+{"text": "thôi đổi sang 3 ly pép xì nè", "label": "change_product", "split": "train_gold"}
+{"text": "bảng giá sao giùm", "label": "show_menu", "split": "train_gold"}
+{"text": "bán tui sting nhé bạn", "label": "buy_product", "split": "train_gold"}
+{"text": "không lấy cái đó đổi qua aquafina nha bạn", "label": "change_product", "split": "train_gold"}
+{"text": "bán tui 2 ly sting đi", "label": "buy_product", "split": "train_gold"}
+{"text": "xem danh sách nước ạ", "label": "show_menu", "split": "train_gold"}
+{"text": "xong rồi tính tiền giúp", "label": "payment", "split": "train_gold"}
+{"text": "cho bác 7up rồi thanh toán luôn nè", "label": "buy_product", "split": "train_gold"}
+{"text": "kèm thêm 2 chai 7up nhé bạn", "label": "add_product", "split": "train_gold"}
+{"text": "thôi đổi sang 1 7up nha bạn", "label": "change_product", "split": "train_gold"}
+{"text": "thay cho tui bằng aquafina nha bạn", "label": "change_product", "split": "train_gold"}
+{"text": "lấy chị 5 chai 7up nha bạn", "label": "buy_product", "split": "train_gold"}
+{"text": "chuyển qua sting ạ", "label": "change_product", "split": "train_gold"}
+{"text": "lỗi rồi nhé", "label": "help", "split": "train_gold"}
+{"text": "kể chuyện cười nè", "label": "unknown", "split": "train_gold"}
+{"text": "chọn lại 7up", "label": "change_product", "split": "train_gold"}
+{"text": "làm sao để mua đi", "label": "help", "split": "train_gold"}
+{"text": "tôi muốn 5 ly 7up nè", "label": "buy_product", "split": "train_gold"}
+{"text": "thôi không mua nữa nha máy", "label": "cancel", "split": "train_gold"}
+{"text": "chuyển qua 7up", "label": "change_product", "split": "train_gold"}
+{"text": "chỉ cách xài nha bạn", "label": "help", "split": "train_gold"}
+{"text": "order 1 hộp pepsi nha bạn", "label": "buy_product", "split": "train_gold"}
+{"text": "cho mình aqua fina giúp", "label": "buy_product", "split": "train_gold"}
+{"text": "cho thêm 2 pepsi giùm", "label": "add_product", "split": "train_gold"}
+{"text": "xin chào nhé", "label": "greeting", "split": "train_gold"}
+{"text": "tính tổng tiền nha máy", "label": "payment", "split": "train_gold"}
+{"text": "kèm thêm 6 lon sting luôn", "label": "add_product", "split": "train_gold"}
+{"text": "bill đâu đi", "label": "payment", "split": "train_gold"}
+{"text": "hát một bài đi giùm", "label": "unknown", "split": "train_gold"}
+{"text": "xóa hết đi nha", "label": "cancel", "split": "train_gold"}
+{"text": "cộng thêm 9 lon sờ tinh nè", "label": "add_product", "split": "train_gold"}
+{"text": "chào buổi tối nè", "label": "greeting", "split": "train_gold"}
+{"text": "thế giới có mấy châu", "label": "unknown", "split": "train_gold"}
+{"text": "có ai không giùm", "label": "greeting", "split": "train_gold"}
+{"text": "ở đây có bán gì giúp", "label": "show_menu", "split": "train_gold"}
+{"text": "lấy thêm 7 chai aquafina nghen", "label": "add_product", "split": "train_gold"}
+{"text": "cho thêm 3 hộp pepsi luôn", "label": "add_product", "split": "train_gold"}
+{"text": "xuất cho tui 10 coca giùm", "label": "buy_product", "split": "train_gold"}
+{"text": "mua 4 chai pepsi ạ", "label": "buy_product", "split": "train_gold"}
+{"text": "lấy giùm 1 ly 7up", "label": "buy_product", "split": "train_gold"}
+{"text": "tính lúa nhé bạn", "label": "payment", "split": "train_gold"}
+{"text": "xinchao nè", "label": "greeting", "split": "train_gold"}
+{"text": "lấy dùm 7up giúp", "label": "buy_product", "split": "train_gold"}
+{"text": "có bán gì không nhé bạn", "label": "show_menu", "split": "train_gold"}
+{"text": "không mua giúp", "label": "cancel", "split": "train_gold"}
+{"text": "mua 6 hộp coca với", "label": "buy_product", "split": "train_gold"}
+{"text": "help nha", "label": "help", "split": "train_gold"}
+{"text": "bán tui 9 ly sting luôn", "label": "buy_product", "split": "train_gold"}
+{"text": "cho chú thêm sting nhé bạn", "label": "add_product", "split": "train_gold"}
+{"text": "kèm thêm 10 chai coca đó", "label": "add_product", "split": "train_gold"}
+{"text": "cộng thêm 2 ly coca giúp", "label": "add_product", "split": "train_gold"}
+{"text": "chỉ cách xài giúp", "label": "help", "split": "train_gold"}
+{"text": "lấy chú sting đó", "label": "buy_product", "split": "train_gold"}
+{"text": "lấy dùm 2 chai pepsi nhé", "label": "buy_product", "split": "train_gold"}
+{"text": "bác muốn hủy nhé bạn", "label": "cancel", "split": "train_gold"}
+{"text": "thêm pepsi rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 7up rồi trả tiền nhé", "label": "payment", "split": "train_augmented"}
+{"text": "thêm coca rồi quét mã giúp", "label": "payment", "split": "train_augmented"}
+{"text": "thêm sting rồi thanh toán nha", "label": "payment", "split": "train_augmented"}
+{"text": "thêm aquafina rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho tôi pepsi rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho em coca rồi trả tiền nha", "label": "payment", "split": "train_augmented"}
+{"text": "cho mình sting rồi quét mã nhé bạn", "label": "payment", "split": "train_augmented"}
+{"text": "cho tui aquafina rồi thanh toán giúp", "label": "payment", "split": "train_augmented"}
+{"text": "cho chị 7up rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "mua pepsi rồi thanh toán nha", "label": "payment", "split": "train_augmented"}
+{"text": "mua coca rồi trả tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "mua sting rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "lấy 7up rồi thanh toán nhé", "label": "payment", "split": "train_augmented"}
+{"text": "lấy aquafina rồi trả tiền nha bạn", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang pepsi rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang coca rồi trả tiền nha", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang 7up rồi quét mã giúp", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang sting rồi thanh toán nhé bạn", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang aquafina rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "à thôi đổi pepsi sang coca rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "à thôi đổi 7up sang sting rồi trả tiền nha", "label": "payment", "split": "train_augmented"}
+{"text": "không lấy pepsi nữa cho coca rồi thanh toán", "label": "payment", "split": "train_augmented"}
+{"text": "không lấy 7up nữa cho sting rồi quét mã", "label": "payment", "split": "train_augmented"}
+{"text": "bỏ coca đi cho pepsi rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 2 pepsi rồi thanh toán nhé", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 3 coca rồi quét mã nha bạn", "label": "payment", "split": "train_augmented"}
+{"text": "cho 2 lon sting rồi trả tiền giúp", "label": "payment", "split": "train_augmented"}
+{"text": "mua 3 aquafina rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "lấy 5 7up rồi trả tiền nha", "label": "payment", "split": "train_augmented"}
+{"text": "cho pepsi với coca rồi thanh toán", "label": "payment", "split": "train_augmented"}
+{"text": "cho 7up với sting rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "mua aquafina với pepsi rồi quét mã", "label": "payment", "split": "train_augmented"}
+{"text": "cho 2 lon coca với 3 pepsi rồi thanh toán nha", "label": "payment", "split": "train_augmented"}
+{"text": "mua 1 sting với 2 7up rồi trả tiền giúp", "label": "payment", "split": "train_augmented"}
+{"text": "cho tui bép si", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua bảy áp nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy cô ka giúp", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình xtinh nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em aqua fina giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua pét si luôn", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy sê ven áp nhé bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho tôi cô ca cô la", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần mua pép xì nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán em se vừn ắp giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho tui a qua phi na nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy xì tin giúp", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua coca cô la nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán mình 2 bép si nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho tui 3 cô ka giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy 5 xtinh nhé bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 2 bảy áp luôn", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em 1 pét si nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán tui 4 aqua fina giúp", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần 3 sê ven áp nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm xì tin giùm", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm bép si luôn", "label": "add_product", "split": "train_augmented"}
+{"text": "cho thêm cô ka nha", "label": "add_product", "split": "train_augmented"}
+{"text": "mua thêm xtinh nhé bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy thêm aqua fina giúp", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm 2 pét si nữa nha", "label": "add_product", "split": "train_augmented"}
+{"text": "cho thêm 3 bảy áp giùm", "label": "add_product", "split": "train_augmented"}
+{"text": "mua thêm sê ven áp nhé", "label": "add_product", "split": "train_augmented"}
+{"text": "cộng thêm coca cô la luôn", "label": "add_product", "split": "train_augmented"}
+{"text": "kèm thêm a qua phi na nha bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi sang bép si nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "đổi sang cô ka giúp", "label": "change_product", "split": "train_augmented"}
+{"text": "thay bằng xtinh luôn", "label": "change_product", "split": "train_augmented"}
+{"text": "chuyển qua aqua fina nha", "label": "change_product", "split": "train_augmented"}
+{"text": "đổi qua pét si nhé bạn", "label": "change_product", "split": "train_augmented"}
+{"text": "thôi đổi sang bảy áp đi", "label": "change_product", "split": "train_augmented"}
+{"text": "đổi thành sê ven áp giùm", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy coca cô la thay vì cái kia", "label": "change_product", "split": "train_augmented"}
+{"text": "chọn lại a qua phi na nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "đổi lại xì tin nha bạn", "label": "change_product", "split": "train_augmented"}
+{"text": "không lấy bép si nữa nha", "label": "cancel", "split": "train_augmented"}
+{"text": "bỏ cô ka đi giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "thôi không mua xtinh nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "hủy aqua fina nhé", "label": "cancel", "split": "train_augmented"}
+{"text": "xóa pét si đi nha", "label": "cancel", "split": "train_augmented"}
+{"text": "không mua bảy áp nữa đâu", "label": "cancel", "split": "train_augmented"}
+{"text": "bỏ sê ven áp giúp", "label": "cancel", "split": "train_augmented"}
+{"text": "thôi bỏ coca cô la đi", "label": "cancel", "split": "train_augmented"}
+{"text": "không lấy a qua phi na nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cancel xì tin giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "cho pepsi với 7up nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua coca với sting giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy aquafina với pepsi luôn", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho 7up với coca nha bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua sting với aquafina nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho 2 pepsi với 3 coca giúp", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 1 sting với 2 7up nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy 3 aquafina với 1 pepsi nhé bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho 5 coca với 2 sting giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 2 7up và 4 aquafina luôn", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm pepsi với 7up luôn", "label": "add_product", "split": "train_augmented"}
+{"text": "cho thêm coca với sting nhé", "label": "add_product", "split": "train_augmented"}
+{"text": "mua thêm aquafina với pepsi giùm", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm 2 7up với 1 coca nha", "label": "add_product", "split": "train_augmented"}
+{"text": "cho thêm 3 sting với 2 aquafina nhé bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm xtinh rồi thanh toán giúp", "label": "payment", "split": "train_augmented"}
+{"text": "thêm bép si rồi quét mã nha", "label": "payment", "split": "train_augmented"}
+{"text": "cho cô ka rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "mua aqua fina rồi thanh toán nhé bạn", "label": "payment", "split": "train_augmented"}
+{"text": "lấy pét si rồi trả tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang bảy áp rồi thanh toán nha", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sang sê ven áp rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "không lấy xtinh nữa cho bép si rồi thanh toán", "label": "payment", "split": "train_augmented"}
+{"text": "cho 2 aqua fina với 3 cô ka rồi trả tiền", "label": "payment", "split": "train_augmented"}
+{"text": "à thôi đổi pét si sang xì tin rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "tổng kết đi nè", "label": "payment", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "mua a qua phi na", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho thêm 2 sting luôn", "label": "add_product", "split": "train_augmented"}
+{"text": "kèm theo aquafina", "label": "add_product", "split": "train_augmented"}
+{"text": "cho sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho anh coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh 2 aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ 7up thay bằng coca nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "không lấy coca nữa, đổi sang 7up rồi thanh toán nha", "label": "payment", "split": "train_augmented"}
+{"text": "hello", "label": "greeting", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho 2 aquafina với pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 4 xtinh rồi chốt đơn luôn giùm", "label": "payment", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, lấy thêm sting", "label": "add_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "hướng dẫn dùng", "label": "help", "split": "train_augmented"}
+{"text": "hướng dẫn dùng luôn", "label": "help", "split": "train_augmented"}
+{"text": "đổi pepsi sang aquafina", "label": "change_product", "split": "train_augmented"}
+{"text": "cộng thêm pepsi với 7up đi", "label": "add_product", "split": "train_augmented"}
+{"text": "mua coca nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "xin chào bạn", "label": "greeting", "split": "train_augmented"}
+{"text": "không mua coca nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cộng thêm 3 sting", "label": "add_product", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho pepsi bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "có nước ngọt không luôn", "label": "show_menu", "split": "train_augmented"}
+{"text": "mua 3 sê ven áp", "label": "buy_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho em sting nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần aquafina với pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua sting với pepsi giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần 5 7up giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho 2 coca với 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần xtinh", "label": "buy_product", "split": "train_augmented"}
+{"text": "máy lỗi rồi luôn", "label": "help", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, lấy thêm 2 cô ka nhé", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi cô ka sang seven up rồi trả tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "cho anh aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm coca với pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi sting sang coca", "label": "change_product", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "lấy coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh cô ca với xtinh nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "hủy đơn giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "thêm sting bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm pep xi", "label": "add_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "thêm pep xi rồi trả tiền luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "thêm coca rồi tổng kết luôn nhé", "label": "payment", "split": "train_augmented"}
+{"text": "cho thêm pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "cộng thêm cô ka", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm coca rồi tính tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "lấy 5 pep xi", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ pepsi thay bằng coca nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "cho chị aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh 4 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "xin chào", "label": "greeting", "split": "train_augmented"}
+{"text": "thêm coca rồi thanh toán luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "bán cho tôi pép xì với co ca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 4 pepsi rồi quét mã luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "chốt đơn đi đi", "label": "payment", "split": "train_augmented"}
+{"text": "cancel đi", "label": "cancel", "split": "train_augmented"}
+{"text": "cho anh 3 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm coca rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "đổi aquafina sang sting", "label": "change_product", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "bỏ 7up đi, lấy coca rồi trả tiền", "label": "payment", "split": "train_augmented"}
+{"text": "tổng kết đi", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 2 sting rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "chào đi", "label": "greeting", "split": "train_augmented"}
+{"text": "bỏ coca đi", "label": "cancel", "split": "train_augmented"}
+{"text": "bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "đổi coca sang aquafina", "label": "change_product", "split": "train_augmented"}
+{"text": "bán cho tôi coca với sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần bảy áp", "label": "buy_product", "split": "train_augmented"}
+{"text": "có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho anh 2 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi coca sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "menu đâu đi", "label": "show_menu", "split": "train_augmented"}
+{"text": "thêm cô ca rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 4 pepsi với coca đi", "label": "add_product", "split": "train_augmented"}
+{"text": "cho 3 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi aquafina sang aquafina rồi trả tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, kèm theo bép si", "label": "add_product", "split": "train_augmented"}
+{"text": "cho thêm sting", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy thêm pep xi với pét si", "label": "add_product", "split": "train_augmented"}
+{"text": "không mua được", "label": "help", "split": "train_augmented"}
+{"text": "cần 7up với 2 coca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho seven up", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi pép xì sang co ca", "label": "change_product", "split": "train_augmented"}
+{"text": "hỗ trợ tôi với giùm", "label": "help", "split": "train_augmented"}
+{"text": "hello nha", "label": "greeting", "split": "train_augmented"}
+{"text": "cho em aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "không lấy 7up nữa, đổi sang coca rồi thanh toán nè", "label": "payment", "split": "train_augmented"}
+{"text": "cho anh coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "thay bép si bằng seven up đi", "label": "change_product", "split": "train_augmented"}
+{"text": "cho em 4 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm 4 sting", "label": "add_product", "split": "train_augmented"}
+{"text": "cho 2 pepsi nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em pep xi", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán cho tôi aquafina luôn", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy 2 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sting sang 7up", "label": "change_product", "split": "train_augmented"}
+{"text": "cho anh coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "đổi sting sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "cho chị cô ka", "label": "buy_product", "split": "train_augmented"}
+{"text": "không mua được bạn", "label": "help", "split": "train_augmented"}
+{"text": "có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "đổi cô ka sang seven up rồi tổng kết giùm giùm", "label": "payment", "split": "train_augmented"}
+{"text": "trả tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "không lấy coca đâu, đổi qua sting nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "cho em 2 co ca với xì tin", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ 7up thay bằng aquafina nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "chốt đơn đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "cho thêm 5 pepsi đi", "label": "add_product", "split": "train_augmented"}
+{"text": "cancel đi nhé", "label": "cancel", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho em 4 aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị pep xi", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi se vừn ắp sang a qua phi na", "label": "change_product", "split": "train_augmented"}
+{"text": "1 cộng 1 bằng mấy nha", "label": "unknown", "split": "train_augmented"}
+{"text": "nuốt tiền rồi", "label": "help", "split": "train_augmented"}
+{"text": "bán cho tôi 2 pep xi", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 2 ác qua với 5 bảy áp đi", "label": "buy_product", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho em coca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "quét mã đi nè", "label": "payment", "split": "train_augmented"}
+{"text": "không mua được luôn", "label": "help", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cộng thêm 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "thêm coca rồi tổng kết luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cộng thêm 2 aquafina", "label": "add_product", "split": "train_augmented"}
+{"text": "không mua aquafina nữa nhé", "label": "cancel", "split": "train_augmented"}
+{"text": "thay aquafina bằng sting đi", "label": "change_product", "split": "train_augmented"}
+{"text": "không lấy 7up nữa, đổi sang pepsi rồi chốt đơn", "label": "payment", "split": "train_augmented"}
+{"text": "không lấy sting nữa, đổi sang aquafina rồi thanh toán giùm", "label": "payment", "split": "train_augmented"}
+{"text": "thêm ác qua", "label": "add_product", "split": "train_augmented"}
+{"text": "cần ác qua nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị 2 cô ka nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán cho tôi 2 coca bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "đổi bảy áp sang pep xi", "label": "change_product", "split": "train_augmented"}
+{"text": "không mua sting nữa nè", "label": "cancel", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, kèm theo coca", "label": "add_product", "split": "train_augmented"}
+{"text": "cho pepsi với aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "chốt đơn đi nè", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 2 cô ka rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "không mua pép xì nữa nè", "label": "cancel", "split": "train_augmented"}
+{"text": "cộng thêm pepsi đi", "label": "add_product", "split": "train_augmented"}
+{"text": "kèm theo sting", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi 7up sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "cần 3 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho em coca bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy sê ven áp nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "bán cho tôi pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "trả tiền đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "thêm sting rồi tính tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm aquafina rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "đổi aquafina sang coca", "label": "change_product", "split": "train_augmented"}
+{"text": "đổi pép xì sang bảy áp", "label": "change_product", "split": "train_augmented"}
+{"text": "cần 2 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "thời tiết hôm nay", "label": "unknown", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho anh 2 xtinh nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy thêm co ca", "label": "add_product", "split": "train_augmented"}
+{"text": "bán cho tôi coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "lấy a qua phi na đi", "label": "buy_product", "split": "train_augmented"}
+{"text": "thôi đừng lấy aquafina", "label": "cancel", "split": "train_augmented"}
+{"text": "tổng kết đi", "label": "payment", "split": "train_augmented"}
+{"text": "hát đi giùm", "label": "unknown", "split": "train_augmented"}
+{"text": "hủy đơn giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "không mua coca nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, lấy thêm xtinh nè", "label": "add_product", "split": "train_augmented"}
+{"text": "thanh toán đi", "label": "payment", "split": "train_augmented"}
+{"text": "có món gì nhé", "label": "show_menu", "split": "train_augmented"}
+{"text": "thanh toán đi", "label": "payment", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "chào nhé", "label": "greeting", "split": "train_augmented"}
+{"text": "cho xem menu nè", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho anh 2 pepsi với 5 sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy 2 sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "trả tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "mua 2 cô ka", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho thêm pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm 4 pepsi rồi thanh toán luôn nhé", "label": "payment", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "thêm 2 seven up rồi tổng kết luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "không mua được giùm", "label": "help", "split": "train_augmented"}
+{"text": "thanh toán đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho chị 5 7up nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi x ting sang coca cô la", "label": "change_product", "split": "train_augmented"}
+{"text": "cho thêm 2 sting", "label": "add_product", "split": "train_augmented"}
+{"text": "cộng thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "bán cho tôi 5 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị 5 7up với pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm coca cô la với 5 xtinh", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy 4 coca với 4 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh coca nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm sting", "label": "add_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "thêm pét si rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho anh aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy thêm 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "thay sting bằng coca đi nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "kèm theo pét si", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm 2 sting rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 2 bép si rồi quét mã luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "đổi bảy áp sang co ca", "label": "change_product", "split": "train_augmented"}
+{"text": "bán cho tôi 2 7up nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị 7up giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "bỏ pepsi thay bằng 7up nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "mua seven up", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị 4 aqua fina", "label": "buy_product", "split": "train_augmented"}
+{"text": "ai là chủ tịch", "label": "unknown", "split": "train_augmented"}
+{"text": "cho 2 pepsi đi", "label": "buy_product", "split": "train_augmented"}
+{"text": "khoan đừng thanh toán vội bạn", "label": "cancel", "split": "train_augmented"}
+{"text": "kèm theo 2 aquafina bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "ai là chủ tịch", "label": "unknown", "split": "train_augmented"}
+{"text": "bỏ pepsi thay bằng 7up nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "cần 2 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "đổi coca sang pepsi đi", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy 3 co ca với 2 a qua phi na đi", "label": "buy_product", "split": "train_augmented"}
+{"text": "không lấy coca nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "kèm theo coca giùm", "label": "add_product", "split": "train_augmented"}
+{"text": "cần sting nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "đang mua pep xi mà thôi đổi sang ác qua đi", "label": "change_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho em pepsi với 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "kèm theo 2 pepsi với 2 aquafina nè", "label": "add_product", "split": "train_augmented"}
+{"text": "mua coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm bép si rồi quét mã luôn nhé", "label": "payment", "split": "train_augmented"}
+{"text": "bán cho tôi 4 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán cho tôi pét si nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm coca rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho aquafina bạn", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm coca với 2 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "cho anh 3 cô ka với co ca", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi aquafina sang 7up rồi chốt đơn giùm luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "hello", "label": "greeting", "split": "train_augmented"}
+{"text": "thêm 3 sting", "label": "add_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho anh 2 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "menu đâu nè", "label": "show_menu", "split": "train_augmented"}
+{"text": "chào", "label": "greeting", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "thêm coca bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "trả tiền đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "đổi 7up sang aquafina", "label": "change_product", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho xem menu", "label": "show_menu", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cho thêm pepsi bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "tính tiền đi đi", "label": "payment", "split": "train_augmented"}
+{"text": "không mua aquafina nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho anh pep xi đi", "label": "buy_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, kèm theo seven up", "label": "add_product", "split": "train_augmented"}
+{"text": "bán cho tôi 2 sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần 2 pepsi với aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi pepsi sang sting", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm 2 coca với sting nha", "label": "add_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "kèm theo coca với pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "cần aquafina với 2 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "không mua coca nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho em 2 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua sê ven áp với cô ka", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 2 7up rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho chị 3 co ca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy thêm bảy áp với 2 co ca", "label": "add_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cho thêm pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "đổi a qua phi na sang pep xi", "label": "change_product", "split": "train_augmented"}
+{"text": "mua 2 sting với coca nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi pep xi sang bép si nè", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm 7up nhé", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi coca sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "không mua aqua fina nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "bán cho tôi coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cộng thêm 2 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "cho thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "kèm theo 2 coca", "label": "add_product", "split": "train_augmented"}
+{"text": "tổng kết đi luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thời tiết hôm nay giùm", "label": "unknown", "split": "train_augmented"}
+{"text": "bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho chị 4 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "tính tiền đi giùm", "label": "payment", "split": "train_augmented"}
+{"text": "cho xem menu", "label": "show_menu", "split": "train_augmented"}
+{"text": "mua coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 2 7up rồi tính tiền luôn nhé", "label": "payment", "split": "train_augmented"}
+{"text": "thay coca bằng pepsi đi", "label": "change_product", "split": "train_augmented"}
+{"text": "alo nhé", "label": "greeting", "split": "train_augmented"}
+{"text": "thêm 2 coca rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "kèm theo 7up với coca đi", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy coca với 2 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán cho tôi aquafina đi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị pepsi nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho bảy áp với co ca rồi quét mã", "label": "payment", "split": "train_augmented"}
+{"text": "cho chị pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán cho tôi aquafina với 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ pepsi ra giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho 2 aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "bỏ pepsi đi", "label": "cancel", "split": "train_augmented"}
+{"text": "cho xem menu bạn", "label": "show_menu", "split": "train_augmented"}
+{"text": "mua coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho 2 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ pepsi đi, lấy sting rồi thanh toán đi", "label": "payment", "split": "train_augmented"}
+{"text": "tổng kết đi đi", "label": "payment", "split": "train_augmented"}
+{"text": "thời tiết hôm nay đi", "label": "unknown", "split": "train_augmented"}
+{"text": "cho anh 2 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi aquafina sang 7up", "label": "change_product", "split": "train_augmented"}
+{"text": "đổi aqua fina sang xtinh rồi thanh toán giùm", "label": "payment", "split": "train_augmented"}
+{"text": "lấy 3 aqua fina", "label": "buy_product", "split": "train_augmented"}
+{"text": "hello nè", "label": "greeting", "split": "train_augmented"}
+{"text": "lấy x ting", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị 4 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi sting sang 7up", "label": "change_product", "split": "train_augmented"}
+{"text": "xóa 7up đi", "label": "cancel", "split": "train_augmented"}
+{"text": "xin chào", "label": "greeting", "split": "train_augmented"}
+{"text": "bán cho tôi coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "không mua pepsi nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "kèm theo 2 xtinh với 2 cô ca", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em 2 sting với 3 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho chị co ca nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "chốt đơn đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "cho chị pép xì", "label": "buy_product", "split": "train_augmented"}
+{"text": "hỗ trợ tôi với đi", "label": "help", "split": "train_augmented"}
+{"text": "thêm aquafina rồi trả tiền luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 7up rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "mua pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 3 pep xi với 3 coca cô la", "label": "add_product", "split": "train_augmented"}
+{"text": "bán cho tôi sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm sting", "label": "add_product", "split": "train_augmented"}
+{"text": "cho 2 pep xi với pét si rồi tổng kết", "label": "payment", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "máy lỗi rồi", "label": "help", "split": "train_augmented"}
+{"text": "cho chị sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "bán cho tôi sting với coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm coca rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "bỏ pepsi thay bằng aquafina nhé", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm 7up với 3 sting", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm 3 coca", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em coca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm 3 sting", "label": "add_product", "split": "train_augmented"}
+{"text": "menu đâu", "label": "show_menu", "split": "train_augmented"}
+{"text": "thanh toán đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, thêm pepsi bạn", "label": "add_product", "split": "train_augmented"}
+{"text": "cần 2 aquafina với coca nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "1 cộng 1 bằng mấy", "label": "unknown", "split": "train_augmented"}
+{"text": "không lấy aquafina đâu, đổi qua 2 sting đi", "label": "change_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "đang mua 7up mà thôi đổi sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "cho em 3 pét si", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi 7up sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "đổi coca sang 7up", "label": "change_product", "split": "train_augmented"}
+{"text": "cho thêm cô ca", "label": "add_product", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "bỏ sting đi, lấy aquafina rồi trả tiền", "label": "payment", "split": "train_augmented"}
+{"text": "thêm x ting rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "lấy aquafina với coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho xem menu", "label": "show_menu", "split": "train_augmented"}
+{"text": "thêm 2 pepsi rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm a qua phi na rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "ê máy", "label": "greeting", "split": "train_augmented"}
+{"text": "cho thêm aquafina với 2 coca với", "label": "add_product", "split": "train_augmented"}
+{"text": "cho tao lấy x ting", "label": "buy_product", "split": "train_augmented"}
+{"text": "có nước ngọt không nhé", "label": "show_menu", "split": "train_augmented"}
+{"text": "1 cộng 1 bằng mấy với", "label": "unknown", "split": "train_augmented"}
+{"text": "mua sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua sting với coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình 3 sting với", "label": "buy_product", "split": "train_augmented"}
+{"text": "aqua fina với 2 co ca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm 3 coca với pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "3 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "máy lỗi rồi", "label": "help", "split": "train_augmented"}
+{"text": "cho anh alo giúp mình", "label": "greeting", "split": "train_augmented"}
+{"text": "thanh toán đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "cho anh pép xì", "label": "buy_product", "split": "train_augmented"}
+{"text": "chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho thêm pepsi với coca nha máy", "label": "add_product", "split": "train_augmented"}
+{"text": "cho anh thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cộng thêm pepsi với coca", "label": "add_product", "split": "train_augmented"}
+{"text": "giùm em xin chào", "label": "greeting", "split": "train_augmented"}
+{"text": "cho anh aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 2 coca rồi tính lúa luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho tao cộng thêm pepsi nha máy", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em thêm aquafina rồi tính lúa luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cần 5 coca nha máy", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần coca với pepsi giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "không mua sting nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cần 2 7up với 3 coca nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình kèm theo 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em kèm theo coca", "label": "add_product", "split": "train_augmented"}
+{"text": "giùm em lấy coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "hướng dẫn dùng nhé", "label": "help", "split": "train_augmented"}
+{"text": "thêm pepsi rồi tính lúa luôn ạ", "label": "payment", "split": "train_augmented"}
+{"text": "bác muốn đổi coca sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "xóa co ca đi", "label": "cancel", "split": "train_augmented"}
+{"text": "bỏ aquafina đi nha máy", "label": "cancel", "split": "train_augmented"}
+{"text": "đổi 7up sang pepsi lun", "label": "change_product", "split": "train_augmented"}
+{"text": "giùm em thêm coca giúp mình", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy 7up nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 4 coca nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, lấy thêm sting", "label": "add_product", "split": "train_augmented"}
+{"text": "cần 3 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "1 cộng 1 bằng mấy", "label": "unknown", "split": "train_augmented"}
+{"text": "aquafina với coca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi xì tin sang bảy áp rồi thanh toán giùm nha", "label": "payment", "split": "train_augmented"}
+{"text": "thay coca bằng sting đi", "label": "change_product", "split": "train_augmented"}
+{"text": "bỏ pepsi thay bằng 7up ạ", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm pepsi rồi tính lúa luôn", "label": "payment", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "giùm em mua coca cô la lun", "label": "buy_product", "split": "train_augmented"}
+{"text": "menu đâu nè", "label": "show_menu", "split": "train_augmented"}
+{"text": "bác muốn mua 3 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh cần 2 7up với coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần pepsi lun", "label": "buy_product", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "cần pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi pepsi sang sting", "label": "change_product", "split": "train_augmented"}
+{"text": "thay pét si bằng bép si đi", "label": "change_product", "split": "train_augmented"}
+{"text": "tính lúa đi nhé", "label": "payment", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "bỏ aquafina đi, lấy pepsi rồi thanh toán", "label": "payment", "split": "train_augmented"}
+{"text": "xem danh sách nè", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho tao có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "lấy dùm cần 7up giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho coca với coca rồi chốt đơn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm pepsi nha máy", "label": "add_product", "split": "train_augmented"}
+{"text": "cho anh pét si", "label": "buy_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, kèm theo pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "kèm theo sting nha", "label": "add_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, thêm 2 aquafina giùm", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy pét si", "label": "buy_product", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho 7up với coca rồi quét mã nha máy", "label": "payment", "split": "train_augmented"}
+{"text": "giùm em cho thêm 7up với sting", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm cô ka với pép xì với", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "thêm aquafina rồi thanh toán luôn nè", "label": "payment", "split": "train_augmented"}
+{"text": "cần 2 pepsi ạ", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần pét si", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình mua coca nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "kèm theo pepsi ạ", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi coca sang aquafina ạ", "label": "change_product", "split": "train_augmented"}
+{"text": "2 7up nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "chào ạ", "label": "greeting", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cộng thêm 3 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "bác muốn lấy thêm x ting với 2 a qua phi na", "label": "add_product", "split": "train_augmented"}
+{"text": "coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy thêm pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi pepsi sang sting", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy thêm 2 coca với 2 pepsi nha máy", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi pepsi sang coca", "label": "change_product", "split": "train_augmented"}
+{"text": "cho xem menu ạ", "label": "show_menu", "split": "train_augmented"}
+{"text": "kèm theo 2 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "trả tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "co ca", "label": "buy_product", "split": "train_augmented"}
+{"text": "chị cần lấy coca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "aquafina với", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy dùm cho thêm pép xì với pét si giúp mình", "label": "add_product", "split": "train_augmented"}
+{"text": "bác muốn aqua fina với 2 pep xi giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "cần cô ka", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho thêm 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "5 pepsi với sting lun", "label": "buy_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "bỏ sting thay bằng aquafina nè", "label": "change_product", "split": "train_augmented"}
+{"text": "bác muốn cho thêm cô ca", "label": "add_product", "split": "train_augmented"}
+{"text": "cho mình bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "cần sting với 4 aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cho thêm bép si nhé", "label": "add_product", "split": "train_augmented"}
+{"text": "cho tao cần 5 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em thêm 7up rồi thanh toán luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 2 bảy áp rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "không lấy coca nữa, đổi sang coca rồi tổng kết", "label": "payment", "split": "train_augmented"}
+{"text": "cho anh không lấy aquafina nữa, đổi sang aquafina rồi tính tiền giúp mình", "label": "payment", "split": "train_augmented"}
+{"text": "lấy 2 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 2 aquafina rồi tính lúa luôn", "label": "payment", "split": "train_augmented"}
+{"text": "bác muốn đổi pepsi sang sting", "label": "change_product", "split": "train_augmented"}
+{"text": "tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "thêm coca rồi trả tiền luôn nhé", "label": "payment", "split": "train_augmented"}
+{"text": "chị cần bỏ aquafina ra nhé", "label": "cancel", "split": "train_augmented"}
+{"text": "lấy dùm lấy thêm 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "đổi 7up sang coca nè", "label": "change_product", "split": "train_augmented"}
+{"text": "cho tao cho thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "kèm theo coca giúp mình", "label": "add_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa nha máy", "label": "cancel", "split": "train_augmented"}
+{"text": "cho em cần pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "ai là chủ tịch", "label": "unknown", "split": "train_augmented"}
+{"text": "thêm 2 pepsi rồi thanh toán luôn nha máy", "label": "payment", "split": "train_augmented"}
+{"text": "lấy dùm 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "chị cần đổi co ca sang x ting", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy thêm coca với aquafina với", "label": "add_product", "split": "train_augmented"}
+{"text": "cho tao cần 2 bép si", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy dùm chào", "label": "greeting", "split": "train_augmented"}
+{"text": "cho mình 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "bác muốn cô ca", "label": "buy_product", "split": "train_augmented"}
+{"text": "tổng kết đi giùm", "label": "payment", "split": "train_augmented"}
+{"text": "cho em cho xem menu", "label": "show_menu", "split": "train_augmented"}
+{"text": "giùm em có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "hỗ trợ tôi với", "label": "help", "split": "train_augmented"}
+{"text": "đổi pepsi sang pepsi rồi trả tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "lấy dùm đừng thanh toán vội, lấy thêm sting nè", "label": "add_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, kèm theo a qua phi na", "label": "add_product", "split": "train_augmented"}
+{"text": "cho anh bỏ 7up ra với", "label": "cancel", "split": "train_augmented"}
+{"text": "mua pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi coca sang 7up", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm 2 coca rồi tính tiền luôn giúp mình", "label": "payment", "split": "train_augmented"}
+{"text": "hướng dẫn dùng", "label": "help", "split": "train_augmented"}
+{"text": "cho anh thời tiết hôm nay", "label": "unknown", "split": "train_augmented"}
+{"text": "chị cần lấy thêm 3 pep xi", "label": "add_product", "split": "train_augmented"}
+{"text": "mua bép si", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh thay sting bằng pepsi đi", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy dùm pepsi với 2 coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần 3 aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "chào", "label": "greeting", "split": "train_augmented"}
+{"text": "cho 2 coca với coca rồi quét mã nè", "label": "payment", "split": "train_augmented"}
+{"text": "đổi pepsi sang sting", "label": "change_product", "split": "train_augmented"}
+{"text": "đang mua coca mà thôi đổi sang sting ạ", "label": "change_product", "split": "train_augmented"}
+{"text": "2 coca với 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy dùm đổi coca sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "thay coca bằng pepsi đi lun", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm coca rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "giùm em hủy đơn giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "giùm em cho xem menu lun", "label": "show_menu", "split": "train_augmented"}
+{"text": "chị cần cho thêm 2 sting nha", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi coca sang aquafina", "label": "change_product", "split": "train_augmented"}
+{"text": "thêm pepsi với 2 7up", "label": "add_product", "split": "train_augmented"}
+{"text": "đổi pép xì sang co ca rồi tính tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "cộng thêm pepsi với sting", "label": "add_product", "split": "train_augmented"}
+{"text": "xóa 7up đi nhé", "label": "cancel", "split": "train_augmented"}
+{"text": "cần 2 7up giúp mình", "label": "buy_product", "split": "train_augmented"}
+{"text": "bác muốn tổng kết đi", "label": "payment", "split": "train_augmented"}
+{"text": "cộng thêm aquafina", "label": "add_product", "split": "train_augmented"}
+{"text": "cần pepsi với", "label": "buy_product", "split": "train_augmented"}
+{"text": "cần pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "giùm em lấy thêm pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "có món gì", "label": "show_menu", "split": "train_augmented"}
+{"text": "hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "lấy dùm thêm bép si rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "thêm 2 coca rồi quét mã luôn", "label": "payment", "split": "train_augmented"}
+{"text": "giùm em thêm coca rồi tổng kết luôn", "label": "payment", "split": "train_augmented"}
+{"text": "lấy thêm 5 7up với pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy thêm pepsi với 3 aquafina", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình cần coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "coca với sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "máy lỗi rồi", "label": "help", "split": "train_augmented"}
+{"text": "lấy coca với 3 aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm aquafina rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "chị cần thêm 3 sting rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "mua xtinh nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho tao aqua fina giúp mình", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy 4 coca với pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình không lấy coca nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "cho em có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "cần 2 coca giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh tính tiền đi", "label": "payment", "split": "train_augmented"}
+{"text": "đổi pepsi sang aquafina nè", "label": "change_product", "split": "train_augmented"}
+{"text": "cho em chốt đơn đi", "label": "payment", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "giùm em mua pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 2 pepsi lun", "label": "buy_product", "split": "train_augmented"}
+{"text": "đang mua 7up mà thôi đổi sang coca", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy dùm thanh toán đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho tao bỏ coca đi nhé", "label": "cancel", "split": "train_augmented"}
+{"text": "đừng tính tiền, từ từ đã giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "chị cần lấy coca cô la", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho mình bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "đổi sting sang aquafina rồi thanh toán giùm", "label": "payment", "split": "train_augmented"}
+{"text": "thêm sting rồi trả tiền luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho mình thêm 4 aquafina rồi quét mã luôn nha", "label": "payment", "split": "train_augmented"}
+{"text": "mua 2 sê ven áp lun", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho em thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "pepsi nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi aquafina sang coca", "label": "change_product", "split": "train_augmented"}
+{"text": "cho em xin chào nhé", "label": "greeting", "split": "train_augmented"}
+{"text": "cho tao đổi se vừn ắp sang coca cô la", "label": "change_product", "split": "train_augmented"}
+{"text": "thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "xóa co ca đi", "label": "cancel", "split": "train_augmented"}
+{"text": "cho mình thêm sting rồi chốt đơn luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho tao thêm cô ka ạ", "label": "add_product", "split": "train_augmented"}
+{"text": "lấy dùm hủy đơn", "label": "cancel", "split": "train_augmented"}
+{"text": "chị cần bán nước gì vậy", "label": "show_menu", "split": "train_augmented"}
+{"text": "mua 2 pep xi nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy dùm bỏ sting thay bằng coca", "label": "change_product", "split": "train_augmented"}
+{"text": "alo nhé", "label": "greeting", "split": "train_augmented"}
+{"text": "cho tao không mua được", "label": "help", "split": "train_augmented"}
+{"text": "sting nè", "label": "buy_product", "split": "train_augmented"}
+{"text": "tính lúa đi", "label": "payment", "split": "train_augmented"}
+{"text": "cho anh bỏ coca đi", "label": "cancel", "split": "train_augmented"}
+{"text": "lấy dùm lấy a qua phi na giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 2 aqua fina rồi tổng kết luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho em cần 2 coca lun", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho anh cho xem menu với", "label": "show_menu", "split": "train_augmented"}
+{"text": "lấy dùm đổi coca sang pepsi", "label": "change_product", "split": "train_augmented"}
+{"text": "lấy coca với aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "đừng thanh toán vội, cho thêm coca nè", "label": "add_product", "split": "train_augmented"}
+{"text": "quét mã đi", "label": "payment", "split": "train_augmented"}
+{"text": "cần aquafina", "label": "buy_product", "split": "train_augmented"}
+{"text": "thêm 2 coca rồi tính lúa luôn", "label": "payment", "split": "train_augmented"}
+{"text": "xem danh sách", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho mình đừng tính tiền, từ từ đã giùm", "label": "cancel", "split": "train_augmented"}
+{"text": "cho tao mua aquafina với 3 sting giúp mình", "label": "buy_product", "split": "train_augmented"}
+{"text": "không mua pepsi nữa nha", "label": "cancel", "split": "train_augmented"}
+{"text": "cho anh 2 aqua fina với 2 a qua phi na nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ sting đi", "label": "cancel", "split": "train_augmented"}
+{"text": "cần 7up với pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "cancel đi", "label": "cancel", "split": "train_augmented"}
+{"text": "thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "không mua aquafina nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "thêm pepsi", "label": "add_product", "split": "train_augmented"}
+{"text": "cho anh bỏ aqua fina đi, lấy a qua phi na rồi tính lúa ạ", "label": "payment", "split": "train_augmented"}
+{"text": "giùm em lấy thêm coca", "label": "add_product", "split": "train_augmented"}
+{"text": "cho anh đổi 7up sang aquafina", "label": "change_product", "split": "train_augmented"}
+{"text": "co ca nha máy", "label": "buy_product", "split": "train_augmented"}
+{"text": "đổi 7up sang pepsi giùm", "label": "change_product", "split": "train_augmented"}
+{"text": "đừng tính tiền, từ từ đã", "label": "cancel", "split": "train_augmented"}
+{"text": "cần coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "ai là chủ tịch nha", "label": "unknown", "split": "train_augmented"}
+{"text": "giùm em không mua được", "label": "help", "split": "train_augmented"}
+{"text": "lấy sting giúp mình", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ 7up đi nha", "label": "cancel", "split": "train_augmented"}
+{"text": "pét si", "label": "buy_product", "split": "train_augmented"}
+{"text": "3 pepsi ạ", "label": "buy_product", "split": "train_augmented"}
+{"text": "coca với sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "mua 3 coca nha máy", "label": "buy_product", "split": "train_augmented"}
+{"text": "hello", "label": "greeting", "split": "train_augmented"}
+{"text": "cho em thôi không mua nữa", "label": "cancel", "split": "train_augmented"}
+{"text": "chào ạ", "label": "greeting", "split": "train_augmented"}
+{"text": "mua coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "cho tao cần 7up", "label": "buy_product", "split": "train_augmented"}
+{"text": "bác muốn đừng thanh toán vội, lấy thêm 5 coca cô la", "label": "add_product", "split": "train_augmented"}
+{"text": "cho em lấy 3 7up giùm", "label": "buy_product", "split": "train_augmented"}
+{"text": "có món gì nhé", "label": "show_menu", "split": "train_augmented"}
+{"text": "tổng kết đi", "label": "payment", "split": "train_augmented"}
+{"text": "đổi bép si sang co ca rồi tính tiền giùm", "label": "payment", "split": "train_augmented"}
+{"text": "cho tao coca", "label": "buy_product", "split": "train_augmented"}
+{"text": "lấy sting ạ", "label": "buy_product", "split": "train_augmented"}
+{"text": "bỏ coca đi", "label": "cancel", "split": "train_augmented"}
+{"text": "cho tao mua sting", "label": "buy_product", "split": "train_augmented"}
+{"text": "thời tiết hôm nay", "label": "unknown", "split": "train_augmented"}
+{"text": "lấy dùm đổi xì tin sang bép si giúp mình", "label": "change_product", "split": "train_augmented"}
+{"text": "có nước ngọt không", "label": "show_menu", "split": "train_augmented"}
+{"text": "lấy dùm thêm pepsi rồi tổng kết luôn", "label": "payment", "split": "train_augmented"}
+{"text": "cho mình không lấy 7up đâu, đổi qua pepsi ạ", "label": "change_product", "split": "train_augmented"}
+{"text": "giùm em mua 5 sting nha", "label": "buy_product", "split": "train_augmented"}
+{"text": "cộng thêm 2 cô ka với pep xi", "label": "add_product", "split": "train_augmented"}
+{"text": "cho anh cho thêm aquafina nha", "label": "add_product", "split": "train_augmented"}
+{"text": "cho tao thanh toán đi nè", "label": "payment", "split": "train_augmented"}
+{"text": "thôi không mua nữa nha máy", "label": "cancel", "split": "train_augmented"}
+{"text": "đổi aquafina sang coca", "label": "change_product", "split": "train_augmented"}
+{"text": "2 pepsi", "label": "buy_product", "split": "train_augmented"}
+{"text": "chị cần mua aquafina ạ", "label": "buy_product", "split": "train_augmented"}
+{"text": "hỗ trợ tôi với", "label": "help", "split": "train_augmented"}
+{"text": "cho anh menu đâu nha", "label": "show_menu", "split": "train_augmented"}
+{"text": "cho mình a qua phi na nhé", "label": "buy_product", "split": "train_augmented"}
+{"text": "khoan đừng thanh toán nha bạn", "label": "cancel", "split": "test_hard"}
+{"text": "thôi bỏ coca đi luôn", "label": "cancel", "split": "test_hard"}
+{"text": "thay aquafina bằng coca", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi aquafina sang pepsi giùm", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi pepsi sang sting nè", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi sang sting nha bạn", "label": "change_product", "split": "test_hard"}
+{"text": "thôi bỏ aquafina đi nè", "label": "cancel", "split": "test_hard"}
+{"text": "à thôi đổi aquafina sang coca nha bạn", "label": "change_product", "split": "test_hard"}
+{"text": "không lấy aquafina nữa nha", "label": "cancel", "split": "test_hard"}
+{"text": "không lấy 7up nữa giúp", "label": "cancel", "split": "test_hard"}
+{"text": "thay pepsi bằng 7up giùm", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi aquafina sang pepsi với", "label": "change_product", "split": "test_hard"}
+{"text": "không mua 7up nữa đâu lun", "label": "cancel", "split": "test_hard"}
+{"text": "không mua aquafina nữa đâu với", "label": "cancel", "split": "test_hard"}
+{"text": "à thôi đổi sang pepsi đi", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi sting sang 7up lun", "label": "change_product", "split": "test_hard"}
+{"text": "thay coca bằng sting giùm", "label": "change_product", "split": "test_hard"}
+{"text": "bỏ 7up giúp chị nha bạn", "label": "cancel", "split": "test_hard"}
+{"text": "thay aquafina bằng coca nha", "label": "change_product", "split": "test_hard"}
+{"text": "thay 7up bằng aquafina với", "label": "change_product", "split": "test_hard"}
+{"text": "bỏ pepsi giúp tui giùm", "label": "cancel", "split": "test_hard"}
+{"text": "thay pepsi bằng aquafina giúp", "label": "change_product", "split": "test_hard"}
+{"text": "không mua pepsi nữa đâu nè", "label": "cancel", "split": "test_hard"}
+{"text": "không mua 7up nữa đâu nè", "label": "cancel", "split": "test_hard"}
+{"text": "không mua aquafina nữa đâu nhé bạn", "label": "cancel", "split": "test_hard"}
+{"text": "thôi bỏ coca đi đi", "label": "cancel", "split": "test_hard"}
+{"text": "đợi chút để tôi xem lại nè", "label": "payment", "split": "test_hard"}
+{"text": "không lấy pepsi nữa với", "label": "cancel", "split": "test_hard"}
+{"text": "khoan đừng thanh toán ạ", "label": "cancel", "split": "test_hard"}
+{"text": "bỏ sting giúp mình nha", "label": "cancel", "split": "test_hard"}
+{"text": "không lấy 7up nữa luôn", "label": "cancel", "split": "test_hard"}
+{"text": "à thôi đổi sang 7up đi", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi coca sang aquafina với", "label": "change_product", "split": "test_hard"}
+{"text": "thay 7up bằng pepsi nha", "label": "change_product", "split": "test_hard"}
+{"text": "thôi bỏ 7up đi giùm", "label": "cancel", "split": "test_hard"}
+{"text": "à thôi đổi sang aquafina", "label": "change_product", "split": "test_hard"}
+{"text": "không mua coca nữa đâu", "label": "cancel", "split": "test_hard"}
+{"text": "bỏ coca giúp tôi nhé", "label": "cancel", "split": "test_hard"}
+{"text": "thay aquafina bằng 7up ạ", "label": "change_product", "split": "test_hard"}
+{"text": "không mua aquafina nữa đâu nè", "label": "cancel", "split": "test_hard"}
+{"text": "không lấy pepsi nữa nha", "label": "cancel", "split": "test_hard"}
+{"text": "à thôi đổi sang coca lun", "label": "change_product", "split": "test_hard"}
+{"text": "thôi bỏ coca đi nè", "label": "cancel", "split": "test_hard"}
+{"text": "bỏ pepsi giúp tui lun", "label": "cancel", "split": "test_hard"}
+{"text": "à thôi đổi 7up sang aquafina nha bạn", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi sting sang aquafina nha", "label": "change_product", "split": "test_hard"}
+{"text": "à thôi đổi pepsi sang aquafina lun", "label": "change_product", "split": "test_hard"}
+{"text": "thay pepsi bằng coca nghen", "label": "change_product", "split": "test_hard"}
+{"text": "bỏ pepsi giúp anh giúp", "label": "cancel", "split": "test_hard"}
+{"text": "bỏ 7up giúp tui nha", "label": "cancel", "split": "test_hard"}
+{"text": "thêm aquafina rồi quét mã nhé bạn", "label": "payment", "split": "test_hard"}
+{"text": "cho pepsi với 7up giúp", "label": "buy_product", "split": "test_hard"}
+{"text": "mua 2 sting và 1 7up giùm", "label": "buy_product", "split": "test_hard"}
+{"text": "đổi sang pepsi rồi trả tiền nè", "label": "payment", "split": "test_hard"}
+{"text": "cho tôi sting rồi thanh toán luôn nha bạn", "label": "payment", "split": "test_hard"}
+{"text": "mua 2 7up và 2 aquafina luôn", "label": "buy_product", "split": "test_hard"}
+{"text": "cho em 7up rồi thanh toán luôn với", "label": "payment", "split": "test_hard"}
+{"text": "thêm sting rồi quét mã nhé", "label": "payment", "split": "test_hard"}
+{"text": "thêm coca rồi thanh toán đi", "label": "payment", "split": "test_hard"}
+{"text": "cho aquafina với sting nhé", "label": "buy_product", "split": "test_hard"}
+{"text": "cho pepsi với sting với", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm 7up rồi thanh toán luôn", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang coca rồi trả tiền nha bạn", "label": "payment", "split": "test_hard"}
+{"text": "thêm 7up rồi thanh toán nè", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang aquafina rồi trả tiền giúp", "label": "payment", "split": "test_hard"}
+{"text": "thêm coca rồi quét mã nè", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang aquafina rồi trả tiền với", "label": "payment", "split": "test_hard"}
+{"text": "thêm sting rồi quét mã với", "label": "payment", "split": "test_hard"}
+{"text": "thêm coca rồi quét mã nghen", "label": "payment", "split": "test_hard"}
+{"text": "cho pepsi với 7up nha bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "đổi sang 7up rồi trả tiền giúp", "label": "payment", "split": "test_hard"}
+{"text": "cho 7up với pepsi nghen", "label": "buy_product", "split": "test_hard"}
+{"text": "cho 7up với aquafina với", "label": "buy_product", "split": "test_hard"}
+{"text": "mua 3 7up và 3 pepsi nha bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm sting rồi quét mã nghen", "label": "payment", "split": "test_hard"}
+{"text": "cho sting với coca nè", "label": "buy_product", "split": "test_hard"}
+{"text": "mua 2 aquafina và 4 7up nè", "label": "buy_product", "split": "test_hard"}
+{"text": "mua 5 7up và 2 pepsi đi", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm 7up rồi quét mã với", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang pepsi rồi trả tiền nghen", "label": "payment", "split": "test_hard"}
+{"text": "mua 5 sting và 1 pepsi nhé", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm pepsi rồi quét mã luôn", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang coca rồi trả tiền lun", "label": "payment", "split": "test_hard"}
+{"text": "mua 1 sting và 4 aquafina ạ", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm sting rồi thanh toán nhé", "label": "payment", "split": "test_hard"}
+{"text": "mua 3 7up và 2 coca giúp", "label": "buy_product", "split": "test_hard"}
+{"text": "cho coca với sting nhé", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm pepsi rồi quét mã giùm", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang 7up rồi trả tiền nha", "label": "payment", "split": "test_hard"}
+{"text": "mua 5 coca và 3 sting giùm", "label": "buy_product", "split": "test_hard"}
+{"text": "thêm sting rồi quét mã nha bạn", "label": "payment", "split": "test_hard"}
+{"text": "đổi sang coca rồi trả tiền nha", "label": "payment", "split": "test_hard"}
+{"text": "thêm 7up rồi quét mã giùm", "label": "payment", "split": "test_hard"}
+{"text": "thêm coca rồi thanh toán nha bạn", "label": "payment", "split": "test_hard"}
+{"text": "thêm sting rồi quét mã nè", "label": "payment", "split": "test_hard"}
+{"text": "mua 5 coca và 4 sting đi", "label": "buy_product", "split": "test_hard"}
+{"text": "cho aquafina với 7up ạ", "label": "buy_product", "split": "test_hard"}
+{"text": "mua 2 7up và 5 aquafina", "label": "buy_product", "split": "test_hard"}
+{"text": "mua 1 pepsi và 3 7up đi", "label": "buy_product", "split": "test_hard"}
+{"text": "cho chị 7up rồi thanh toán luôn nha bạn", "label": "payment", "split": "test_hard"}
+{"text": "bán chị 1 bảy áp nha bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "lấy aqua fina giùm em nhé bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "cho tui pep xi", "label": "buy_product", "split": "test_hard"}
+{"text": "cần mua cô ca giúp", "label": "buy_product", "split": "test_hard"}
+{"text": "bán chị 2 aqua fina nha", "label": "buy_product", "split": "test_hard"}
+{"text": "lấy pét si giùm mình luôn", "label": "buy_product", "split": "test_hard"}
+{"text": "bán chị 1 x ting giùm", "label": "buy_product", "split": "test_hard"}
+{"text": "cần mua cô ka giúp", "label": "buy_product", "split": "test_hard"}
+{"text": "cần mua coca cô la nghen", "label": "buy_product", "split": "test_hard"}
+{"text": "bán anh 5 se vừn ắp giúp", "label": "buy_product", "split": "test_hard"}
+{"text": "cho em aqua fina nhé", "label": "buy_product", "split": "test_hard"}
+{"text": "bán mình 2 aqua fina lun", "label": "buy_product", "split": "test_hard"}
+{"text": "cho mình coca cô la nè", "label": "buy_product", "split": "test_hard"}
+{"text": "cho chị coca cô la đi", "label": "buy_product", "split": "test_hard"}
+{"text": "cho chị xtinh nhé bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "bán em 3 x ting nha", "label": "buy_product", "split": "test_hard"}
+{"text": "bán mình 5 aqua fina nè", "label": "buy_product", "split": "test_hard"}
+{"text": "cần mua bép si đi", "label": "buy_product", "split": "test_hard"}
+{"text": "cho mình cô ka nhé bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "bán em 1 a qua phi na", "label": "buy_product", "split": "test_hard"}
+{"text": "lấy xtinh giùm em nhé", "label": "buy_product", "split": "test_hard"}
+{"text": "cho mình xtinh giùm", "label": "buy_product", "split": "test_hard"}
+{"text": "cho mình bảy áp nha bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "cần mua cô ca nha", "label": "buy_product", "split": "test_hard"}
+{"text": "cần mua sê ven áp nhé", "label": "buy_product", "split": "test_hard"}
+{"text": "cho anh a qua phi na giùm", "label": "buy_product", "split": "test_hard"}
+{"text": "lấy cô ca giùm tui", "label": "buy_product", "split": "test_hard"}
+{"text": "bán mình 3 cô ka giúp", "label": "buy_product", "split": "test_hard"}
+{"text": "cho tui pét si nhé bạn", "label": "buy_product", "split": "test_hard"}
+{"text": "cho tui cô ka luôn", "label": "buy_product", "split": "test_hard"}
+{"text": "không lấy bép si nữa, cho aqua fina rồi quét mã giùm", "label": "payment", "split": "test_hard"}
+{"text": "không lấy aqua fina nữa, cho coca cô la rồi quét mã giúp", "label": "payment", "split": "test_hard"}
+{"text": "thêm xì tin rồi trả tiền giúp", "label": "payment", "split": "test_hard"}
+{"text": "bỏ aqua fina đi, lấy bép si nhé bạn", "label": "cancel", "split": "test_hard"}
+{"text": "cho 3 lon aqua fina với 5 bép si rồi thanh toán nè", "label": "payment", "split": "test_hard"}
+{"text": "à thôi đổi bảy áp sang xtinh rồi thanh toán luôn đi", "label": "payment", "split": "test_hard"}
+{"text": "không lấy bảy áp nữa, cho bép si rồi quét mã luôn", "label": "payment", "split": "test_hard"}
+{"text": "thêm a qua phi na rồi trả tiền giùm", "label": "payment", "split": "test_hard"}
+{"text": "à thôi đổi pep xi sang sê ven áp rồi thanh toán luôn nha", "label": "payment", "split": "test_hard"}
+{"text": "thêm xì tin rồi trả tiền lun", "label": "payment", "split": "test_hard"}
+{"text": "cho 2 lon cô ka với 5 pét si rồi thanh toán lun", "label": "payment", "split": "test_hard"}
+{"text": "à thôi đổi xtinh sang aqua fina rồi thanh toán luôn với", "label": "payment", "split": "test_hard"}
+{"text": "cho 2 lon bép si với 5 seven up rồi thanh toán ạ", "label": "payment", "split": "test_hard"}
+{"text": "à thôi đổi bép si sang aqua fina rồi thanh toán luôn với", "label": "payment", "split": "test_hard"}
+{"text": "thêm xtinh rồi trả tiền giùm", "label": "payment", "split": "test_hard"}
+{"text": "không lấy bảy áp nữa, cho a qua phi na rồi quét mã", "label": "payment", "split": "test_hard"}
+{"text": "không lấy xtinh nữa, cho se vừn ắp rồi quét mã", "label": "payment", "split": "test_hard"}
+{"text": "à thôi đổi pét si sang coca cô la rồi thanh toán luôn giúp", "label": "payment", "split": "test_hard"}
+{"text": "cho 3 lon aqua fina với 4 cô ka rồi thanh toán nè", "label": "payment", "split": "test_hard"}
+{"text": "cho 1 lon cô ka với 3 se vừn ắp rồi thanh toán nhé", "label": "payment", "split": "test_hard"}
+{"text": "order ác qua nha máy", "split": "unlabeled"}
+{"text": "bán em 6 hộp aqua fina nhé bạn", "split": "unlabeled"}
+{"text": "em chọn sê ven áp giùm", "split": "unlabeled"}
+{"text": "cậu chọn seven up đó", "split": "unlabeled"}
+{"text": "lấy dùm sê ven áp ạ", "split": "unlabeled"}
+{"text": "muốn 1 chai se vừn ắp nha bạn", "split": "unlabeled"}
+{"text": "chị chọn cô ca cô la luôn", "split": "unlabeled"}
+{"text": "cho xin bép si giùm", "split": "unlabeled"}
+{"text": "5 ly cô ca cho tôi nha bạn", "split": "unlabeled"}
+{"text": "lấy dùm seven up với", "split": "unlabeled"}
+{"text": "xuất cho tui 7 hộp seven up giùm", "split": "unlabeled"}
+{"text": "lấy dùm 10 lon pép xì nha máy", "split": "unlabeled"}
+{"text": "cho mình 5 se vừn ắp đó", "split": "unlabeled"}
+{"text": "cho cậu 6 aqua fina đó", "split": "unlabeled"}
+{"text": "cho xin ác qua", "split": "unlabeled"}
+{"text": "2 ly pép xì nhé đó", "split": "unlabeled"}
+{"text": "xuất cho cô 2 sê ven áp nhé", "split": "unlabeled"}
+{"text": "order 9 cô ca cô la nha bạn", "split": "unlabeled"}
+{"text": "cho mình xì tin với", "split": "unlabeled"}
+{"text": "cho anh 4 xtinh với", "split": "unlabeled"}
+{"text": "bán chú 7 lon sting giùm", "split": "unlabeled"}
+{"text": "tao chọn pepsi nha bạn", "split": "unlabeled"}
+{"text": "mua 7up luôn", "split": "unlabeled"}
+{"text": "cho xin 10 sting nha", "split": "unlabeled"}
+{"text": "order 1 hộp aquafina ạ", "split": "unlabeled"}
+{"text": "cho tôi 10 lon 7up nhé", "split": "unlabeled"}
+{"text": "cho xin aquafina giùm", "split": "unlabeled"}
+{"text": "lấy bạn 6 sting giúp", "split": "unlabeled"}
+{"text": "bán mình 9 ly aquafina", "split": "unlabeled"}
+{"text": "lấy giùm 10 chai 7up nhé bạn", "split": "unlabeled"}
+{"text": "em muốn 4 coca giùm", "split": "unlabeled"}
+{"text": "8 chai aquafina cho chị nè", "split": "unlabeled"}
+{"text": "chị chọn sting nhé bạn", "split": "unlabeled"}
+{"text": "cho chị 8 ly aquafina nè", "split": "unlabeled"}
+{"text": "mua 9 chai 7up nha", "split": "unlabeled"}
+{"text": "lấy dùm 3 ly sting nha máy", "split": "unlabeled"}
+{"text": "order 8 lon coca nè", "split": "unlabeled"}
+{"text": "mua 2 chai coca giúp", "split": "unlabeled"}
+{"text": "em chọn 7up giúp", "split": "unlabeled"}
+{"text": "aquafina cho em", "split": "unlabeled"}
+{"text": "cho bác 7up rồi thanh toán luôn nha máy", "split": "unlabeled"}
+{"text": "cho bác 7up rồi thanh toán luôn giúp", "split": "unlabeled"}
+{"text": "cho bác sting rồi thanh toán luôn", "split": "unlabeled"}
+{"text": "cho cậu coca rồi thanh toán luôn", "split": "unlabeled"}
+{"text": "cho tui pepsi rồi thanh toán luôn nhé bạn", "split": "unlabeled"}
+{"text": "cho chú pepsi rồi thanh toán luôn với", "split": "unlabeled"}
+{"text": "cho mình pepsi rồi thanh toán luôn giúp", "split": "unlabeled"}
+{"text": "cho tôi sting rồi thanh toán luôn", "split": "unlabeled"}
+{"text": "cho chị pepsi rồi thanh toán luôn giúp", "split": "unlabeled"}
+{"text": "cho tui 7up rồi thanh toán luôn nhé bạn", "split": "unlabeled"}
+{"text": "mua sting lun", "split": "unlabeled"}
+{"text": "bác chọn pepsi giúp", "split": "unlabeled"}
+{"text": "cần coca đi", "split": "unlabeled"}
+{"text": "bạn muốn 7up nghen", "split": "unlabeled"}
+{"text": "mua 7 lon aquafina nhé", "split": "unlabeled"}
+{"text": "order 2 chai aquafina nghen", "split": "unlabeled"}
+{"text": "xuất cho tao 10 hộp coca luôn", "split": "unlabeled"}
+{"text": "cô muốn 1 chai coca luôn", "split": "unlabeled"}
+{"text": "lấy anh pepsi giúp", "split": "unlabeled"}
+{"text": "lấy dùm pepsi", "split": "unlabeled"}
+{"text": "mua 8 7up", "split": "unlabeled"}
+{"text": "anh chọn 7up lun", "split": "unlabeled"}
+{"text": "tôi muốn 9 ly coca giùm", "split": "unlabeled"}
+{"text": "5 chai pepsi nhé luôn", "split": "unlabeled"}
+{"text": "lấy anh pepsi nhé", "split": "unlabeled"}
+{"text": "lấy giùm 1 ly aquafina nghen", "split": "unlabeled"}
+{"text": "lấy dùm 1 7up giùm", "split": "unlabeled"}
+{"text": "cho xin 4 lon sting giúp", "split": "unlabeled"}
+{"text": "cần 7up nha", "split": "unlabeled"}
+{"text": "bán tui 7up giúp", "split": "unlabeled"}
+{"text": "bán tui 9 chai pepsi giùm", "split": "unlabeled"}
+{"text": "lấy tui 8 chai coca nha", "split": "unlabeled"}
+{"text": "order 5 sting nha", "split": "unlabeled"}
+{"text": "sting cho mình giúp", "split": "unlabeled"}
+{"text": "xuất cho tui 8 sting nè", "split": "unlabeled"}
+{"text": "xuất cho cậu 4 sting đó", "split": "unlabeled"}
+{"text": "bán em 7 pepsi đi", "split": "unlabeled"}
+{"text": "bán tui 6 hộp coca luôn", "split": "unlabeled"}
+{"text": "7 chai pepsi nhé nhé bạn", "split": "unlabeled"}
+{"text": "cần 6 chai pepsi nè", "split": "unlabeled"}
+{"text": "bán tui 10 ly sting đi", "split": "unlabeled"}
+{"text": "lấy giùm coca nè", "split": "unlabeled"}
+{"text": "tui chọn coca đó", "split": "unlabeled"}
+{"text": "order aquafina giúp", "split": "unlabeled"}
+{"text": "cho em sting giùm", "split": "unlabeled"}
+{"text": "cho tao 7up giúp", "split": "unlabeled"}
+{"text": "lấy dùm 8 hộp coca nha", "split": "unlabeled"}
+{"text": "mua coca luôn", "split": "unlabeled"}
+{"text": "bác muốn 1 hộp aquafina nha", "split": "unlabeled"}
+{"text": "cần aquafina nghen", "split": "unlabeled"}
+{"text": "xuất cho tao 5 ly 7up luôn", "split": "unlabeled"}
+{"text": "order 7 ly sting nha", "split": "unlabeled"}
+{"text": "xuất cho bạn 5 hộp 7up nè", "split": "unlabeled"}
+{"text": "xuất cho tôi sting đó", "split": "unlabeled"}
+{"text": "7up cho bạn nhé bạn", "split": "unlabeled"}
+{"text": "cho xin sting", "split": "unlabeled"}
+{"text": "cần 7up luôn", "split": "unlabeled"}
+{"text": "order 5 ly coca lun", "split": "unlabeled"}
+{"text": "lấy giùm pepsi giùm", "split": "unlabeled"}
+{"text": "lấy dùm 4 chai 7up giúp", "split": "unlabeled"}
+{"text": "mua coca", "split": "unlabeled"}
+{"text": "lấy cậu 6 ly sting", "split": "unlabeled"}
+{"text": "bán tôi 4 hộp sting", "split": "unlabeled"}
+{"text": "mua 6 pepsi nha", "split": "unlabeled"}
+{"text": "lấy chú 2 hộp coca đó", "split": "unlabeled"}
+{"text": "lấy giùm 2 sting nha bạn", "split": "unlabeled"}
+{"text": "cho bạn 9 chai coca luôn", "split": "unlabeled"}
+{"text": "lấy 10 hộp 7up luôn", "split": "unlabeled"}
+{"text": "4 aquafina nhé ạ", "split": "unlabeled"}
+{"text": "cho xin 4 hộp aquafina nghen", "split": "unlabeled"}
+{"text": "mua 1 ly sting nghen", "split": "unlabeled"}
+{"text": "lấy giùm sting đi", "split": "unlabeled"}
+{"text": "order 5 coca ạ", "split": "unlabeled"}
+{"text": "cho bác 4 hộp 7up với", "split": "unlabeled"}
+{"text": "10 hộp pepsi nhé nha", "split": "unlabeled"}
+{"text": "order 10 lon 7up giúp", "split": "unlabeled"}
+{"text": "mình muốn sting luôn", "split": "unlabeled"}
+{"text": "mua 10 ly sting", "split": "unlabeled"}
+{"text": "bán tôi 2 lon aquafina ạ", "split": "unlabeled"}
+{"text": "cho xin 4 chai 7up luôn", "split": "unlabeled"}
+{"text": "7up nhé nha bạn", "split": "unlabeled"}
+{"text": "lấy mình aquafina nhé bạn", "split": "unlabeled"}
+{"text": "bán tui 7 7up với", "split": "unlabeled"}
+{"text": "tôi muốn 7 7up luôn", "split": "unlabeled"}
+{"text": "bán tui sting", "split": "unlabeled"}
+{"text": "xuất cho cậu 4 sting đi", "split": "unlabeled"}
+{"text": "cho xin 7up giúp", "split": "unlabeled"}
+{"text": "bán tui 7up nghen", "split": "unlabeled"}
+{"text": "order pepsi ạ", "split": "unlabeled"}
+{"text": "coca cho tui nhé bạn", "split": "unlabeled"}
+{"text": "order pepsi nha", "split": "unlabeled"}
+{"text": "7 hộp coca cho cậu nè", "split": "unlabeled"}
+{"text": "lấy sting nha máy", "split": "unlabeled"}
+{"text": "1 coca cho nha", "split": "unlabeled"}
+{"text": "cho cậu sting giùm", "split": "unlabeled"}
+{"text": "cho chú sting nha máy", "split": "unlabeled"}
+{"text": "bán tui 1 lon sting ạ", "split": "unlabeled"}
+{"text": "xuất cho em 1 chai 7up nghen", "split": "unlabeled"}
+{"text": "9 hộp sting nhé nhé bạn", "split": "unlabeled"}
+{"text": "cho xin 7 7up nha", "split": "unlabeled"}
+{"text": "lấy dùm 5 hộp sting lun", "split": "unlabeled"}
+{"text": "lấy giùm 1 ly pepsi đi", "split": "unlabeled"}
+{"text": "mua 9 aquafina nhé", "split": "unlabeled"}
+{"text": "cho xin 2 hộp aquafina luôn", "split": "unlabeled"}
+{"text": "anh chọn pepsi nhé bạn", "split": "unlabeled"}
+{"text": "bán tôi 3 sting", "split": "unlabeled"}
+{"text": "order 8 chai aquafina lun", "split": "unlabeled"}
+{"text": "lấy giùm 6 ly coca nghen", "split": "unlabeled"}
+{"text": "tui muốn 7 lon coca nha bạn", "split": "unlabeled"}
+{"text": "lấy giùm 1 ly 7up giùm", "split": "unlabeled"}
+{"text": "lấy giùm 3 ly pepsi với", "split": "unlabeled"}
+{"text": "aquafina nhé nhé", "split": "unlabeled"}
+{"text": "lấy dùm 7 chai aquafina giùm", "split": "unlabeled"}
+{"text": "bán em 9 chai sting đó", "split": "unlabeled"}
+{"text": "7up nhé nhé bạn", "split": "unlabeled"}
+{"text": "cho tôi aquafina giúp", "split": "unlabeled"}
+{"text": "pepsi cho anh lun", "split": "unlabeled"}
+{"text": "lấy cô pepsi đó", "split": "unlabeled"}
+{"text": "bán tao 6 chai sting giúp", "split": "unlabeled"}
+{"text": "xuất cho em 4 chai aquafina nhé", "split": "unlabeled"}
+{"text": "chọn sting ạ", "split": "unlabeled"}
+{"text": "cần 10 chai 7up nè", "split": "unlabeled"}
+{"text": "lấy dùm 1 hộp pepsi nha bạn", "split": "unlabeled"}
+{"text": "lấy giùm 10 pepsi nhé bạn", "split": "unlabeled"}
+{"text": "order 5 lon 7up", "split": "unlabeled"}
+{"text": "xuất cho anh 10 hộp aquafina nhé", "split": "unlabeled"}
+{"text": "pepsi nhé nha máy", "split": "unlabeled"}
+{"text": "lấy 3 7up ạ", "split": "unlabeled"}
+{"text": "cho xin 4 ly aquafina giúp", "split": "unlabeled"}
+{"text": "cho mình 1 pepsi giùm", "split": "unlabeled"}
+{"text": "10 chai 7up nhé đó", "split": "unlabeled"}
+{"text": "order 4 chai sting nhé", "split": "unlabeled"}
+{"text": "chú muốn 2 pepsi nè", "split": "unlabeled"}
+{"text": "order pepsi nghen", "split": "unlabeled"}
+{"text": "xuất cho tui aquafina nhé bạn", "split": "unlabeled"}
+{"text": "order 3 ly sting đó", "split": "unlabeled"}
+{"text": "cần 2 coca giúp", "split": "unlabeled"}
+{"text": "cho xin 8 coca lun", "split": "unlabeled"}
+{"text": "cho xin 10 ly aquafina giúp", "split": "unlabeled"}
+{"text": "9 lon aquafina cho chị lun", "split": "unlabeled"}
+{"text": "cho xin 7 ly aquafina lun", "split": "unlabeled"}
+{"text": "lấy tao coca đi", "split": "unlabeled"}
+{"text": "chị muốn 8 sting giùm", "split": "unlabeled"}
+{"text": "lấy dùm 1 chai coca nghen", "split": "unlabeled"}
+{"text": "bán tui 4 ly aquafina giùm", "split": "unlabeled"}
+{"text": "order 7up nghen", "split": "unlabeled"}
+{"text": "tui chọn coca với", "split": "unlabeled"}
+{"text": "cần 4 hộp aquafina", "split": "unlabeled"}
+{"text": "cho tui 3 pepsi nha máy", "split": "unlabeled"}
+{"text": "bán chú 1 chai aquafina nghen", "split": "unlabeled"}
+{"text": "lấy dùm 8 aquafina luôn", "split": "unlabeled"}
+{"text": "bán tui 4 hộp aquafina nha", "split": "unlabeled"}
+{"text": "mua 7up với", "split": "unlabeled"}
+{"text": "cần 8 lon sting với", "split": "unlabeled"}
+{"text": "xuất cho em 2 lon aquafina giùm", "split": "unlabeled"}
+{"text": "lấy dùm 3 chai 7up luôn", "split": "unlabeled"}
+{"text": "order 2 pepsi nhé bạn", "split": "unlabeled"}
+{"text": "cần 3 hộp sting nha bạn", "split": "unlabeled"}
+{"text": "bán tui sting đi", "split": "unlabeled"}
+{"text": "chú muốn sting nha", "split": "unlabeled"}
+{"text": "lấy thêm co ca", "split": "unlabeled"}
+{"text": "chị muốn thêm 3 aqua fina nha máy", "split": "unlabeled"}
+{"text": "bán thêm 1 chai co ca nghen", "split": "unlabeled"}
+{"text": "chọn thêm bép si đi", "split": "unlabeled"}
+{"text": "tao muốn thêm 3 hộp xtinh đó", "split": "unlabeled"}
+{"text": "mua thêm 4 hộp sê ven áp nha máy", "split": "unlabeled"}
+{"text": "cho thêm 1 ly seven up nhé", "split": "unlabeled"}
+{"text": "thêm 1 cô ca cô la nữa nha bạn", "split": "unlabeled"}
+{"text": "chị muốn thêm 3 chai cô ca cô la nha bạn", "split": "unlabeled"}
+{"text": "thêm sting rồi thanh toán luôn nha bạn", "split": "unlabeled"}
+{"text": "thêm coca rồi thanh toán luôn đó", "split": "unlabeled"}
+{"text": "thêm sting rồi thanh toán luôn", "split": "unlabeled"}
+{"text": "thêm coca rồi thanh toán luôn nhé bạn", "split": "unlabeled"}
+{"text": "thêm aquafina rồi thanh toán luôn với", "split": "unlabeled"}
+{"text": "thêm pepsi rồi thanh toán luôn nha bạn", "split": "unlabeled"}
+{"text": "thêm sting rồi thanh toán luôn ạ", "split": "unlabeled"}
+{"text": "thêm aquafina rồi thanh toán luôn đi", "split": "unlabeled"}
+{"text": "thêm coca rồi thanh toán luôn nha", "split": "unlabeled"}
+{"text": "thêm sting rồi quét mã giúp", "split": "unlabeled"}
+{"text": "thêm 7up rồi quét mã ạ", "split": "unlabeled"}
+{"text": "thêm 7up rồi quét mã nha bạn", "split": "unlabeled"}
+{"text": "thêm aquafina rồi quét mã nha máy", "split": "unlabeled"}
+{"text": "mua thêm aquafina luôn", "split": "unlabeled"}
+{"text": "thêm 1 7up nữa ạ", "split": "unlabeled"}
+{"text": "cho thêm 7 ly sting với", "split": "unlabeled"}
+{"text": "thêm 3 chai sting với", "split": "unlabeled"}
+{"text": "thêm pepsi luôn", "split": "unlabeled"}
+{"text": "chọn thêm 7 hộp sting nha máy", "split": "unlabeled"}
+{"text": "bán thêm 2 sting giùm", "split": "unlabeled"}
+{"text": "cộng thêm 3 hộp sting lun", "split": "unlabeled"}
+{"text": "lấy thêm 7 ly coca luôn", "split": "unlabeled"}
+{"text": "thêm 7 pepsi nha bạn", "split": "unlabeled"}
+{"text": "thêm 8 ly coca với", "split": "unlabeled"}
+{"text": "thêm 1 coca nữa luôn", "split": "unlabeled"}
+{"text": "thêm 8 hộp pepsi đó", "split": "unlabeled"}
+{"text": "cho cậu thêm 3 hộp coca nhé bạn", "split": "unlabeled"}
+{"text": "chọn thêm 4 lon aquafina nè", "split": "unlabeled"}
+{"text": "cho tao thêm 2 aquafina nha máy", "split": "unlabeled"}
+{"text": "mua thêm 4 ly aquafina nhé", "split": "unlabeled"}
+{"text": "mua thêm 3 pepsi nhé", "split": "unlabeled"}
+{"text": "cộng thêm 3 lon 7up nhé bạn", "split": "unlabeled"}
+{"text": "lấy thêm aquafina", "split": "unlabeled"}
+{"text": "bán thêm 5 chai pepsi ạ", "split": "unlabeled"}
+{"text": "bán thêm 9 hộp coca đó", "split": "unlabeled"}
+{"text": "cộng thêm 8 pepsi nha máy", "split": "unlabeled"}
+{"text": "cho thêm 8 aquafina nhé", "split": "unlabeled"}
+{"text": "mua thêm 8 lon aquafina nhé bạn", "split": "unlabeled"}
+{"text": "cô muốn thêm 8 sting nghen", "split": "unlabeled"}
+{"text": "cho thêm pepsi lun", "split": "unlabeled"}
+{"text": "cho thêm pepsi nha máy", "split": "unlabeled"}
+{"text": "kèm thêm pepsi nha bạn", "split": "unlabeled"}
+{"text": "thêm 7 aquafina giúp", "split": "unlabeled"}
+{"text": "bán thêm pepsi nha máy", "split": "unlabeled"}
+{"text": "cộng thêm aquafina với", "split": "unlabeled"}
+{"text": "thêm 2 coca ạ", "split": "unlabeled"}
+{"text": "cho mình thêm 7up", "split": "unlabeled"}
+{"text": "thêm 1 coca nữa nha", "split": "unlabeled"}
+{"text": "mua thêm 5 chai sting luôn", "split": "unlabeled"}
+{"text": "thêm 5 ly pepsi giùm", "split": "unlabeled"}
+{"text": "kèm thêm 7 chai sting nha", "split": "unlabeled"}
+{"text": "kèm thêm 10 7up với", "split": "unlabeled"}
+{"text": "lấy thêm sting đi", "split": "unlabeled"}
+{"text": "chọn thêm 3 ly aquafina", "split": "unlabeled"}
+{"text": "chọn thêm 8 coca đó", "split": "unlabeled"}
+{"text": "chú muốn thêm aquafina nè", "split": "unlabeled"}
+{"text": "mua thêm 5 chai sting nha bạn", "split": "unlabeled"}
+{"text": "lấy thêm 4 lon aquafina đó", "split": "unlabeled"}
+{"text": "cho thêm 5 hộp pepsi giúp", "split": "unlabeled"}
+{"text": "lấy thêm 7up nha bạn", "split": "unlabeled"}
+{"text": "chọn thêm 1 ly aquafina giúp", "split": "unlabeled"}
+{"text": "cho anh thêm 3 aquafina với", "split": "unlabeled"}
+{"text": "thêm 7 hộp 7up đi", "split": "unlabeled"}
+{"text": "chọn thêm aquafina", "split": "unlabeled"}
+{"text": "cho tôi thêm 3 pepsi nè", "split": "unlabeled"}
+{"text": "cộng thêm pepsi", "split": "unlabeled"}
+{"text": "thêm 10 hộp sting lun", "split": "unlabeled"}
+{"text": "cộng thêm 3 coca giúp", "split": "unlabeled"}
+{"text": "cho thêm 10 lon 7up giùm", "split": "unlabeled"}
+{"text": "lấy thêm 6 lon sting giúp", "split": "unlabeled"}
+{"text": "cho thêm 5 sting lun", "split": "unlabeled"}
+{"text": "cho thêm 1 chai pepsi ạ", "split": "unlabeled"}
+{"text": "cộng thêm 3 coca", "split": "unlabeled"}
+{"text": "cho tôi thêm 4 hộp coca nha máy", "split": "unlabeled"}
+{"text": "bán thêm 4 hộp sting nghen", "split": "unlabeled"}
+{"text": "thêm 8 ly 7up nhé bạn", "split": "unlabeled"}
+{"text": "lấy thêm 3 lon pepsi đi", "split": "unlabeled"}
+{"text": "cộng thêm 5 ly coca", "split": "unlabeled"}
+{"text": "cô muốn thêm 8 chai coca với", "split": "unlabeled"}
+{"text": "mua thêm pepsi giùm", "split": "unlabeled"}
+{"text": "thêm 1 pepsi nữa lun", "split": "unlabeled"}
+{"text": "kèm thêm 8 ly sting nhé", "split": "unlabeled"}
+{"text": "chọn thêm 10 lon coca nha bạn", "split": "unlabeled"}
+{"text": "thêm 2 ly aquafina nè", "split": "unlabeled"}
+{"text": "mua thêm 8 chai pepsi luôn", "split": "unlabeled"}
+{"text": "kèm thêm 3 chai aquafina nè", "split": "unlabeled"}
+{"text": "mua thêm 9 lon sting đi", "split": "unlabeled"}
+{"text": "đổi qua ác qua đó", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua ác qua nha", "split": "unlabeled"}
+{"text": "lấy bép si thay vì cái kia nhé bạn", "split": "unlabeled"}
+{"text": "chuyển qua cô ca cô la luôn", "split": "unlabeled"}
+{"text": "thay bằng bép si giúp", "split": "unlabeled"}
+{"text": "đổi sang seven up với", "split": "unlabeled"}
+{"text": "thôi đổi sang sờ tinh đó", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua a qua phi na", "split": "unlabeled"}
+{"text": "đổi thành 5 ly cô ca nè", "split": "unlabeled"}
+{"text": "đang mua mà thôi đổi pepsi nhé bạn", "split": "unlabeled"}
+{"text": "à thôi đổi sang coca lun", "split": "unlabeled"}
+{"text": "đang mua mà thôi đổi coca nhé bạn", "split": "unlabeled"}
+{"text": "à thôi đổi sang coca nè", "split": "unlabeled"}
+{"text": "đang mua mà thôi đổi pepsi nha bạn", "split": "unlabeled"}
+{"text": "à thôi đổi sang sting nghen", "split": "unlabeled"}
+{"text": "à thôi đổi sang pepsi đó", "split": "unlabeled"}
+{"text": "à thôi đổi sang aquafina giùm", "split": "unlabeled"}
+{"text": "à thôi đổi sang aquafina nha", "split": "unlabeled"}
+{"text": "đổi sang pepsi rồi trả tiền ạ", "split": "unlabeled"}
+{"text": "đổi sang pepsi rồi trả tiền nha", "split": "unlabeled"}
+{"text": "đổi sang coca rồi trả tiền ạ", "split": "unlabeled"}
+{"text": "đổi sang sting rồi trả tiền nha", "split": "unlabeled"}
+{"text": "đổi món sang coca nhé bạn", "split": "unlabeled"}
+{"text": "thay bằng sting nha", "split": "unlabeled"}
+{"text": "đổi món sang pepsi nè", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua sting nhé", "split": "unlabeled"}
+{"text": "chọn lại 7up với", "split": "unlabeled"}
+{"text": "đổi lại coca giúp", "split": "unlabeled"}
+{"text": "lấy aquafina thay vì cái kia lun", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua sting nha bạn", "split": "unlabeled"}
+{"text": "lấy pepsi thay vì cái kia nhé bạn", "split": "unlabeled"}
+{"text": "anh đổi lấy 7up nha bạn", "split": "unlabeled"}
+{"text": "chọn lại 7up nha", "split": "unlabeled"}
+{"text": "chuyển qua sting nhé", "split": "unlabeled"}
+{"text": "thôi đổi sang pepsi đi", "split": "unlabeled"}
+{"text": "lấy sting thay vì cái kia nhé", "split": "unlabeled"}
+{"text": "thay bằng sting nha máy", "split": "unlabeled"}
+{"text": "lấy sting thay vì cái kia nha", "split": "unlabeled"}
+{"text": "đổi sang pepsi lun", "split": "unlabeled"}
+{"text": "thay bằng 7up nè", "split": "unlabeled"}
+{"text": "lấy coca thay vì cái kia nha bạn", "split": "unlabeled"}
+{"text": "đổi qua pepsi nhé bạn", "split": "unlabeled"}
+{"text": "đổi qua 7up", "split": "unlabeled"}
+{"text": "đổi sang 7up luôn", "split": "unlabeled"}
+{"text": "chuyển qua aquafina nghen", "split": "unlabeled"}
+{"text": "đổi qua coca đi", "split": "unlabeled"}
+{"text": "thay cho tui bằng aquafina nhé bạn", "split": "unlabeled"}
+{"text": "lấy pepsi thay vì cái kia nha bạn", "split": "unlabeled"}
+{"text": "đổi qua sting nha máy", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua pepsi với", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua coca giúp", "split": "unlabeled"}
+{"text": "đổi lại aquafina lun", "split": "unlabeled"}
+{"text": "đổi lại aquafina nhé bạn", "split": "unlabeled"}
+{"text": "đổi thành 10 hộp pepsi giúp", "split": "unlabeled"}
+{"text": "đổi thành 7up đi", "split": "unlabeled"}
+{"text": "đổi qua coca nhé", "split": "unlabeled"}
+{"text": "đổi sang aquafina nè", "split": "unlabeled"}
+{"text": "thay bằng 7up đi", "split": "unlabeled"}
+{"text": "thay cho tui bằng sting", "split": "unlabeled"}
+{"text": "chọn lại pepsi nghen", "split": "unlabeled"}
+{"text": "đổi lại sting đi", "split": "unlabeled"}
+{"text": "thôi đổi sang sting nghen", "split": "unlabeled"}
+{"text": "đổi thành 8 hộp sting giùm", "split": "unlabeled"}
+{"text": "tôi đổi lấy aquafina nè", "split": "unlabeled"}
+{"text": "bác đổi lấy coca nha máy", "split": "unlabeled"}
+{"text": "đổi lại sting nhé bạn", "split": "unlabeled"}
+{"text": "lấy aquafina thay vì cái kia nghen", "split": "unlabeled"}
+{"text": "đổi qua 7up nha máy", "split": "unlabeled"}
+{"text": "đổi thành sting giúp", "split": "unlabeled"}
+{"text": "bạn đổi lấy pepsi nè", "split": "unlabeled"}
+{"text": "thay bằng coca đi", "split": "unlabeled"}
+{"text": "chuyển qua coca ạ", "split": "unlabeled"}
+{"text": "đổi món sang aquafina nhé", "split": "unlabeled"}
+{"text": "lấy sting thay vì cái kia lun", "split": "unlabeled"}
+{"text": "chuyển qua coca luôn", "split": "unlabeled"}
+{"text": "thay bằng pepsi nha bạn", "split": "unlabeled"}
+{"text": "cô đổi lấy aquafina", "split": "unlabeled"}
+{"text": "lấy aquafina thay vì cái kia giùm", "split": "unlabeled"}
+{"text": "đổi thành 5 hộp aquafina nha", "split": "unlabeled"}
+{"text": "đổi lại aquafina giùm", "split": "unlabeled"}
+{"text": "đổi thành 1 lon pepsi nha bạn", "split": "unlabeled"}
+{"text": "thay cho tui bằng coca", "split": "unlabeled"}
+{"text": "chuyển qua pepsi nha máy", "split": "unlabeled"}
+{"text": "thôi đổi sang coca lun", "split": "unlabeled"}
+{"text": "chọn lại pepsi", "split": "unlabeled"}
+{"text": "đổi thành 8 coca giúp", "split": "unlabeled"}
+{"text": "thay cho tui bằng pepsi đi", "split": "unlabeled"}
+{"text": "thay cho tui bằng 7up luôn", "split": "unlabeled"}
+{"text": "đổi lại aquafina nhé", "split": "unlabeled"}
+{"text": "chú đổi lấy 7up nha máy", "split": "unlabeled"}
+{"text": "lấy 7up thay vì cái kia", "split": "unlabeled"}
+{"text": "đổi qua coca nha bạn", "split": "unlabeled"}
+{"text": "đổi lại pepsi ạ", "split": "unlabeled"}
+{"text": "đổi sang coca ạ", "split": "unlabeled"}
+{"text": "đổi sang 7up đó", "split": "unlabeled"}
+{"text": "không lấy cái đó đổi qua pepsi đó", "split": "unlabeled"}
+{"text": "quẹt thẻ", "split": "unlabeled"}
+{"text": "tính tiền đi", "split": "unlabeled"}
+{"text": "tính lúa đi", "split": "unlabeled"}
+{"text": "bao nhiêu tiền giùm", "split": "unlabeled"}
+{"text": "tính tổng tiền", "split": "unlabeled"}
+{"text": "hết bao nhiêu nha", "split": "unlabeled"}
+{"text": "xong rồi tính tiền lun", "split": "unlabeled"}
+{"text": "xuất hóa đơn nghen", "split": "unlabeled"}
+{"text": "thanh toán đó", "split": "unlabeled"}
+{"text": "khoan đã nghen", "split": "unlabeled"}
+{"text": "đợi chút nha máy", "split": "unlabeled"}
+{"text": "khoan đã giùm", "split": "unlabeled"}
+{"text": "khoan đã luôn", "split": "unlabeled"}
+{"text": "đợi chút với", "split": "unlabeled"}
+{"text": "đợi chút nha bạn", "split": "unlabeled"}
+{"text": "đợi chút nha", "split": "unlabeled"}
+{"text": "khoan đã", "split": "unlabeled"}
+{"text": "khoan đã nha bạn", "split": "unlabeled"}
+{"text": "tổng bill bao nhiêu nhé bạn", "split": "unlabeled"}
+{"text": "xong rồi tính tiền với", "split": "unlabeled"}
+{"text": "quẹt thẻ ạ", "split": "unlabeled"}
+{"text": "kết thúc với", "split": "unlabeled"}
+{"text": "hoàn tất thanh toán", "split": "unlabeled"}
+{"text": "quẹt thẻ nha", "split": "unlabeled"}
+{"text": "hết bao nhiêu nè", "split": "unlabeled"}
+{"text": "xong rồi nhé bạn", "split": "unlabeled"}
+{"text": "thanh toán giúp lun", "split": "unlabeled"}
+{"text": "xong rồi tính tiền nghen", "split": "unlabeled"}
+{"text": "hết bao nhiêu luôn", "split": "unlabeled"}
+{"text": "xong rồi đó", "split": "unlabeled"}
+{"text": "tổng bill bao nhiêu luôn", "split": "unlabeled"}
+{"text": "xuất hóa đơn giùm", "split": "unlabeled"}
+{"text": "tính lúa nha bạn", "split": "unlabeled"}
+{"text": "quẹt thẻ với", "split": "unlabeled"}
+{"text": "thanh toan đi", "split": "unlabeled"}
+{"text": "trả tiền ạ", "split": "unlabeled"}
+{"text": "chốt đơn đó", "split": "unlabeled"}
+{"text": "bao nhiêu tiền ạ", "split": "unlabeled"}
+{"text": "quẹt thẻ đó", "split": "unlabeled"}
+{"text": "em muốn thanh toán nghen", "split": "unlabeled"}
+{"text": "kết thúc lun", "split": "unlabeled"}
+{"text": "xong rồi tính tiền", "split": "unlabeled"}
+{"text": "kết thúc đó", "split": "unlabeled"}
+{"text": "thanh toán luôn", "split": "unlabeled"}
+{"text": "tổng cộng bao nhiêu đi", "split": "unlabeled"}
+{"text": "chị muốn thanh toán nhé bạn", "split": "unlabeled"}
+{"text": "thanh toan luôn", "split": "unlabeled"}
+{"text": "bao nhiêu tiền giúp", "split": "unlabeled"}
+{"text": "xong rồi nè", "split": "unlabeled"}
+{"text": "tính lúa luôn", "split": "unlabeled"}
+{"text": "chốt đơn đi", "split": "unlabeled"}
+{"text": "hoàn tất thanh toán nha", "split": "unlabeled"}
+{"text": "hết bao nhiêu lun", "split": "unlabeled"}
+{"text": "thanh toan đó", "split": "unlabeled"}
+{"text": "thanh toán giúp nha", "split": "unlabeled"}
+{"text": "quẹt thẻ nè", "split": "unlabeled"}
+{"text": "trả tiền giúp", "split": "unlabeled"}
+{"text": "thanh toán giúp với", "split": "unlabeled"}
+{"text": "tổng bill bao nhiêu nha bạn", "split": "unlabeled"}
+{"text": "xong rồi tính tiền nha", "split": "unlabeled"}
+{"text": "hết bao nhiêu đó", "split": "unlabeled"}
+{"text": "thanh toán nhé", "split": "unlabeled"}
+{"text": "tính tiền lun", "split": "unlabeled"}
+{"text": "quẹt thẻ nha bạn", "split": "unlabeled"}
+{"text": "xuất hóa đơn lun", "split": "unlabeled"}
+{"text": "thanh toán nghen", "split": "unlabeled"}
+{"text": "thanh toan giúp", "split": "unlabeled"}
+{"text": "thanh toán nha", "split": "unlabeled"}
+{"text": "trả tiền luôn", "split": "unlabeled"}
+{"text": "hoàn tất thanh toán nha máy", "split": "unlabeled"}
+{"text": "chốt đơn với", "split": "unlabeled"}
+{"text": "hoàn tất thanh toán luôn", "split": "unlabeled"}
+{"text": "xong rồi đi", "split": "unlabeled"}
+{"text": "trả tiền", "split": "unlabeled"}
+{"text": "tính tiền với", "split": "unlabeled"}
+{"text": "xuất hóa đơn luôn", "split": "unlabeled"}
+{"text": "thanh toan nhé", "split": "unlabeled"}
+{"text": "bill đâu", "split": "unlabeled"}
+{"text": "xong rồi giùm", "split": "unlabeled"}
+{"text": "quẹt thẻ đi", "split": "unlabeled"}
+{"text": "thanh toán nè", "split": "unlabeled"}
+{"text": "xong rồi nghen", "split": "unlabeled"}
+{"text": "xong rồi tính tiền ạ", "split": "unlabeled"}
+{"text": "tính tổng tiền ạ", "split": "unlabeled"}
+{"text": "bill đâu nha máy", "split": "unlabeled"}
+{"text": "tổng cộng bao nhiêu giùm", "split": "unlabeled"}
+{"text": "bác muốn thanh toán nha", "split": "unlabeled"}
+{"text": "tính tổng tiền nhé bạn", "split": "unlabeled"}
+{"text": "quẹt thẻ giúp", "split": "unlabeled"}
+{"text": "chốt đơn nghen", "split": "unlabeled"}
+{"text": "tính tổng tiền nha bạn", "split": "unlabeled"}
+{"text": "hoàn tất thanh toán lun", "split": "unlabeled"}
+{"text": "tính lúa nhé", "split": "unlabeled"}
+{"text": "bill đâu đó", "split": "unlabeled"}
+{"text": "tính tổng tiền nha", "split": "unlabeled"}
+{"text": "hết bao nhiêu", "split": "unlabeled"}
+{"text": "có nước ngọt không lun", "split": "unlabeled"}
+{"text": "mở menu nghen", "split": "unlabeled"}
+{"text": "hiển thị menu luôn", "split": "unlabeled"}
+{"text": "coi thử có gì nha máy", "split": "unlabeled"}
+{"text": "hiển thị menu nhé", "split": "unlabeled"}
+{"text": "có nước lọc không đó", "split": "unlabeled"}
+{"text": "xem danh sách nước", "split": "unlabeled"}
+{"text": "hiển thị menu giùm", "split": "unlabeled"}
+{"text": "xem menu đi lun", "split": "unlabeled"}
+{"text": "cho chú xem menu nha máy", "split": "unlabeled"}
+{"text": "mở menu giùm", "split": "unlabeled"}
+{"text": "mở danh mục lên nè", "split": "unlabeled"}
+{"text": "coi menu xíu nè", "split": "unlabeled"}
+{"text": "xem menu đi nè", "split": "unlabeled"}
+{"text": "có những loại nào đó", "split": "unlabeled"}
+{"text": "mở menu giúp", "split": "unlabeled"}
+{"text": "coi menu xíu nhé bạn", "split": "unlabeled"}
+{"text": "mở danh mục lên nhé", "split": "unlabeled"}
+{"text": "hiển thị menu lun", "split": "unlabeled"}
+{"text": "máy này bán gì nè", "split": "unlabeled"}
+{"text": "đọc menu nhé bạn", "split": "unlabeled"}
+{"text": "đọc menu đi", "split": "unlabeled"}
+{"text": "cho tui coi đồ uống đó", "split": "unlabeled"}
+{"text": "đồ uống có gì nghen", "split": "unlabeled"}
+{"text": "có những loại nào nè", "split": "unlabeled"}
+{"text": "có nước lọc không với", "split": "unlabeled"}
+{"text": "hiển thị menu giúp", "split": "unlabeled"}
+{"text": "máy này bán gì giúp", "split": "unlabeled"}
+{"text": "xem danh sách nước với", "split": "unlabeled"}
+{"text": "có nước ngọt không nha máy", "split": "unlabeled"}
+{"text": "có gì uống không đi", "split": "unlabeled"}
+{"text": "coi menu xíu đó", "split": "unlabeled"}
+{"text": "có nước ngọt không giúp", "split": "unlabeled"}
+{"text": "bảng giá sao đó", "split": "unlabeled"}
+{"text": "ở đây có bán gì nhé", "split": "unlabeled"}
+{"text": "đồ uống có gì lun", "split": "unlabeled"}
+{"text": "đồ uống có gì với", "split": "unlabeled"}
+{"text": "xem menu đi nha bạn", "split": "unlabeled"}
+{"text": "cho tui coi đồ uống đi", "split": "unlabeled"}
+{"text": "có nước ngọt không nha bạn", "split": "unlabeled"}
+{"text": "bảng giá sao nghen", "split": "unlabeled"}
+{"text": "có bán gì không giúp", "split": "unlabeled"}
+{"text": "xem danh sách nước giúp", "split": "unlabeled"}
+{"text": "có bán gì không nhé", "split": "unlabeled"}
+{"text": "cho tui coi đồ uống giùm", "split": "unlabeled"}
+{"text": "có nước ngọt không đó", "split": "unlabeled"}
+{"text": "cho tui coi đồ uống luôn", "split": "unlabeled"}
+{"text": "có nước lọc không giùm", "split": "unlabeled"}
+{"text": "có gì uống không nha máy", "split": "unlabeled"}
+{"text": "xem danh sách nước lun", "split": "unlabeled"}
+{"text": "bán nước gì vậy", "split": "unlabeled"}
+{"text": "có bán gì không với", "split": "unlabeled"}
+{"text": "menu có gì nghen", "split": "unlabeled"}
+{"text": "xem menu đi giùm", "split": "unlabeled"}
+{"text": "cho tui coi đồ uống", "split": "unlabeled"}
+{"text": "ở đây có bán gì nè", "split": "unlabeled"}
+{"text": "máy này bán gì luôn", "split": "unlabeled"}
+{"text": "có nước ngọt không với", "split": "unlabeled"}
+{"text": "hiển thị menu nha bạn", "split": "unlabeled"}
+{"text": "có nước lọc không luôn", "split": "unlabeled"}
+{"text": "bảng giá sao lun", "split": "unlabeled"}
+{"text": "coi menu xíu ạ", "split": "unlabeled"}
+{"text": "menu có gì đó", "split": "unlabeled"}
+{"text": "ở đây có bán gì nha", "split": "unlabeled"}
+{"text": "ở đây có bán gì đó", "split": "unlabeled"}
+{"text": "máy này bán gì lun", "split": "unlabeled"}
+{"text": "mở danh mục lên giùm", "split": "unlabeled"}
+{"text": "ở đây có bán gì luôn", "split": "unlabeled"}
+{"text": "xem danh sách nước nhé bạn", "split": "unlabeled"}
+{"text": "mở menu nhé bạn", "split": "unlabeled"}
+{"text": "đọc menu lun", "split": "unlabeled"}
+{"text": "coi menu xíu luôn", "split": "unlabeled"}
+{"text": "mở menu luôn", "split": "unlabeled"}
+{"text": "cho tui coi đồ uống nha bạn", "split": "unlabeled"}
+{"text": "menu có gì giúp", "split": "unlabeled"}
+{"text": "có những nước gì nha máy", "split": "unlabeled"}
+{"text": "menu có gì với", "split": "unlabeled"}
+{"text": "coi thử có gì lun", "split": "unlabeled"}
+{"text": "mở menu ạ", "split": "unlabeled"}
+{"text": "cho xem menu đó", "split": "unlabeled"}
+{"text": "xin chào đó", "split": "unlabeled"}
+{"text": "tới mua nước đó", "split": "unlabeled"}
+{"text": "aloo nè", "split": "unlabeled"}
+{"text": "xin chào máy nha bạn", "split": "unlabeled"}
+{"text": "có ai không giúp", "split": "unlabeled"}
+{"text": "xin chào máy lun", "split": "unlabeled"}
+{"text": "ê máy nghen", "split": "unlabeled"}
+{"text": "bắt đầu nào giùm", "split": "unlabeled"}
+{"text": "máy khỏe không giùm", "split": "unlabeled"}
+{"text": "xin chào nha bạn", "split": "unlabeled"}
+{"text": "bán hàng đi đi", "split": "unlabeled"}
+{"text": "có khách nè ạ", "split": "unlabeled"}
+{"text": "ê với", "split": "unlabeled"}
+{"text": "xinchao giúp", "split": "unlabeled"}
+{"text": "chào buổi trưa nghen", "split": "unlabeled"}
+{"text": "hiii đi", "split": "unlabeled"}
+{"text": "ê máy ạ", "split": "unlabeled"}
+{"text": "hello máy bán hàng nè", "split": "unlabeled"}
+{"text": "máy ơi lun", "split": "unlabeled"}
+{"text": "xin chào nha máy", "split": "unlabeled"}
+{"text": "hi nha", "split": "unlabeled"}
+{"text": "helo nhé", "split": "unlabeled"}
+{"text": "ê máy", "split": "unlabeled"}
+{"text": "máy ơi nè", "split": "unlabeled"}
+{"text": "máy ơi nha máy", "split": "unlabeled"}
+{"text": "bắt đầu nào nè", "split": "unlabeled"}
+{"text": "chào buổi trưa nha máy", "split": "unlabeled"}
+{"text": "xin chào luôn", "split": "unlabeled"}
+{"text": "hiii nhé bạn", "split": "unlabeled"}
+{"text": "alo nha", "split": "unlabeled"}
+{"text": "hiii ạ", "split": "unlabeled"}
+{"text": "hiii nha máy", "split": "unlabeled"}
+{"text": "alo nha bạn", "split": "unlabeled"}
+{"text": "alo nhé", "split": "unlabeled"}
+{"text": "hiii nè", "split": "unlabeled"}
+{"text": "helo giúp", "split": "unlabeled"}
+{"text": "máy khỏe không nha bạn", "split": "unlabeled"}
+{"text": "có khách nè giúp", "split": "unlabeled"}
+{"text": "helo giùm", "split": "unlabeled"}
+{"text": "có ai không đi", "split": "unlabeled"}
+{"text": "bán hàng đi nha bạn", "split": "unlabeled"}
+{"text": "ê giùm", "split": "unlabeled"}
+{"text": "hi", "split": "unlabeled"}
+{"text": "có ai không nhé", "split": "unlabeled"}
+{"text": "xin chào lun", "split": "unlabeled"}
+{"text": "máy ơi đó", "split": "unlabeled"}
+{"text": "có khách nè với", "split": "unlabeled"}
+{"text": "hello ạ", "split": "unlabeled"}
+{"text": "bán hàng đi luôn", "split": "unlabeled"}
+{"text": "máy ơi nha", "split": "unlabeled"}
+{"text": "có ai không nghen", "split": "unlabeled"}
+{"text": "hello đó", "split": "unlabeled"}
+{"text": "helo nghen", "split": "unlabeled"}
+{"text": "chào buổi tối với", "split": "unlabeled"}
+{"text": "hello nha", "split": "unlabeled"}
+{"text": "xin chào máy luôn", "split": "unlabeled"}
+{"text": "aloo nha máy", "split": "unlabeled"}
+{"text": "có ai không nhé bạn", "split": "unlabeled"}
+{"text": "chào buổi tối đi", "split": "unlabeled"}
+{"text": "xin chào máy nghen", "split": "unlabeled"}
+{"text": "chào buổi tối ạ", "split": "unlabeled"}
+{"text": "hello nha bạn", "split": "unlabeled"}
+{"text": "ê nhé", "split": "unlabeled"}
+{"text": "hello nha máy", "split": "unlabeled"}
+{"text": "hủy bỏ ạ", "split": "unlabeled"}
+{"text": "thôi không mua nữa nè", "split": "unlabeled"}
+{"text": "hủy giao dịch giùm", "split": "unlabeled"}
+{"text": "không lấy nữa nha bạn", "split": "unlabeled"}
+{"text": "hủy với", "split": "unlabeled"}
+{"text": "hủy bỏ lun", "split": "unlabeled"}
+{"text": "không lấy 7up nữa nha", "split": "unlabeled"}
+{"text": "không lấy coca nữa nhé", "split": "unlabeled"}
+{"text": "hủy thanh toán nha bạn", "split": "unlabeled"}
+{"text": "không lấy sting nữa nè", "split": "unlabeled"}
+{"text": "hủy thanh toán nghen", "split": "unlabeled"}
+{"text": "hủy thanh toán nhé", "split": "unlabeled"}
+{"text": "không mua nha", "split": "unlabeled"}
+{"text": "hủy đơn nha máy", "split": "unlabeled"}
+{"text": "xóa hết đi nè", "split": "unlabeled"}
+{"text": "hủy đơn", "split": "unlabeled"}
+{"text": "xóa nha nhé", "split": "unlabeled"}
+{"text": "hủy bỏ nha", "split": "unlabeled"}
+{"text": "bỏ đi đó", "split": "unlabeled"}
+{"text": "hủy nhé", "split": "unlabeled"}
+{"text": "làm lại từ đầu với", "split": "unlabeled"}
+{"text": "hủy thao tác đó", "split": "unlabeled"}
+{"text": "hủy nha máy", "split": "unlabeled"}
+{"text": "hủy bỏ nhé", "split": "unlabeled"}
+{"text": "hủy bỏ giùm", "split": "unlabeled"}
+{"text": "dừng lại nhé bạn", "split": "unlabeled"}
+{"text": "cancel", "split": "unlabeled"}
+{"text": "không lấy nữa nghen", "split": "unlabeled"}
+{"text": "thoát nha bạn", "split": "unlabeled"}
+{"text": "thoát nghen", "split": "unlabeled"}
+{"text": "không lấy nữa nhé", "split": "unlabeled"}
+{"text": "cancel nha máy", "split": "unlabeled"}
+{"text": "làm lại từ đầu luôn", "split": "unlabeled"}
+{"text": "clear hết nghen", "split": "unlabeled"}
+{"text": "mình muốn hủy đi", "split": "unlabeled"}
+{"text": "không lấy nữa nha", "split": "unlabeled"}
+{"text": "làm lại từ đầu nha máy", "split": "unlabeled"}
+{"text": "không chọn nữa nhé bạn", "split": "unlabeled"}
+{"text": "hủy đơn giùm", "split": "unlabeled"}
+{"text": "xóa nha lun", "split": "unlabeled"}
+{"text": "cậu muốn hủy lun", "split": "unlabeled"}
+{"text": "dừng lại nghen", "split": "unlabeled"}
+{"text": "bỏ đi nghen", "split": "unlabeled"}
+{"text": "không lấy nữa nè", "split": "unlabeled"}
+{"text": "bỏ đi nhé", "split": "unlabeled"}
+{"text": "không mua nha bạn", "split": "unlabeled"}
+{"text": "không lấy nữa ạ", "split": "unlabeled"}
+{"text": "xóa nha nghen", "split": "unlabeled"}
+{"text": "xóa hết đi", "split": "unlabeled"}
+{"text": "xóa hết đi nha bạn", "split": "unlabeled"}
+{"text": "không chọn nữa giúp", "split": "unlabeled"}
+{"text": "hủy đơn nhé", "split": "unlabeled"}
+{"text": "thoát", "split": "unlabeled"}
+{"text": "mình muốn hủy", "split": "unlabeled"}
+{"text": "anh muốn hủy nghen", "split": "unlabeled"}
+{"text": "hủy thao tác nghen", "split": "unlabeled"}
+{"text": "thoát đó", "split": "unlabeled"}
+{"text": "hủy giao dịch nha máy", "split": "unlabeled"}
+{"text": "xóa nha luôn", "split": "unlabeled"}
+{"text": "không mua ạ", "split": "unlabeled"}
+{"text": "cô muốn hủy ạ", "split": "unlabeled"}
+{"text": "dừng lại với", "split": "unlabeled"}
+{"text": "quay lại với", "split": "unlabeled"}
+{"text": "cancel giúp", "split": "unlabeled"}
+{"text": "sử dụng thế nào nhé bạn", "split": "unlabeled"}
+{"text": "không ra nước nha máy", "split": "unlabeled"}
+{"text": "chỉ tui cách xài nè", "split": "unlabeled"}
+{"text": "giúp bác luôn", "split": "unlabeled"}
+{"text": "giúp cậu ạ", "split": "unlabeled"}
+{"text": "làm sao để mua với", "split": "unlabeled"}
+{"text": "cách dùng máy này với", "split": "unlabeled"}
+{"text": "ai giúp với nhé", "split": "unlabeled"}
+{"text": "help nhé bạn", "split": "unlabeled"}
+{"text": "hỗ trợ khách hàng lun", "split": "unlabeled"}
+{"text": "bấm sao đây nhé bạn", "split": "unlabeled"}
+{"text": "máy nuốt tiền nhé bạn", "split": "unlabeled"}
+{"text": "lỗi rồi", "split": "unlabeled"}
+{"text": "sử dụng thế nào với", "split": "unlabeled"}
+{"text": "máy bị gì vậy lun", "split": "unlabeled"}
+{"text": "lỗi rồi nha máy", "split": "unlabeled"}
+{"text": "máy nuốt tiền với", "split": "unlabeled"}
+{"text": "giúp mình", "split": "unlabeled"}
+{"text": "giúp tôi nhé", "split": "unlabeled"}
+{"text": "hướng dẫn với với", "split": "unlabeled"}
+{"text": "lỗi rồi giúp", "split": "unlabeled"}
+{"text": "hỗ trợ đi", "split": "unlabeled"}
+{"text": "làm sao để mua nha bạn", "split": "unlabeled"}
+{"text": "help nha máy", "split": "unlabeled"}
+{"text": "bấm sao đây đó", "split": "unlabeled"}
+{"text": "không ra nước ạ", "split": "unlabeled"}
+{"text": "làm sao để mua nghen", "split": "unlabeled"}
+{"text": "cách dùng máy này giúp", "split": "unlabeled"}
+{"text": "bấm sao đây giùm", "split": "unlabeled"}
+{"text": "máy nuốt tiền nha bạn", "split": "unlabeled"}
+{"text": "sos nhé bạn", "split": "unlabeled"}
+{"text": "chỉ cách xài nhé", "split": "unlabeled"}
+{"text": "không ra nước nha bạn", "split": "unlabeled"}
+{"text": "sử dụng thế nào giúp", "split": "unlabeled"}
+{"text": "hỗ trợ", "split": "unlabeled"}
+{"text": "help", "split": "unlabeled"}
+{"text": "bấm sao đây nhé", "split": "unlabeled"}
+{"text": "máy nuốt tiền luôn", "split": "unlabeled"}
+{"text": "hỗ trợ khách hàng nghen", "split": "unlabeled"}
+{"text": "sử dụng thế nào nhé", "split": "unlabeled"}
+{"text": "help nha bạn", "split": "unlabeled"}
+{"text": "máy bị gì vậy nha", "split": "unlabeled"}
+{"text": "giúp bác với", "split": "unlabeled"}
+{"text": "hỗ trợ khách hàng nha bạn", "split": "unlabeled"}
+{"text": "ai giúp với nghen", "split": "unlabeled"}
+{"text": "sử dụng thế nào đi", "split": "unlabeled"}
+{"text": "help đi", "split": "unlabeled"}
+{"text": "lỗi rồi giùm", "split": "unlabeled"}
+{"text": "hướng dẫn với nha", "split": "unlabeled"}
+{"text": "hỗ trợ khách hàng giùm", "split": "unlabeled"}
+{"text": "máy nuốt tiền giùm", "split": "unlabeled"}
+{"text": "chỉ tui cách xài đi", "split": "unlabeled"}
+{"text": "bấm sao đây đi", "split": "unlabeled"}
+{"text": "không ra nước đó", "split": "unlabeled"}
+{"text": "máy bị gì vậy", "split": "unlabeled"}
+{"text": "help nè", "split": "unlabeled"}
+{"text": "máy nuốt tiền nha", "split": "unlabeled"}
+{"text": "bấm sao đây lun", "split": "unlabeled"}
+{"text": "không ra nước nghen", "split": "unlabeled"}
+{"text": "cách dùng máy này lun", "split": "unlabeled"}
+{"text": "ai giúp với đó", "split": "unlabeled"}
+{"text": "không ra nước nhé", "split": "unlabeled"}
+{"text": "hỗ trợ luôn", "split": "unlabeled"}
+{"text": "hỗ trợ nha", "split": "unlabeled"}
+{"text": "hát một bài đi nhé bạn", "split": "unlabeled"}
+{"text": "1 cộng 1 bằng mấy ạ", "split": "unlabeled"}
+{"text": "tổng thống mỹ luôn", "split": "unlabeled"}
+{"text": "điều gì làm bạn vui", "split": "unlabeled"}
+{"text": "ai là chủ tịch nước đi", "split": "unlabeled"}
+{"text": "chơi game không lun", "split": "unlabeled"}
+{"text": "nhà bạn ở đâu nha máy", "split": "unlabeled"}
+{"text": "ai là chủ tịch nước nè", "split": "unlabeled"}
+{"text": "nhà bạn ở đâu đó", "split": "unlabeled"}
+{"text": "hôm qua thứ mấy với", "split": "unlabeled"}
+{"text": "bạn tên gì nha máy", "split": "unlabeled"}
+{"text": "thế giới có mấy châu đi", "split": "unlabeled"}
+{"text": "tổng thống mỹ nhé bạn", "split": "unlabeled"}
+{"text": "bạn từ đâu tới đi", "split": "unlabeled"}
+{"text": "hôm qua thứ mấy đi", "split": "unlabeled"}
+{"text": "tổng thống mỹ nhé", "split": "unlabeled"}
+{"text": "chơi game không nha", "split": "unlabeled"}
+{"text": "thời tiết thế nào nè", "split": "unlabeled"}
+{"text": "điều gì làm bạn vui đi", "split": "unlabeled"}
+{"text": "giá vàng hôm nay nha máy", "split": "unlabeled"}
+{"text": "bạn từ đâu tới nha bạn", "split": "unlabeled"}
+{"text": "điều gì làm bạn vui đó", "split": "unlabeled"}
+{"text": "hôm nay thứ mấy", "split": "unlabeled"}
+{"text": "bạn từ đâu tới giúp", "split": "unlabeled"}
+{"text": "kể chuyện cười nha bạn", "split": "unlabeled"}
+{"text": "hát một bài đi với", "split": "unlabeled"}
+{"text": "kể chuyện cười giùm", "split": "unlabeled"}
+{"text": "tổng thống mỹ với", "split": "unlabeled"}
+{"text": "tổng thống mỹ ạ", "split": "unlabeled"}
+{"text": "giá vàng hôm nay", "split": "unlabeled"}
+{"text": "1 cộng 1 bằng mấy nha", "split": "unlabeled"}
+{"text": "nhà bạn ở đâu giúp", "split": "unlabeled"}
+{"text": "thời tiết thế nào đi", "split": "unlabeled"}
+{"text": "bạn tên gì với", "split": "unlabeled"}
+{"text": "hôm qua thứ mấy giúp", "split": "unlabeled"}
+{"text": "hát một bài đi nghen", "split": "unlabeled"}
+{"text": "giá vàng hôm nay luôn", "split": "unlabeled"}
+{"text": "1 cộng 1 bằng mấy nhé", "split": "unlabeled"}
+{"text": "1 cộng 1 bằng mấy với", "split": "unlabeled"}
+{"text": "giá vàng hôm nay đi", "split": "unlabeled"}

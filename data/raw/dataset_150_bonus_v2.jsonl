@@ -1,0 +1,150 @@
+{"type":"gold","text":"khoan đừng thanh toán nha bạn","intent":"cancel","entities":{"product":null,"quantity":null}}
+{"type":"gold","text":"thôi bỏ coca đi luôn","intent":"cancel","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thay aquafina bằng coca","intent":"change_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"à thôi đổi aquafina sang pepsi giùm","intent":"change_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"à thôi đổi pepsi sang sting nè","intent":"change_product","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"à thôi đổi sang sting nha bạn","intent":"change_product","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"thôi bỏ aquafina đi nè","intent":"cancel","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"à thôi đổi aquafina sang coca nha bạn","intent":"change_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"không lấy aquafina nữa nha","intent":"cancel","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"không lấy 7up nữa giúp","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"thay pepsi bằng 7up giùm","intent":"change_product","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"à thôi đổi aquafina sang pepsi với","intent":"change_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"không mua 7up nữa đâu lun","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"không mua aquafina nữa đâu với","intent":"cancel","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"à thôi đổi sang pepsi đi","intent":"change_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"à thôi đổi sting sang 7up lun","intent":"change_product","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"thay coca bằng sting giùm","intent":"change_product","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"bỏ 7up giúp chị nha bạn","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"thay aquafina bằng coca nha","intent":"change_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thay 7up bằng aquafina với","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"bỏ pepsi giúp tui giùm","intent":"cancel","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"thay pepsi bằng aquafina giúp","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"không mua pepsi nữa đâu nè","intent":"cancel","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"không mua 7up nữa đâu nè","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"không mua aquafina nữa đâu nhé bạn","intent":"cancel","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"thôi bỏ coca đi đi","intent":"cancel","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"đợi chút để tôi xem lại nè","intent":"payment","entities":{"product":null,"quantity":null}}
+{"type":"gold","text":"không lấy pepsi nữa với","intent":"cancel","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"khoan đừng thanh toán ạ","intent":"cancel","entities":{"product":null,"quantity":null}}
+{"type":"gold","text":"bỏ sting giúp mình nha","intent":"cancel","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"không lấy 7up nữa luôn","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"à thôi đổi sang 7up đi","intent":"change_product","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"à thôi đổi coca sang aquafina với","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"thay 7up bằng pepsi nha","intent":"change_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"thôi bỏ 7up đi giùm","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"à thôi đổi sang aquafina","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"không mua coca nữa đâu","intent":"cancel","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bỏ coca giúp tôi nhé","intent":"cancel","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thay aquafina bằng 7up ạ","intent":"change_product","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"không mua aquafina nữa đâu nè","intent":"cancel","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"không lấy pepsi nữa nha","intent":"cancel","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"à thôi đổi sang coca lun","intent":"change_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thôi bỏ coca đi nè","intent":"cancel","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bỏ pepsi giúp tui lun","intent":"cancel","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"à thôi đổi 7up sang aquafina nha bạn","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"à thôi đổi sting sang aquafina nha","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"à thôi đổi pepsi sang aquafina lun","intent":"change_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"thay pepsi bằng coca nghen","intent":"change_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bỏ pepsi giúp anh giúp","intent":"cancel","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"bỏ 7up giúp tui nha","intent":"cancel","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"thêm aquafina rồi quét mã nhé bạn","intent":"payment","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"cho pepsi với 7up giúp","intent":"buy_product","entities":{"product":"pepsi, 7up","quantity":null}}
+{"type":"gold","text":"mua 2 sting và 1 7up giùm","intent":"buy_product","entities":{"product":"sting, 7up","quantity":2}}
+{"type":"gold","text":"đổi sang pepsi rồi trả tiền nè","intent":"payment","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"cho tôi sting rồi thanh toán luôn nha bạn","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"mua 2 7up và 2 aquafina luôn","intent":"buy_product","entities":{"product":"7up, aquafina","quantity":2}}
+{"type":"gold","text":"cho em 7up rồi thanh toán luôn với","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"thêm sting rồi quét mã nhé","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"thêm coca rồi thanh toán đi","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"cho aquafina với sting nhé","intent":"buy_product","entities":{"product":"aquafina, sting","quantity":null}}
+{"type":"gold","text":"cho pepsi với sting với","intent":"buy_product","entities":{"product":"pepsi, sting","quantity":null}}
+{"type":"gold","text":"thêm 7up rồi thanh toán luôn","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"đổi sang coca rồi trả tiền nha bạn","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thêm 7up rồi thanh toán nè","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"đổi sang aquafina rồi trả tiền giúp","intent":"payment","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"thêm coca rồi quét mã nè","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"đổi sang aquafina rồi trả tiền với","intent":"payment","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"thêm sting rồi quét mã với","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"thêm coca rồi quét mã nghen","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"cho pepsi với 7up nha bạn","intent":"buy_product","entities":{"product":"pepsi, 7up","quantity":null}}
+{"type":"gold","text":"đổi sang 7up rồi trả tiền giúp","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"cho 7up với pepsi nghen","intent":"buy_product","entities":{"product":"7up, pepsi","quantity":null}}
+{"type":"gold","text":"cho 7up với aquafina với","intent":"buy_product","entities":{"product":"7up, aquafina","quantity":null}}
+{"type":"gold","text":"mua 3 7up và 3 pepsi nha bạn","intent":"buy_product","entities":{"product":"7up, pepsi","quantity":3}}
+{"type":"gold","text":"thêm sting rồi quét mã nghen","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"cho sting với coca nè","intent":"buy_product","entities":{"product":"sting, coca","quantity":null}}
+{"type":"gold","text":"mua 2 aquafina và 4 7up nè","intent":"buy_product","entities":{"product":"aquafina, 7up","quantity":2}}
+{"type":"gold","text":"mua 5 7up và 2 pepsi đi","intent":"buy_product","entities":{"product":"7up, pepsi","quantity":5}}
+{"type":"gold","text":"thêm 7up rồi quét mã với","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"đổi sang pepsi rồi trả tiền nghen","intent":"payment","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"mua 5 sting và 1 pepsi nhé","intent":"buy_product","entities":{"product":"sting, pepsi","quantity":5}}
+{"type":"gold","text":"thêm pepsi rồi quét mã luôn","intent":"payment","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"đổi sang coca rồi trả tiền lun","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"mua 1 sting và 4 aquafina ạ","intent":"buy_product","entities":{"product":"sting, aquafina","quantity":1}}
+{"type":"gold","text":"thêm sting rồi thanh toán nhé","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"mua 3 7up và 2 coca giúp","intent":"buy_product","entities":{"product":"7up, coca","quantity":3}}
+{"type":"gold","text":"cho coca với sting nhé","intent":"buy_product","entities":{"product":"coca, sting","quantity":null}}
+{"type":"gold","text":"thêm pepsi rồi quét mã giùm","intent":"payment","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"đổi sang 7up rồi trả tiền nha","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"mua 5 coca và 3 sting giùm","intent":"buy_product","entities":{"product":"coca, sting","quantity":5}}
+{"type":"gold","text":"thêm sting rồi quét mã nha bạn","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"đổi sang coca rồi trả tiền nha","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thêm 7up rồi quét mã giùm","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"thêm coca rồi thanh toán nha bạn","intent":"payment","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"thêm sting rồi quét mã nè","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"mua 5 coca và 4 sting đi","intent":"buy_product","entities":{"product":"coca, sting","quantity":5}}
+{"type":"gold","text":"cho aquafina với 7up ạ","intent":"buy_product","entities":{"product":"aquafina, 7up","quantity":null}}
+{"type":"gold","text":"mua 2 7up và 5 aquafina","intent":"buy_product","entities":{"product":"7up, aquafina","quantity":2}}
+{"type":"gold","text":"mua 1 pepsi và 3 7up đi","intent":"buy_product","entities":{"product":"pepsi, 7up","quantity":1}}
+{"type":"gold","text":"cho chị 7up rồi thanh toán luôn nha bạn","intent":"payment","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"bán chị 1 bảy áp nha bạn","intent":"buy_product","entities":{"product":"7up","quantity":1}}
+{"type":"gold","text":"lấy aqua fina giùm em nhé bạn","intent":"buy_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"cho tui pep xi","intent":"buy_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"cần mua cô ca giúp","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bán chị 2 aqua fina nha","intent":"buy_product","entities":{"product":"aquafina","quantity":2}}
+{"type":"gold","text":"lấy pét si giùm mình luôn","intent":"buy_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"bán chị 1 x ting giùm","intent":"buy_product","entities":{"product":"sting","quantity":1}}
+{"type":"gold","text":"cần mua cô ka giúp","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"cần mua coca cô la nghen","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bán anh 5 se vừn ắp giúp","intent":"buy_product","entities":{"product":"7up","quantity":5}}
+{"type":"gold","text":"cho em aqua fina nhé","intent":"buy_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"bán mình 2 aqua fina lun","intent":"buy_product","entities":{"product":"aquafina","quantity":2}}
+{"type":"gold","text":"cho mình coca cô la nè","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"cho chị coca cô la đi","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"cho chị xtinh nhé bạn","intent":"buy_product","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"bán em 3 x ting nha","intent":"buy_product","entities":{"product":"sting","quantity":3}}
+{"type":"gold","text":"bán mình 5 aqua fina nè","intent":"buy_product","entities":{"product":"aquafina","quantity":5}}
+{"type":"gold","text":"cần mua bép si đi","intent":"buy_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"cho mình cô ka nhé bạn","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bán em 1 a qua phi na","intent":"buy_product","entities":{"product":"aquafina","quantity":1}}
+{"type":"gold","text":"lấy xtinh giùm em nhé","intent":"buy_product","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"cho mình xtinh giùm","intent":"buy_product","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"cho mình bảy áp nha bạn","intent":"buy_product","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"cần mua cô ca nha","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"cần mua sê ven áp nhé","intent":"buy_product","entities":{"product":"7up","quantity":null}}
+{"type":"gold","text":"cho anh a qua phi na giùm","intent":"buy_product","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"lấy cô ca giùm tui","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"bán mình 3 cô ka giúp","intent":"buy_product","entities":{"product":"coca","quantity":3}}
+{"type":"gold","text":"cho tui pét si nhé bạn","intent":"buy_product","entities":{"product":"pepsi","quantity":null}}
+{"type":"gold","text":"cho tui cô ka luôn","intent":"buy_product","entities":{"product":"coca","quantity":null}}
+{"type":"gold","text":"không lấy bép si nữa, cho aqua fina rồi quét mã giùm","intent":"payment","entities":{"product":"pepsi, aquafina","quantity":null}}
+{"type":"gold","text":"không lấy aqua fina nữa, cho coca cô la rồi quét mã giúp","intent":"payment","entities":{"product":"aquafina, coca","quantity":null}}
+{"type":"gold","text":"thêm xì tin rồi trả tiền giúp","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"bỏ aqua fina đi, lấy bép si nhé bạn","intent":"cancel","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"cho 3 lon aqua fina với 5 bép si rồi thanh toán nè","intent":"payment","entities":{"product":"aquafina, pepsi","quantity":3}}
+{"type":"gold","text":"à thôi đổi bảy áp sang xtinh rồi thanh toán luôn đi","intent":"payment","entities":{"product":"7up, sting","quantity":null}}
+{"type":"gold","text":"không lấy bảy áp nữa, cho bép si rồi quét mã luôn","intent":"payment","entities":{"product":"7up, pepsi","quantity":null}}
+{"type":"gold","text":"thêm a qua phi na rồi trả tiền giùm","intent":"payment","entities":{"product":"aquafina","quantity":null}}
+{"type":"gold","text":"à thôi đổi pep xi sang sê ven áp rồi thanh toán luôn nha","intent":"payment","entities":{"product":"pepsi, 7up","quantity":null}}
+{"type":"gold","text":"thêm xì tin rồi trả tiền lun","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"cho 2 lon cô ka với 5 pét si rồi thanh toán lun","intent":"payment","entities":{"product":"coca, pepsi","quantity":2}}
+{"type":"gold","text":"à thôi đổi xtinh sang aqua fina rồi thanh toán luôn với","intent":"payment","entities":{"product":"sting, aquafina","quantity":null}}
+{"type":"gold","text":"cho 2 lon bép si với 5 seven up rồi thanh toán ạ","intent":"payment","entities":{"product":"pepsi, 7up","quantity":2}}
+{"type":"gold","text":"à thôi đổi bép si sang aqua fina rồi thanh toán luôn với","intent":"payment","entities":{"product":"pepsi, aquafina","quantity":null}}
+{"type":"gold","text":"thêm xtinh rồi trả tiền giùm","intent":"payment","entities":{"product":"sting","quantity":null}}
+{"type":"gold","text":"không lấy bảy áp nữa, cho a qua phi na rồi quét mã","intent":"payment","entities":{"product":"7up, aquafina","quantity":null}}
+{"type":"gold","text":"không lấy xtinh nữa, cho se vừn ắp rồi quét mã","intent":"payment","entities":{"product":"sting, 7up","quantity":null}}
+{"type":"gold","text":"à thôi đổi pét si sang coca cô la rồi thanh toán luôn giúp","intent":"payment","entities":{"product":"pepsi, coca","quantity":null}}
+{"type":"gold","text":"cho 3 lon aqua fina với 4 cô ka rồi thanh toán nè","intent":"payment","entities":{"product":"aquafina, coca","quantity":3}}
+{"type":"gold","text":"cho 1 lon cô ka với 3 se vừn ắp rồi thanh toán nhé","intent":"payment","entities":{"product":"coca, 7up","quantity":1}}

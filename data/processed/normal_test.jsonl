@@ -1,0 +1,25 @@
+{"type": "gold", "text": "hiển thị menu nhé bạn", "intent": "show_menu", "entities": {"quantity": null, "products": []}}
+{"type": "gold", "text": "mua thêm sting nhé", "intent": "add_product", "entities": {"quantity": null, "products": ["sting"]}}
+{"type": "gold", "text": "thêm coca rồi quét mã nè", "intent": "payment", "entities": {"quantity": null, "products": ["coca"]}}
+{"type": "gold", "text": "xinchao nè", "intent": "greeting", "entities": {"quantity": null, "products": []}}
+{"type": "gold", "text": "máy bị gì vậy ạ", "intent": "help", "entities": {"quantity": null, "products": []}}
+{"type": "gold", "text": "thêm coca rồi thanh toán luôn nha bạn", "intent": "add_product", "entities": {"quantity": 8, "products": ["coca"]}}
+{"type": "gold", "text": "mua 6 hộp coca với", "intent": "buy_product", "entities": {"quantity": 6, "products": ["coca"]}}
+{"type": "gold", "text": "bán tui 10 sting giùm", "intent": "buy_product", "entities": {"quantity": 10, "products": ["sting"]}}
+{"type": "gold", "text": "chọn thêm 8 sting nha máy", "intent": "add_product", "entities": {"quantity": 8, "products": ["sting"]}}
+{"type": "gold", "text": "cho mình coca cô la nè", "intent": "buy_product", "entities": {"quantity": null, "products": ["coca"]}}
+{"type": "gold", "text": "chọn thêm 9 7up đó", "intent": "add_product", "entities": {"quantity": 9, "products": ["7up"]}}
+{"type": "gold", "text": "bán chú 3 chai sting nghen", "intent": "buy_product", "entities": {"quantity": 3, "products": ["sting"]}}
+{"type": "gold", "text": "lấy em 1 chai aquafina nè", "intent": "buy_product", "entities": {"quantity": 1, "products": ["aquafina"]}}
+{"type": "gold", "text": "cho chú sting rồi thanh toán luôn lun", "intent": "buy_product", "entities": {"quantity": 10, "products": ["sting"]}}
+{"type": "gold", "text": "thêm 7up rồi thanh toán nè", "intent": "payment", "entities": {"quantity": null, "products": ["7up"]}}
+{"type": "gold", "text": "cho chị 7up rồi thanh toán luôn nha bạn", "intent": "payment", "entities": {"quantity": null, "products": ["7up"]}}
+{"type": "gold", "text": "1 cộng 1 bằng mấy", "intent": "unknown", "entities": {"quantity": null, "products": []}}
+{"type": "gold", "text": "mua 9 lon aquafina đi", "intent": "buy_product", "entities": {"quantity": 9, "products": ["aquafina"]}}
+{"type": "gold", "text": "lấy tui 6 lon aquafina giúp", "intent": "buy_product", "entities": {"quantity": 6, "products": ["aquafina"]}}
+{"type": "gold", "text": "thêm coca rồi quét mã nghen", "intent": "payment", "entities": {"quantity": null, "products": ["coca"]}}
+{"type": "gold", "text": "cho tui pét si nhé bạn", "intent": "buy_product", "entities": {"quantity": null, "products": ["pepsi"]}}
+{"type": "gold", "text": "chào buổi sáng đi", "intent": "greeting", "entities": {"quantity": null, "products": []}}
+{"type": "gold", "text": "chị chọn aquafina đi", "intent": "buy_product", "entities": {"quantity": 10, "products": ["aquafina"]}}
+{"type": "gold", "text": "có những nước gì nghen", "intent": "show_menu", "entities": {"quantity": null, "products": []}}
+{"type": "gold", "text": "lấy cô ca giùm tui", "intent": "buy_product", "entities": {"quantity": null, "products": ["coca"]}}

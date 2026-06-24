@@ -1,43 +1,65 @@
-# Vending Machine SLU Dataset Benchmark
+# Voice-enabled Vending Machine Assistant: Intent Recognition via LLM Distillation
 
-This repository contains the prepared datasets and evaluation scripts for the Vietnamese Vending Machine Spoken Language Understanding (SLU) benchmark. The objective is to map noisy speech-to-text queries (STT) into structural intents and entities.
+This repository contains the pipeline for distilling a large Large Language Model (Qwen2.5-7B-Instruct) into a lightweight, edge-deployable model (Qwen2.5-0.5B-Instruct) for **Intent Recognition** in the Vending Machine domain.
 
-## 1. Dataset Splits
+## 1. Dataset Overview
 
-The dataset has been meticulously partitioned to evaluate different aspects of model robustness:
+*   **Gold Samples:** 200 manually labeled samples from real usage.
+*   **Bonus Hard Test:** 150 hard samples featuring complex phrasing, ASR noise (e.g., "xtinh" -> "sting"), multi-intents, and cancellation scenarios.
+*   **Unlabeled Samples:** 800 raw text samples derived from voice input without intent labels.
+*   **Ontology:** `greeting`, `show_menu`, `buy_product`, `add_product`, `change_product`, `payment`, `cancel`, `help`, `unknown`.
 
-- `train.jsonl` (225 samples): The core gold-standard training data.
-- `val.jsonl` (50 samples): Data reserved for hyperparameter tuning and early stopping.
-- `unlabeled.jsonl` (800 samples): Large pool of raw, unannotated queries intended for semi-supervised learning.
-- `normal_test.jsonl` (25 samples): Clean queries without ASR noise or complex intent logic. Evaluates baseline performance.
-- `asr_noise_test.jsonl` (25 samples): Queries containing common ASR misspellings (e.g., "xtinh", "aqua fina"). Evaluates robustness to speech transcription errors.
-- `hard_test.jsonl` (25 samples): Queries with multiple products, complex constraints, or cancellation intents. Evaluates the model's structural comprehension.
+## 2. Pipeline Execution
 
-*Note: All multi-product entities have been migrated from a single string format (`"product": "coca, pepsi"`) to a list format (`"products": ["coca", "pepsi"]`).*
+The pipeline is organized into distinct phases designed to run seamlessly on a Google Colab instance with a T4 GPU (and CPU for edge benchmarking).
 
-## 2. Evaluation Scripts
+### Phase 1: Dataset Preparation
 
-To benchmark models, use the provided Python scripts. Both scripts load predictions and ground truth to generate standard Classification Reports and Confusion Matrices.
+Run the following command to format all datasets into a standard schema `{"text": "...", "label": "..."}`:
+```bash
+python prepare_dataset.py
+```
+This extracts and partitions the datasets into `train_gold`, `normal_test`, `hard_test`, and `unlabeled` inside the `data/qwen_distill/` folder.
 
-- `evaluate_intent.py`: Computes accuracy and F1 scores for intent classification.
-  `python evaluate_intent.py <true_jsonl> <pred_jsonl>`
-  
-- `evaluate_entity.py`: Computes precision, recall, and F1 scores for product extraction.
-  `python evaluate_entity.py <true_jsonl> <pred_jsonl>`
+### Phase 2 & 3: Teacher Pseudo-Labeling
 
-## 3. Teacher-Student Distillation Workflow
+To generate labels for the 800 unlabeled samples, run:
+```bash
+python teacher_label.py
+```
+This script loads the **Teacher Model (Qwen2.5-7B-Instruct)** in 4-bit quantization and automatically assigns pseudo-labels. It merges the gold training set with the pseudo-labels to generate `train_distill.jsonl` (the final dataset for the student).
 
-To leverage the 800 unlabeled queries, we propose a Knowledge Distillation pipeline:
+### Phase 4: Student Fine-Tuning (Distillation)
 
-### Step 1: Teacher Pseudo-Labeling
-1. Provide a powerful Teacher LLM (e.g., GPT-4 or Gemini) with the instructions in `teacher_prompt.txt`.
-2. Run `teacher_label.py` to iterate over `unlabeled.jsonl` and generate `pseudo_labeled.jsonl`.
-3. Filter out low-confidence predictions from the pseudo-labeled dataset.
+Train the **Student Model (Qwen2.5-0.5B-Instruct)** via QLoRA:
+```bash
+python train_student.py
+```
+This script leverages PEFT (LoRA) and BitsAndBytes for efficient fine-tuning on a single T4 GPU. The resulting adapter weights are saved to `./student_qwen_adapter`.
 
-### Step 2: Student Distillation
-1. Combine `train.jsonl` with the high-confidence samples from `pseudo_labeled.jsonl`.
-2. Train a lightweight Student model (e.g., JointBERT, fastText, or a small bi-encoder) on this augmented dataset.
-3. The Student model will inherit the structural understanding and ASR-robustness of the Teacher while maintaining a low inference latency suitable for edge deployment on vending machines.
+### Phase 5 & 6: Evaluation & Benchmarking
 
-### Step 3: Benchmarking
-Evaluate the distilled Student model against the three test splits (`normal`, `asr_noise`, `hard`) to quantify the impact of the pseudo-labeled distillation strategy.
+Evaluate and compare the models on both the `normal_test` and `hard_test` sets to calculate Accuracy, Macro F1, and Per-Intent F1:
+
+Evaluate Teacher:
+```bash
+python evaluate.py --model_type teacher
+```
+
+Evaluate Student:
+```bash
+python evaluate.py --model_type student
+```
+
+### Phase 7: CPU Edge Inference Benchmark
+
+To validate the real-world deployment viability of the Student model on kiosk hardware (CPU only), run the benchmark script:
+```bash
+python benchmark_cpu.py
+```
+This tool measures:
+1.  **Load time**
+2.  **Memory Usage (RSS/RAM)**
+3.  **Inference Latency (seconds/query)**
+
+*Note: The script safely tests the 0.5B model by default. Loading the 7B model in pure float32 requires ~28GB RAM and may cause Out-Of-Memory (OOM) errors on standard hardware.*

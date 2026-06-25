@@ -1,83 +1,90 @@
-# Dataset Exploratory Data Analysis (EDA) Report
+# Phân Tích Dữ Liệu (EDA) - Unified Dataset
 
-## 1. Overview
-This report provides a comprehensive exploratory data analysis of the combined Vietnamese vending machine dataset (`dataset_final.jsonl` and `dataset_150_bonus_v2.jsonl`). The dataset is designed to train Spoken Language Understanding (SLU) models, extracting intents and entities from user queries that may include Automatic Speech Recognition (ASR) noise.
+## 1. Tổng Quan Dataset
+Tập dữ liệu hiện tại (`dataset_unified.jsonl`) là kết quả của việc gộp toàn bộ các tập dữ liệu thành phần (bao gồm tập gốc, tập hard test, và tập sinh tăng cường Augmentation).
 
-**Total Samples:** 1,150 utterances.
+- **Tổng số mẫu (Total Samples):** 1,960
+- **Phân bổ theo Split:**
+  - `test_normal`: 50 mẫu
+  - `train_gold`: 150 mẫu
+  - `train_augmented`: 810 mẫu
+  - `test_hard`: 150 mẫu
+  - `unlabeled`: 800 mẫu
 
-## 2. Distributions & Statistics
+## 2. Phân Tích Thống Kê Đặc Trưng
 
-### 2.1. Intent Distribution
-The dataset encompasses multiple intents to capture diverse user interactions. Excluding the 800 unlabeled samples, the distribution of the 350 gold-labeled samples is as follows:
-- **buy_product:** 101 samples
-- **payment:** 73 samples
-- **change_product:** 47 samples
-- **cancel:** 43 samples
-- **add_product:** 24 samples
-- **show_menu:** 20 samples
-- **greeting:** 16 samples
-- **help:** 16 samples
-- **unknown:** 10 samples
+### 2.1 Phân Phối Intent (Ý định)
+Thống kê các intent có trong tập dữ liệu (bao gồm cả các nhãn của tập augmented):
+- **unknown**: 824 mẫu
+- **buy_product**: 344 mẫu
+- **payment**: 251 mẫu
+- **add_product**: 146 mẫu
+- **change_product**: 127 mẫu
+- **cancel**: 117 mẫu
+- **show_menu**: 79 mẫu
+- **greeting**: 37 mẫu
+- **help**: 35 mẫu
 
-![Intent Distribution](intent_distribution.png)
+![Intent Distribution](intent_distribution_new.png)
+*Nhận xét:* Dữ liệu đã được định hình lại với độ phủ rộng hơn cho các case hóc búa, không chỉ tập trung riêng vào `buy_product`.
 
-*Observation:* `buy_product` and `payment` dominate the dataset, aligning with the primary use cases of a vending machine.
+### 2.2 Phân Phối Thực Thể (Entity: Product & Quantity)
+Mô hình đã dùng Heuristic/Regex để bóc tách các sản phẩm xuất hiện trong text:
+**Sản Phẩm:**
+- **coca**: 352 lượt
+- **pepsi**: 333 lượt
+- **7up**: 276 lượt
+- **aquafina**: 264 lượt
+- **sting**: 261 lượt
 
-### 2.2. Product Distribution
-Among the extracted entities, the occurrences of single catalog products are balanced:
-- **7up:** 51
-- **coca:** 48
-- **aquafina:** 43
-- **sting:** 42
-- **pepsi:** 41
+![Product Distribution](product_distribution_new.png)
 
-![Product Distribution](product_distribution.png)
+**Số Lượng (Quantity):**
+Thường tập trung vào các số nhỏ (1, 2, 3), nhưng nhờ dữ liệu Augmented, mô hình học được cả các số lượng lớn hơn.
+![Quantity Distribution](quantity_distribution_new.png)
 
-*Observation:* There is a long tail of "invalid" multi-product combinations (e.g., "pepsi, 7up") which need normalization or multi-entity support.
+### 2.3 Độ Dài Câu Lệnh (Utterance Length)
+- **Trung bình:** {np.mean(text_lengths):.2f} từ
+- **Ngắn nhất:** {np.min(text_lengths)} từ
+- **Dài nhất:** {np.max(text_lengths)} từ
 
-### 2.3. Quantity Distribution
-Extracted quantities range from 1 to 10. 
-- Highest frequencies: **2** (16 times), **5** (15 times), **3** (14 times).
-- Lower frequencies: **7**, **8**, **6** (6 times each).
+![Text Length Histogram](text_length_histogram_new.png)
+*Nhận xét:* Độ dài câu phân bổ dạng chuông nghiêng lệch trái, phù hợp với cách nói chuyện ngắn gọn qua Voice Bot.
 
-![Quantity Distribution](quantity_distribution.png)
+### 2.4 Thống Kê Nhiễu ASR (Automatic Speech Recognition)
+Dữ liệu Augmented đã chủ động thêm vào rất nhiều nhiễu ASR để ép mô hình học cách ánh xạ về canonical. Dưới đây là tần suất xuất hiện của các cụm từ nhiễu:
+- `aqua fina`: 33 lượt
+- `bép si`: 31 lượt
+- `cô ka`: 28 lượt
+- `xtinh`: 25 lượt
+- `pét si`: 23 lượt
+- `a qua phi na`: 21 lượt
+- `co ca`: 21 lượt
+- `bảy áp`: 20 lượt
+- `pep xi`: 20 lượt
+- `cô ca`: 18 lượt
+- `sê ven áp`: 16 lượt
+- `coca cô la`: 16 lượt
+- `pép xì`: 15 lượt
+- `seven up`: 14 lượt
+- `xì tin`: 11 lượt
+- `se vừn ắp`: 8 lượt
+- `ác qua`: 8 lượt
+- `x ting`: 8 lượt
 
-### 2.4. Text Length Statistics
-The query lengths (in words) reflect short, direct voice commands:
-- **Minimum:** 1 word
-- **Maximum:** 14 words
-- **Mean:** 4.99 words
-- **Median:** 5.0 words
 
-![Text Length Histogram](text_length_histogram.png)
+### 2.5 Đặc Trưng Ngôn Ngữ Giao Tiếp (Colloquialisms)
+Tập dữ liệu chứa rất nhiều các tiền tố/hậu tố giao tiếp tự nhiên của người Việt Nam:
+- `ạ`: 289 lượt
+- `nha`: 277 lượt
+- `với`: 205 lượt
+- `cho anh`: 42 lượt
+- `cho em`: 40 lượt
+- `lấy dùm`: 36 lượt
+- `cho mình`: 26 lượt
+- `giùm em`: 16 lượt
+- `giúp mình`: 13 lượt
 
-### 2.5. ASR Alias Statistics
-A significant portion of the dataset includes ASR distortions. We tracked the presence of predefined ASR aliases within the raw text:
-- **aqua fina:** 16 occurrences
-- **xtinh:** 9 occurrences
-- **seven up:** 7 occurrences
-- **a qua phi na:** 5 occurrences
-- **pep xi:** 2 occurrences
-- **x ting:** 2 occurrences
-
-*Observation:* The model must be robust to spacing ("aqua fina") and phonetical misspellings ("xtinh", "pep xi").
-
-## 3. Pipeline Recommendations
-
-To optimally leverage this data, we recommend the following pipeline for training and deployment:
-
-### 3.1. Train/Val/Test Split
-- **Test Set (15% - 50 samples):** Sampled strictly from the high-quality, manually verified data (e.g., the 150 bonus set) to ensure rigorous evaluation.
-- **Validation Set (15% - 50 samples):** Sampled from the gold dataset for hyperparameter tuning.
-- **Training Set (70% + Unlabeled):** The remaining 250 gold samples. The 800 unlabeled samples should be utilized via semi-supervised learning (pseudo-labeling).
-
-### 3.2. Teacher-Labeling Pipeline
-To handle the 800 unlabeled samples:
-1. Train a strong "Teacher" model (e.g., fine-tuned PhoBERT or an LLM like GPT-4/Gemini via few-shot prompting) on the 350 gold samples.
-2. Use the Teacher to infer intents and entities for the 800 unlabeled texts.
-3. Filter the pseudo-labels based on a confidence threshold. Instances below the threshold should be sent for human review.
-
-### 3.3. Student-Training Pipeline
-1. Combine the 250 gold training samples and the high-confidence pseudo-labeled samples.
-2. Train a lightweight "Student" model (e.g., JointBERT or a smaller bi-encoder architecture optimized for edge devices).
-3. Apply knowledge distillation to transfer robustness from the Teacher to the Student, ensuring low-latency inference on the vending machine hardware.
+---
+## 3. Kết Luận
+Tập dữ liệu `dataset_unified.jsonl` hiện tại có quy mô vượt trội (gần 2000 mẫu), sở hữu đầy đủ tính phức tạp của môi trường thực tế (Nhiễu ASR, câu phức, ngôn ngữ địa phương/giao tiếp). Đây là nền tảng cực kỳ vững chắc để tiến hành quá trình Knowledge Distillation từ Teacher LLM xuống Student LLM.

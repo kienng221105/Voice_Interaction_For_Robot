@@ -1,70 +1,65 @@
-# Báo Cáo Kỹ Thuật: Từ Phân Tích Dữ Liệu Đến Quyết Định Distillation
+# Báo Cáo Kỹ Thuật: Distillation & Tối Ưu Hóa Kiosk Edge CPU (Llama.cpp)
 
-Tài liệu này trình bày luồng tư duy và quyết định kỹ thuật trong dự án Vietnamese Voice-Enabled Vending Machine: Từ việc phân tích đặc trưng dữ liệu (EDA), đánh giá các mô hình cơ sở, cho đến quyết định áp dụng Knowledge Distillation (chưng cất tri thức) để tạo ra mô hình cuối cùng chạy trên CPU.
+Tài liệu này trình bày luồng tư duy và quyết định kỹ thuật trong dự án Vietnamese Voice-Enabled Vending Machine: Từ việc phân tích đặc trưng dữ liệu (EDA), đánh giá các mô hình cơ sở, chưng cất tri thức (Knowledge Distillation), cho đến hành trình tối ưu hóa cực hạn để triển khai lên CPU Edge bằng GGUF/Llama.cpp.
 
 ---
 
 ## 1. Phân Tích Dữ Liệu (Theo Dataset Report)
 
-Dựa trên báo cáo thăm dò dữ liệu (`dataset_report.md`), tập dữ liệu gốc có **1,150 mẫu** (350 mẫu gán nhãn Gold, 800 mẫu Unlabeled). Các phân tích cốt lõi cho thấy:
+Dựa trên báo cáo thăm dò dữ liệu (`dataset_report.md`), tập dữ liệu gốc có **1,961 mẫu** (Unified data gồm Gold, Pseudo-labels, Augmented). Các phân tích cốt lõi cho thấy:
 
 ### 1.1. Phân phối Intent và Entity
-- **Intent:** Mất cân bằng lớn. Tập trung chủ yếu vào `buy_product` (101 mẫu) và `payment` (73 mẫu). Các intent như `greeting` hay `unknown` rất hiếm.
-- **Sản phẩm (Product):** Phân phối khá đồng đều giữa 5 sản phẩm cốt lõi (7up, coca, aquafina, sting, pepsi). Tuy nhiên, xuất hiện nhiều ca "nhiễu" mua nhiều sản phẩm cùng lúc.
-- **Số lượng (Quantity):** Người dùng chủ yếu mua số lượng nhỏ (2, 3, 5).
+- **Sản phẩm (Product):** Phân phối khá đồng đều giữa 5 sản phẩm cốt lõi (7up, coca, aquafina, sting, pepsi).
+- **Hard Reasoning:** Đã bổ sung các câu có ngữ pháp lắt léo ("thôi không lấy A nữa đổi sang B", "hủy cái đầu đi lấy cái thứ hai").
 
-### 1.2. Thách Thức Từ ASR Noise và Độ dài câu
-- **Độ dài câu:** Rất ngắn (Trung bình 4.99 từ, median 5.0 từ). Lệnh giọng nói thường nhanh gọn, thiếu chủ vị.
-- **ASR Noise:** Nhận diện giọng nói (STT) gây ra nhiễu từ vựng nghiêm trọng với các từ tiếng Anh. Ví dụ: `aqua fina` (16 lần), `xtinh` (9 lần), `seven up` (7 lần), `pep xi` (2 lần).
-
----
-
-## 2. Đánh Giá Baseline & Quyết Định Distillation
-
-Dựa vào `benchmark_report.md` và yêu cầu nâng cấp hệ thống, bài toán ban đầu là **Intent Classification** (Phân loại ý định) nay đã được nâng cấp thành **Joint Intent & Slot Filling** (Xuất trực tiếp cấu trúc JSON chứa cả Intent và Entity).
-
-### 2.1. Hạn chế của các mô hình Baseline
-- **TF-IDF + Logistic Regression:** Dễ dàng chạy trên CPU nhưng chỉ giải quyết được bài toán phân loại Intent cơ bản. Hoàn toàn thất bại trước nhiễu ASR ("xtinh") và không thể trích xuất Entity (số lượng, tên sản phẩm).
-- **PhoBERT-base:** Xử lý ngôn ngữ tự nhiên tiếng Việt rất tốt, nhưng là mô hình Encoder-only. Để trích xuất Entity, cần phải xây dựng kiến trúc NER (BIO-tagging) phức tạp kèm theo, khó khăn trong việc chuẩn hóa ra JSON.
-
-### 2.2. Tại sao chọn Knowledge Distillation (LLM)?
-Để xuất ra định dạng JSON động (`{"intent": "...", "items": [{"product": "...", "quantity": 1}]}`), mô hình Generative LLM là lựa chọn tối ưu nhất. Tuy nhiên:
-1. **Teacher Model (Qwen2.5-7B-Instruct):** Đủ thông minh để hiểu ASR noise, tự trích xuất Entity chuẩn xác định dạng JSON. Tuy nhiên, nó quá nặng, yêu cầu GPU VRAM cao, **không thể chạy trên CPU Kiosk của máy bán hàng**.
-2. **Giải pháp Distillation:** 
-   - Dùng mô hình Teacher (7B) để gán nhãn tự động (Pseudo-labeling) cấu trúc JSON cho toàn bộ **800 mẫu Unlabeled** (như đã đề xuất trong Dataset Report).
-   - Huấn luyện một Student Model nhỏ hơn nhiều là **Qwen2.5-1.5B-Instruct** học lại từ tập dữ liệu khổng lồ (Gold + Pseudo-labels) này. 1.5B đủ nhỏ để chạy mượt trên CPU, nhưng nhờ được học từ Teacher, nó vẫn giữ được khả năng suy luận (reasoning) JSON.
+### 1.2. Thách Thức Từ ASR Noise
+- Nhận diện giọng nói (STT) gây ra nhiễu từ vựng nghiêm trọng với các từ tiếng Anh. Ví dụ: `aqua fina`, `xtinh`, `seven up`, `bép si`, `cô ka`.
+- Việc ép mô hình phải hiểu âm thanh tiếng Việt ("bép si") và ánh xạ về chuẩn tiếng Anh ("pepsi") là một thách thức sinh văn bản lớn.
 
 ---
 
-## 3. Quá Trình Distillation (Chưng Cất Tri Thức)
+## 2. Quyết Định Distillation
 
-Quá trình Distill được thực hiện đồng bộ trong một quy trình duy nhất (`train_student.ipynb`):
+Dựa vào `benchmark_report.md`, bài toán yêu cầu **Joint Intent & Slot Filling** (Xuất trực tiếp cấu trúc JSON chứa cả Intent và Entity).
 
-### 3.1. Chuẩn bị Dữ Liệu Huấn Luyện (`train_distill.jsonl`)
-- **Xử lý Gold Data:** Xây dựng Heuristic/Regex Parser để chuyển đổi 350 câu Gold thành JSON. Ánh xạ các ASR alias (`bép si`, `cô ka`) về Canonical Name (`pepsi`, `coca`).
-- **Pseudo-labeling:** Mô hình Teacher 7B quét qua 800 câu Unlabeled, trích xuất cấu trúc JSON làm nhãn giả (Pseudo-labels).
-- **Augmentation:** Bổ sung thêm các câu truy vấn phức tạp (Hard Reasoning) như đổi ý, hủy đơn (ví dụ: *"thôi không lấy bép si nữa đổi sang 7up"*).
+### 2.1. Tại sao chọn Knowledge Distillation (LLM)?
+- **Teacher Model (Qwen2.5-7B-Instruct):** Đủ thông minh để hiểu ASR noise, tự trích xuất Entity chuẩn xác. Tuy nhiên, nó quá nặng, yêu cầu GPU VRAM cao, **không thể chạy trên CPU Kiosk của máy bán hàng**.
+- **Giải pháp Distillation:** 
+   - Dùng Teacher (7B) gán nhãn tự động (Pseudo-labeling) cho hàng trăm mẫu Unlabeled.
+   - Huấn luyện một Student Model nhỏ hơn là **Qwen2.5-1.5B-Instruct**. 1.5B đủ nhỏ để chạy mượt trên CPU, nhưng nhờ được học từ Teacher, nó vẫn giữ được khả năng suy luận (reasoning) định dạng JSON.
 
-### 3.2. Student Fine-Tuning (QLoRA)
+---
+
+## 3. Chưng Cất Tri Thức (Student Fine-Tuning)
+
 Mô hình `Qwen2.5-1.5B-Instruct` được fine-tune với các cấu hình tối ưu để chạy trên phần cứng giới hạn (Google Colab T4):
-- Sử dụng QLoRA (4-bit quantization) nhắm vào các `target_modules` cốt lõi của Attention.
+- Sử dụng QLoRA để đóng băng Base model, chỉ huấn luyện lớp Adapter.
 - Tắt bfloat16 (do T4 không hỗ trợ native) để tránh tràn bộ nhớ và crash hệ thống.
+- **Kết quả bản PyTorch Gốc:** Đạt End-to-End Accuracy 92% (Normal) và 86% (Hard Test). Tuy nhiên, nếu chạy mô hình PyTorch (chưa Merge) này trên CPU, **độ trễ lên tới 20 giây/câu**, hoàn toàn không khả thi cho máy bán hàng thời gian thực.
 
 ---
 
-## 4. Kết Quả & Khả Năng Triển Khai Thực Tế
+## 4. Hành Trình Tối Ưu Hóa Cho Kiosk Edge (Llama.cpp & GGUF)
 
-### 4.1. Độ Chính Xác (End-to-End Metrics)
-Mô hình Student 1.5B sau khi học từ Teacher đã khắc phục hoàn toàn sự kém cỏi của nó ở trạng thái Base (Zero-shot gốc thường không sinh đúng JSON).
-- Nhận diện chính xác 100% Intent từ các câu lệnh ngắn.
-- "Miễn nhiễm" với các nhiễu ASR mà tài liệu EDA đã chỉ ra (hiểu `xtinh`, `pep xi`).
-- Cấu trúc xuất ra luôn là JSON hợp lệ (Valid JSON). Tiêu chí đúng End-to-End (khớp Intent + toàn bộ Product + Quantity) vượt mốc 90% trên tập Hard Test.
+Để giảm độ trễ từ 20 giây xuống mức < 2 giây, toàn bộ Pipeline đã được di chuyển sang kiến trúc `llama.cpp` thông qua các bước khoa học nghiêm ngặt:
 
-### 4.2. CPU Inference (Máy Bán Hàng)
-Thông qua file `inference_demo.ipynb`, mô hình chứng minh tính khả thi tuyệt đối cho Kiosk/Vending Machine:
-- **Tương thích hoàn toàn CPU:** Không cần `bitsandbytes`, trọng số chạy Native `float32`.
-- **Dấu chân bộ nhớ (Memory Footprint):** Giữ mức an toàn ~4-5 GB RAM.
-- **Độ trễ (Latency):** Trung bình phản hồi trong 1-3 giây trên CPU thông thường, đáp ứng được trải nghiệm thời gian thực cho Voice-Enabled Assistant.
+### 4.1. Merge Model & Vấn Đề Sai Số Kiểu Dữ Liệu (Merge Degradation)
+Thay vì load song song Base + Adapter (gây chậm), hai lớp này phải được cộng gộp ($W = W_{base} + W_{lora}$).
+- **Thất bại ban đầu:** Khi gộp bằng chuẩn `float32`, sự sai số làm tròn thập phân đã khiến E2E Accuracy trên tập Hard Test tụt thê thảm từ 86% xuống 68%.
+- **Khắc phục:** Cấu trúc gộp được tinh chỉnh ép buộc sử dụng chuẩn `torch.float16` thuần khiết của mô hình nguyên bản. Mô hình sau đó được dịch sang định dạng `GGUF FP16` (Nặng 3.1GB) và khôi phục thành công 100% độ chính xác của bản gốc (Hard Test 86%).
 
-### 4.3. Kết Luận
-Việc ứng dụng Knowledge Distillation để chuyển đổi từ mô hình 7B xuống 1.5B, kết hợp với chiến lược Semi-supervised Learning (trên 800 câu Unlabeled), đã giải quyết trọn vẹn bài toán. Mô hình cuối cùng đáp ứng hoàn hảo hai tiêu chí tối thượng: **Thông minh như LLM (xuất JSON chuẩn xác) nhưng nhẹ nhàng như mô hình Baseline (chạy 100% bằng CPU).**
+### 4.2. Ép Xung Lượng Tử Hóa (Quantization) & Vấn đề Ảo Giác (Hallucination)
+Mô hình FP16 3.1GB chạy trên CPU tốn khoảng 2.1 giây/câu. Để tối ưu hơn cho các Raspberry Pi/Mini PC tại Kiosk, mô hình tiếp tục được nén (Quantize):
+- **Bản 4-bit (Q4_K_M - 940MB):** Tốc độ cực nhanh (0.9 giây/câu). Tuy nhiên, do bị nén quá thô bạo (từ 65536 giá trị xuống 16 giá trị), không gian Vector của các từ bị nhiễu ASR ("bép si") bị trượt. Mô hình sinh ra **ảo giác**, nhầm lẫn biến "bép si" thành "sting" trong các câu đổi hàng phức tạp.
+- **Bản 8-bit (Q8_0 - 1.6GB):** Sự cân bằng hoàn hảo. Độ trễ 1.5 giây/câu (rất mượt mà cho trải nghiệm Kiosk). Độ phân giải 8-bit giữ vững kết nối toán học của từ "bép si", đạt điểm E2E **92%**, hoàn toàn triệt tiêu lỗi ảo giác của bản 4-bit.
+
+---
+
+## 5. Kết Luận Khuyến Nghị Triển Khai
+
+Việc ứng dụng Knowledge Distillation (7B $\rightarrow$ 1.5B), kết hợp với C/C++ Engine của `llama.cpp` và nén GGUF 8-bit, đã giải quyết trọn vẹn bài toán máy bán hàng:
+1. **Thông minh:** Xuất cấu trúc JSON chính xác, chống chịu mọi ASR Typos nhờ tập Augmented Data.
+2. **Siêu nhẹ:** Model chỉ nặng 1.6GB, không đòi hỏi GPU đắt đỏ.
+3. **Thực gian thực:** Phản hồi trên CPU trung bình chỉ **1.5 giây**.
+
+**$\rightarrow$ Khuyến nghị Production:** Sử dụng tệp `student_1.5b_q8_0.gguf` triển khai chính thức trên thiết bị Edge bằng thư viện `llama-cpp-python`.

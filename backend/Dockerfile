@@ -7,11 +7,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR /app
 
-COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+# Since the build context is backend/, we copy from . to /app/backend/
+COPY requirements.txt ./backend/
+RUN pip install --no-cache-dir -r backend/requirements.txt
 
-# Copy backend code
-COPY backend/ ./backend/
+# Copy the rest of the backend files
+COPY . ./backend/
 
 # Download the GGUF model from Google Drive
 RUN pip install --no-cache-dir gdown && \

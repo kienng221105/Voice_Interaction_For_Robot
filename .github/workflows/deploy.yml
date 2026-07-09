@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - 'backend/**'
-      - 'Dockerfile'
       - '.github/workflows/deploy.yml'
   workflow_dispatch: # Cho phép trigger thủ công từ giao diện Github
 
@@ -39,7 +38,7 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t ${{ env.IMAGE_NAME }}:${{ github.sha }} .
+          docker build -t ${{ env.IMAGE_NAME }}:${{ github.sha }} ./backend
           docker tag ${{ env.IMAGE_NAME }}:${{ github.sha }} ${{ env.IMAGE_NAME }}:latest
 
       - name: Push Docker Image

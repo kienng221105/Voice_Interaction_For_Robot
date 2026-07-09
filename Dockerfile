@@ -13,8 +13,9 @@ RUN pip install --no-cache-dir -r requirements.txt
 # Copy backend code
 COPY backend/ ./backend/
 
-# Copy the GGUF model
-COPY distill_8b_qwen_25_1_5B/student_1.5b_q8_0.gguf ./model.gguf
+# Download the GGUF model from Google Drive
+RUN pip install --no-cache-dir gdown && \
+    gdown "1ky7b68l8cnA7goJUK7ZEvVVjKK2rZ-6E" -O ./model.gguf
 ENV MODEL_PATH=/app/model.gguf
 
 # Default port for GCP Cloud Run

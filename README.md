@@ -87,3 +87,31 @@ Script này sẽ tự động:
 2. Bấm vào biểu tượng **Microphone**, sau đó nói lệnh (Ví dụ: *"Cho mình một chai coca"* hoặc *"Cho thêm hai chai aquafina nữa"*).
 3. Hệ thống sẽ nhận diện, cập nhật giỏ hàng lập tức và máy giả lập ESP32 sẽ hiển thị log đang quay motor rớt hàng.
 4. Tận hưởng độ trễ E2E siêu mượt (< 3.5s) của hệ thống Local Edge AI!
+
+---
+
+## 📂 Cấu trúc mã nguồn (Project Structure)
+
+Dưới đây là cây thư mục các tệp tin trong bản Demo này và tác dụng của chúng:
+
+```text
+Voice_Interaction_For_Robot/
+├── start_demo.bat        # Script khởi động tự động toàn bộ hệ thống
+├── Modelfile             # File cấu hình để nạp model GGUF vào Ollama
+├── requirements.txt      # Danh sách các thư viện Python cần cài đặt
+├── stt_server.py         # Server chuyển Giọng nói thành Văn bản (Dùng Groq API)
+├── nlp_server.py         # Server Xử lý Ngôn ngữ Tự nhiên (Chạy Local LLM bằng Ollama)
+├── run_mock_esp.py       # Script giả lập phần cứng ESP32 (Lắng nghe lệnh MQTT & in log quay motor)
+├── esp/
+│   └── esp.ino           # Code C++ Firmware thực tế nạp cho vi điều khiển ESP32 vật lý
+├── client/               # Toàn bộ mã nguồn Web UI và Logic xử lý tại Local (Edge)
+│   ├── web_app.py        # Local Web Server (FastAPI) phục vụ giao diện Kiosk
+│   ├── web/static/       # Giao diện người dùng HTML/CSS/JS (Giỏ hàng, Microphone, Hoạt ảnh)
+│   ├── business/         # Tầng Logic nghiệp vụ điều phối các ý định (Buy, Confirm, Cancel)
+│   ├── core/             # Lõi hệ thống: Quản lý Giỏ hàng, Kho hàng JSON, kết nối MQTT
+│   └── network/          # Các module giao tiếp mạng nội bộ
+└── voice_vending/        # Tầng thư viện nền tảng (Base Framework) dùng chung
+    ├── config/           # File cấu hình (config.yaml) và cơ sở dữ liệu kho giả lập (inventory.json)
+    ├── device/           # Adapter giao tiếp giữa Logic phần mềm và Phần cứng (MQTT/Mock)
+    └── services/         # Dịch vụ quản lý luồng lệnh xả hàng (Command Queue) và Hàng tồn kho
+```

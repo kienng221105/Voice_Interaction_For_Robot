@@ -1,0 +1,1 @@
+FROM ./student_1.5b_q8_0.gguf

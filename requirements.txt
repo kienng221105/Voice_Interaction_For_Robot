@@ -1,0 +1,8 @@
+# Full pipeline server dependencies
+# pip install -r requirements.txt
+
+# OpenRouter / OpenAI-compatible Whisper + NLU API client
+openai>=1.0.0
+
+# WebSocket server
+websockets>=12.0

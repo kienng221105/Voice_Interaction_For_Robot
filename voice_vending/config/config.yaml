@@ -1,0 +1,36 @@
+# ─────────────────────────────────────────────────────────
+# Voice Vending Machine — Configuration (Milestone 1)
+# ─────────────────────────────────────────────────────────
+
+machine:
+  id: "VM001"
+  name: "Mock Vending Machine #1"
+
+# ── MQTT Broker ──────────────────────────────────────────
+mqtt:
+  broker: "broker.hivemq.com"
+  port: 1883
+  use_tls: false
+  username: ""
+  password: ""
+  client_id_prefix: "mock_esp32"
+  topics:
+    command: "vending/machine/{machine_id}/command"
+    response: "vending/machine/{machine_id}/response"
+
+# ── Mock ESP32 Settings ─────────────────────────────────
+mock_esp:
+  num_slots: 4
+  initial_stock:
+    1: 10
+    2: 8
+    3: 5
+    4: 12
+  dispense_time_range: [0.8, 2.0]   # seconds (min, max)
+  failure_rate: 0.0                   # 0-1, probability of random failure
+  jam_slots: []                       # list of slot numbers that are jammed
+  timeout_ms: 5000
+
+# ── Logging ──────────────────────────────────────────────
+logging:
+  level: "INFO"

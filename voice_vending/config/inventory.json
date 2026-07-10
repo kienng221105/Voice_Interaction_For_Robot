@@ -1,0 +1,33 @@
+{
+  "machine_id": "VM001",
+  "products": {
+    "coca": {
+      "display_name": "Coca-Cola",
+      "slot": 1,
+      "stock": 0,
+      "price": 12000,
+      "enabled": true
+    },
+    "pepsi": {
+      "display_name": "Pepsi",
+      "slot": 2,
+      "stock": 3,
+      "price": 12000,
+      "enabled": true
+    },
+    "sting": {
+      "display_name": "Sting",
+      "slot": 3,
+      "stock": 10,
+      "price": 10000,
+      "enabled": true
+    },
+    "aquafina": {
+      "display_name": "Aquafina",
+      "slot": 4,
+      "stock": 4,
+      "price": 8000,
+      "enabled": true
+    }
+  }
+}

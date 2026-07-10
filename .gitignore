@@ -18,3 +18,22 @@ __pycache__/
 *.pt
 *.pth
 *.h5
+
+# ---- EXCLUDE FROM DEMO DEPLOYMENT ----
+data/
+reports/
+eda_v3_outputs/
+traditional_approach/
+distill_8b_qwen_25_1_5B/
+tests/
+tools/
+backend/
+*.ipynb
+*.log
+tree_output.txt
+scratch/
+PROJECT_STRUCTURE.md
+SYSTEM_DOCS.md
+demo.py
+.pytest_cache/
+.github/

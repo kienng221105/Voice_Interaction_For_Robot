@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Vending Machine — Full Pipeline Demo</title>
+<style>
+  :root {
+    --bg-dark: #0a0a14;
+    --bg-panel: #12121e;
+    --bg-card: #1a1a2e;
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --success: #00e676;
+    --danger: #ff1744;
+    --warning: #ffab00;
+    --text: #e0e0e0;
+    --text-dim: #7a7a9a;
+    --border: #2a2a4a;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', 'SF Pro Display', system-ui, sans-serif;
+    background: var(--bg-dark);
+    color: var(--text);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ===== MACHINE SHELL ===== */
+  .machine {
+    width: 980px;
+    height: 680px;
+    background: linear-gradient(145deg, #1e1e30, #14142a);
+    border-radius: 24px;
+    border: 2px solid var(--border);
+    box-shadow:
+      0 0 0 1px rgba(0,212,255,0.05),
+      0 20px 80px rgba(0,0,0,0.6),
+      0 0 120px rgba(0,212,255,0.03);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .machine::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0.6;
+  }
+
+  /* ===== HEADER ===== */
+  .header {
+    background: var(--bg-panel);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+
+  .header-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.5px;
+  }
+
+  .header-title svg { width: 24px; height: 24px; }
+
+  .status-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .status-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .status-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--success);
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  /* ===== MAIN CONTENT ===== */
+  .main {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  /* ===== LEFT: PRODUCT GRID ===== */
+  .panel-products {
+    width: 380px;
+    flex-shrink: 0;
+    padding: 16px;
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    background: var(--bg-panel);
+  }
+
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    padding: 0 4px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 8px 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,212,255,0.1);
+  }
+
+  .product-card.active {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.06);
+  }
+
+  .product-card.active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 11px;
+    border: 2px solid var(--accent);
+    animation: card-glow 1.5s ease-in-out infinite;
+  }
+
+  @keyframes card-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+
+  .product-img {
+    width: 100%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 6px;
+    position: relative;
+  }
+
+  .product-img img {
+    height: 60px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+    transition: transform 0.2s;
+  }
+
+  .product-card:hover .product-img img { transform: scale(1.05); }
+
+  .product-name {
+    font-size: 12px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2px;
+  }
+
+  .product-price {
+    font-size: 11px;
+    color: var(--accent2);
+    text-align: center;
+    font-weight: 600;
+  }
+
+  .product-qty {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: var(--accent2);
+    color: white;
+    font-size: 10px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-qty.hidden { display: none; }
+
+  /* ===== RIGHT: CHAT + ORDER ===== */
+  .panel-right {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ===== CHAT AREA ===== */
+  .chat-area {
+    flex: 1;
+    padding: 16px 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    scroll-behavior: smooth;
+  }
+
+  .chat-area::-webkit-scrollbar { width: 4px; }
+  .chat-area::-webkit-scrollbar-track { background: transparent; }
+  .chat-area::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+  .welcome-msg {
+    text-align: center;
+    padding: 20px;
+    color: var(--text-dim);
+    font-size: 14px;
+    line-height: 1.8;
+  }
+
+  .welcome-msg strong { color: var(--accent); font-weight: 600; }
+
+  .chat-bubble-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    animation: bubble-in 0.3s ease;
+  }
+
+  @keyframes bubble-in {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .chat-bubble-wrap.user { align-items: flex-end; }
+  .chat-bubble-wrap.bot { align-items: flex-start; }
+
+  .bubble {
+    max-width: 85%;
+    padding: 10px 14px;
+    border-radius: 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    word-break: break-word;
+  }
+
+  .bubble.user {
+    background: linear-gradient(135deg, #1a3a5c, #0d2a4a);
+    color: #e8f4ff;
+    border-bottom-right-radius: 4px;
+    border: 1px solid rgba(0,150,255,0.2);
+  }
+
+  .bubble.bot {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-bottom-left-radius: 4px;
+  }
+
+  .bubble.bot.system {
+    background: rgba(255,171,0,0.06);
+    border-color: rgba(255,171,0,0.15);
+    color: var(--warning);
+    font-size: 12px;
+    font-style: italic;
+  }
+
+  .intent-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: rgba(0,212,255,0.1);
+    border: 1px solid rgba(0,212,255,0.25);
+    color: var(--accent);
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .intent-tag::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: pulse-dot 1.5s infinite;
+  }
+
+  .intent-tag.unknown { background: rgba(255,23,68,0.1); border-color: rgba(255,23,68,0.25); color: var(--danger); }
+  .intent-tag.unknown::before { background: var(--danger); }
+
+  .entities-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 6px;
+  }
+
+  .entity-chip {
+    background: rgba(255,107,53,0.12);
+    border: 1px solid rgba(255,107,53,0.3);
+    color: var(--accent2);
+    padding: 2px 8px;
+    border-radius: 8px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .entity-chip.qty {
+    background: rgba(0,230,118,0.1);
+    border-color: rgba(0,230,118,0.25);
+    color: var(--success);
+  }
+
+  /* ===== PROCESSING INDICATOR ===== */
+  .typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    border-bottom-left-radius: 4px;
+    width: fit-content;
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+
+  .typing-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    animation: typing-bounce 1.2s ease-in-out infinite;
+  }
+  .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+  @keyframes typing-bounce {
+    0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+    40% { transform: scale(1); opacity: 1; }
+  }
+
+  /* ===== ORDER SUMMARY ===== */
+  .order-panel {
+    border-top: 1px solid var(--border);
+    background: var(--bg-panel);
+    padding: 12px 20px;
+    max-height: 160px;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .order-panel::-webkit-scrollbar { width: 3px; }
+  .order-panel::-webkit-scrollbar-thumb { background: var(--border); }
+
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .order-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+  }
+
+  .order-total {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--accent2);
+  }
+
+  .order-items {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .order-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 10px;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    font-size: 12.5px;
+    transition: all 0.2s;
+    animation: bubble-in 0.2s ease;
+  }
+
+  .order-item.highlight {
+    border-color: var(--success);
+    background: rgba(0,230,118,0.05);
+  }
+
+  .order-item-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .order-item-color {
+    width: 10px; height: 10px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  .order-qty-badge {
+    background: rgba(0,212,255,0.15);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 1px 6px;
+    border-radius: 6px;
+  }
+
+  .order-item-price {
+    color: var(--accent2);
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  .order-item-remove {
+    background: none;
+    border: none;
+    color: var(--text-dim);
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0 4px;
+    margin-left: 6px;
+    transition: color 0.15s;
+  }
+
+  .order-item-remove:hover { color: var(--danger); }
+
+  .order-empty {
+    text-align: center;
+    color: var(--text-dim);
+    font-size: 12px;
+    padding: 12px;
+    font-style: italic;
+  }
+
+  /* ===== INPUT AREA ===== */
+  .input-area {
+    padding: 12px 20px 16px;
+    background: var(--bg-panel);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    flex-shrink: 0;
+  }
+
+  .input-box {
+    flex: 1;
+    position: relative;
+  }
+
+  .text-input {
+    width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px;
+    color: var(--text);
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+    font-family: inherit;
+  }
+
+  .text-input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(0,212,255,0.08);
+  }
+
+  .text-input::placeholder { color: var(--text-dim); }
+
+  .btn-mic {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: var(--bg-card);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+    color: var(--text);
+  }
+
+  .btn-mic:hover {
+    border-color: var(--accent);
+    background: rgba(0,212,255,0.08);
+    color: var(--accent);
+  }
+
+  .btn-mic.recording {
+    background: var(--danger) !important;
+    box-shadow: 0 0 20px rgba(255,23,68,0.4);
+    animation: mic-pulse 1s ease-in-out infinite;
+  }
+  @keyframes mic-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+  }
+
+  .btn-mic svg { width: 20px; height: 20px; }
+
+  .btn-send {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--bg-dark);
+    flex-shrink: 0;
+  }
+
+  .btn-send:hover { background: #33ddff; transform: scale(1.05); }
+  .btn-send:active { transform: scale(0.95); }
+  .btn-send svg { width: 18px; height: 18px; }
+
+  .btn-clear {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--text-dim);
+    font-size: 11px;
+    flex-shrink: 0;
+  }
+
+  .btn-clear:hover { border-color: var(--danger); color: var(--danger); }
+
+  /* ===== INTENT FEEDBACK ===== */
+  .intent-feedback {
+    position: absolute;
+    bottom: 56px;
+    left: 0; right: 0;
+    background: rgba(18,18,30,0.95);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 12px;
+    color: var(--text-dim);
+    display: none;
+    animation: bubble-in 0.2s ease;
+  }
+
+  .intent-feedback.show { display: block; }
+
+  /* ===== ORDER BUTTONS ===== */
+  .order-actions {
+    padding: 8px 20px 12px;
+    background: var(--bg-panel);
+    display: flex;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  .btn-action {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-confirm {
+    background: var(--success);
+    color: #003d1a;
+  }
+
+  .btn-confirm:hover { background: #00ff88; transform: translateY(-1px); }
+  .btn-confirm:active { transform: translateY(0); }
+
+  .btn-cancel-order {
+    background: rgba(255,23,68,0.1);
+    border: 1px solid rgba(255,23,68,0.3);
+    color: var(--danger);
+  }
+
+  .btn-cancel-order:hover { background: rgba(255,23,68,0.2); }
+
+  /* ===== TOAST NOTIFICATION ===== */
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--bg-card);
+    border: 1px solid var(--success);
+    border-radius: 12px;
+    padding: 10px 20px;
+    color: var(--success);
+    font-size: 13px;
+    font-weight: 600;
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ===== WELCOME OVERLAY ===== */
+  .welcome-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(10,10,20,0.85);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 50;
+    border-radius: 24px;
+    transition: opacity 0.5s ease;
+  }
+
+  .welcome-overlay.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .welcome-content {
+    text-align: center;
+    max-width: 400px;
+    padding: 24px;
+  }
+
+  .welcome-content h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .welcome-content p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    margin-bottom: 24px;
+  }
+
+  .btn-start {
+    background: linear-gradient(135deg, var(--accent), #0099cc);
+    color: var(--bg-dark);
+    border: none;
+    border-radius: 14px;
+    padding: 14px 36px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+  }
+
+  .btn-start:hover { transform: scale(1.05); box-shadow: 0 8px 30px rgba(0,212,255,0.3); }
+  .btn-start:active { transform: scale(0.98); }
+
+  /* ===== PRODUCT COLORS ===== */
+  .prod-coca { --c: #c0392b; }
+  .prod-pepsi { --c: #e74c3c; }
+  .prod-7up { --c: #f39c12; }
+  .prod-sting { --c: #e67e22; }
+  .prod-aquafina { --c: #3498db; }
+
+  /* ===== PRODUCT IMAGES (SVG inline) ===== */
+  .can-svg {
+    width: 48px; height: 64px;
+    position: relative;
+  }
+</style>
+</head>
+<body>
+
+<div class="machine" id="machine">
+  <!-- Welcome overlay -->
+  <div class="welcome-overlay" id="welcomeOverlay">
+    <div class="welcome-content">
+      <svg width="64" height="64" viewBox="0 0 64 64" fill="none" style="margin:0 auto 16px">
+        <rect x="12" y="8" width="40" height="48" rx="6" fill="#1a1a2e" stroke="#00d4ff" stroke-width="2"/>
+        <rect x="16" y="14" width="32" height="20" rx="3" fill="#00d4ff" opacity="0.15"/>
+        <circle cx="32" cy="24" r="6" fill="#00d4ff" opacity="0.4"/>
+        <rect x="20" y="38" width="24" height="3" rx="1.5" fill="#00d4ff" opacity="0.3"/>
+        <rect x="20" y="44" width="16" height="3" rx="1.5" fill="#00d4ff" opacity="0.2"/>
+        <rect x="0" y="56" width="64" height="8" rx="4" fill="#00d4ff" opacity="0.1"/>
+      </svg>
+      <h2>Voice Vending Machine</h2>
+      <p>Nói hoặc gõ câu lệnh bằng tiếng Việt để tương tác với máy bán hàng. Bạn có thể <strong>mua đồ uống</strong>, <strong>thêm / đổi sản phẩm</strong>, hoặc <strong>hủy đơn hàng</strong>.</p>
+      <button class="btn-start" onclick="startDemo()">Bắt đầu demo</button>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="header-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <rect x="2" y="3" width="20" height="18" rx="3"/>
+        <circle cx="12" cy="10" r="3"/>
+        <path d="M6 17h.01M10 17h.01"/>
+        <path d="M2 21h20"/>
+      </svg>
+      VOICE VENDING MACHINE
+    </div>
+    <div class="status-bar">
+      <div class="status-item">
+        <div class="status-dot"></div>
+        <span>Online</span>
+      </div>
+      <div class="status-item">
+        <span>ESP32 FNN</span>
+      </div>
+      <div class="status-item" id="wsStatus">
+        <div class="status-dot" id="wsDot" style="background: #ff1744;"></div>
+        <span id="wsLabel">STT: Offline</span>
+      </div>
+      <div class="status-item">
+        <span id="clock">--:--</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <!-- Products Panel -->
+    <div class="panel-products">
+      <div class="section-label">Sản phẩm</div>
+      <div class="products-grid" id="productsGrid">
+        <!-- Products injected by JS -->
+      </div>
+    </div>
+
+    <!-- Right Panel: Chat + Order -->
+    <div class="panel-right">
+      <!-- Chat -->
+      <div class="chat-area" id="chatArea">
+        <div class="welcome-msg" id="chatWelcome">
+          Xin chào! Tôi là trợ lý máy bán hàng tự động.<br>
+          Bạn có thể nói hoặc gõ: <strong>"cho tôi 2 chai coca"</strong><br>
+          <span style="font-size:12px;opacity:0.6">Nhấn micro để nói — STT qua WebSocket server!</span>
+        </div>
+      </div>
+
+      <!-- Order Summary -->
+      <div class="order-panel">
+        <div class="order-header">
+          <div class="order-title">🛒 Giỏ hàng (<span id="cartCount">0</span>)</div>
+          <div class="order-total" id="cartTotal">0đ</div>
+        </div>
+        <div class="order-items" id="cartItems">
+          <div style="color: var(--text-dim); text-align: center; padding: 20px;">Giỏ hàng trống</div>
+        </div>
+      </div>
+
+      <!-- Order Actions -->
+      <div class="order-actions">
+        <button class="btn-action btn-confirm" id="btnConfirm" onclick="confirmOrder()" disabled>✓ Xác nhận thanh toán</button>
+        <button class="btn-action btn-cancel-order" id="btnCancel" onclick="cancelOrder()" disabled>✕ Hủy đơn</button>
+      </div>
+
+      <!-- Input -->
+      <div class="input-area">
+        <div class="input-box">
+          <input class="text-input" id="textInput" type="text"
+            placeholder="Gõ câu lệnh... VD: cho tôi 2 chai coca"
+            onkeydown="if(event.key==='Enter')sendMessage()" />
+        </div>
+        <button class="btn-mic" id="btnMic" onclick="toggleMic()" title="Nhấn để nói">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </button>
+        <button class="btn-send" onclick="sendMessage()" title="Gửi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <line x1="22" y1="2" x2="11" y2="13"/>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+        <button class="btn-clear" onclick="clearChat()" title="Xóa hội thoại">
+          🗑
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+
+<script>
+// ==========================================
+// STATE
+// ==========================================
+let inventory = {};
+let cart = {};
+let isRecording = false;
+let socket = null;
+let mediaRecorder = null;
+let audioContext = null;
+let scriptNode = null;
+let audioStream = null;
+
+// ==========================================
+// CONFIGURATION (Cloud vs Local)
+// ==========================================
+// Chỉnh thành true nếu bạn muốn test API chạy trên Google Cloud Run
+const USE_CLOUD_API = false;
+
+// Dán URL Cloud Run thực tế của bạn vào đây (Lưu ý: dùng wss:// thay vì https://)
+const CLOUD_API_URL = "wss://voice-vending-backend-968863294243.asia-southeast1.run.app/ws/audio/demo";
+const LOCAL_API_URL = "ws://127.0.0.1:8765";
+
+const CLOUD_WS_URL = USE_CLOUD_API ? CLOUD_API_URL : LOCAL_API_URL;
+
+// ==========================================
+// API CLIENT
+// ==========================================
+async function fetchState() {
+  try {
+    const res = await fetch("/api/state");
+    const data = await res.json();
+    inventory = data.inventory;
+    cart = data.cart;
+    renderProducts();
+    renderCart();
+  } catch (err) {
+    console.error("Failed to fetch state:", err);
+  }
+}
+
+async function executeCommand(intent, entities, replyText, extras = null) {
+  try {
+    const res = await fetch("/api/execute", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        intent: intent,
+        entities: entities,
+        ...(replyText ? { reply: replyText } : {})
+      })
+    });
+    const data = await res.json();
+    if (data.status === "success") {
+      inventory = data.state.inventory;
+      cart = data.state.cart;
+      renderProducts();
+      renderCart();
+      // Speak the final reply from the local business controller
+      speak(data.reply);
+      addBubble(data.reply, "bot", extras);
+    }
+  } catch (err) {
+    console.error("Failed to execute command:", err);
+  }
+}
+
+// ==========================================
+// RENDERERS
+// ==========================================
+function renderProducts() {
+  const container = document.getElementById('productsGrid');
+  if (!container) return;
+  container.innerHTML = '';
+  
+  const COLORS = {
+    'coca': '#c0392b',
+    'pepsi': '#e74c3c',
+    'sting': '#e67e22',
+    'aquafina': '#3498db'
+  };
+
+  Object.values(inventory).forEach(prod => {
+    if (!prod.enabled) return;
+    const color = COLORS[prod.id] || '#34495e';
+    const outOfStock = prod.stock === 0;
+    
+    const div = document.createElement('div');
+    div.className = `product-card ${outOfStock ? 'out-of-stock' : ''}`;
+    div.id = `prod-${prod.id}`;
+    
+    div.innerHTML = `
+      <div class="product-icon" style="background: ${color}22; color: ${color}">
+        🥤
+      </div>
+      <div class="product-info">
+        <div class="product-name">${prod.display_name}</div>
+        <div class="product-price">${prod.price.toLocaleString('vi-VN')}đ</div>
+      </div>
+      <div class="stock-badge ${outOfStock ? 'danger' : ''}">Kho: ${prod.stock}</div>
+    `;
+    container.appendChild(div);
+  });
+}
+
+function renderCart() {
+  const container = document.getElementById('cartItems');
+  const countEl = document.getElementById('cartCount');
+  const totalEl = document.getElementById('cartTotal');
+  if (!container) return;
+  
+  container.innerHTML = '';
+  let count = 0;
+  let total = 0;
+
+  Object.entries(cart).forEach(([pid, qty]) => {
+    const prod = inventory[pid];
+    if (!prod) return;
+    count += qty;
+    total += prod.price * qty;
+
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <div class="cart-item-name">${prod.display_name}</div>
+      <div class="cart-item-qty">x${qty}</div>
+      <div class="cart-item-price">${(prod.price * qty).toLocaleString('vi-VN')}đ</div>
+    `;
+    container.appendChild(div);
+  });
+
+  countEl.textContent = count;
+  totalEl.textContent = total.toLocaleString('vi-VN') + 'đ';
+  
+  // Highlight empty state
+  if (count === 0) {
+    container.innerHTML = '<div style="color: var(--text-dim); text-align: center; padding: 20px;">Giỏ hàng trống</div>';
+  }
+  
+  // Enable/Disable buttons
+  document.getElementById('btnConfirm').disabled = (count === 0);
+  document.getElementById('btnCancel').disabled = (count === 0);
+}
+
+// ==========================================
+// CHAT UI
+// ==========================================
+function addBubble(text, role, extras = null) {
+  const area = document.getElementById('chatArea');
+  const wrap = document.createElement('div');
+  wrap.className = `chat-bubble-wrap ${role}`;
+  
+  const bubble = document.createElement('div');
+  bubble.className = `bubble ${role}`;
+  bubble.innerHTML = text;
+  
+  if (extras) {
+    const ext = document.createElement('div');
+    ext.className = 'chat-extras';
+    ext.innerHTML = extras;
+    bubble.appendChild(ext);
+  }
+  
+  wrap.appendChild(bubble);
+  area.appendChild(wrap);
+  area.scrollTop = area.scrollHeight;
+}
+
+function showTypingIndicator() {
+  const area = document.getElementById('chatArea');
+  const div = document.createElement('div');
+  div.className = 'chat-bubble-wrap bot';
+  div.id = 'typingIndicator';
+  div.innerHTML = `
+    <div class="bubble bot">
+      <div class="typing-indicator">
+        <div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>
+      </div>
+    </div>
+  `;
+  area.appendChild(div);
+  area.scrollTop = area.scrollHeight;
+}
+
+function removeTypingIndicator() {
+  const el = document.getElementById('typingIndicator');
+  if (el) el.remove();
+}
+
+function updateWsStatus(connected, text) {
+  const status = document.getElementById('wsStatus');
+  status.textContent = text;
+  if (connected) {
+    status.classList.add('online');
+  } else {
+    status.classList.remove('online');
+  }
+}
+
+// ==========================================
+// WEBSOCKET & AUDIO
+// ==========================================
+function connectWS() {
+  socket = new WebSocket(CLOUD_WS_URL);
+  
+  socket.onopen = () => {
+    updateWsStatus(true, "AI Backend Connected");
+  };
+  
+  socket.onmessage = (event) => {
+    const data = JSON.parse(event.data);
+    
+    // 1. Cloud API Format Handling (backend/main.py)
+    if (data.error) {
+      removeTypingIndicator();
+      addBubble("Lỗi: " + data.error, "bot");
+    }
+    else if (data.reply !== undefined && data.intent) {
+      removeTypingIndicator();
+      const intent = data.intent;
+      const items = (data.entities && data.entities.products) ? data.entities.products : [];
+      
+      let extras = `<span class="intent-tag ${intent === 'unknown' ? 'unknown' : ''}">${intent}</span>`;
+      let ents = [];
+      items.forEach(p => {
+          ents.push(`<span class="entity-chip">product: ${p.product}</span>`);
+          if (p.quantity) ents.push(`<span class="entity-chip qty">quantity: ${p.quantity}</span>`);
+      });
+      if (ents.length > 0) extras += `<div class="entities-preview">${ents.join('')}</div>`;
+      
+      const e2e_ms = window.requestStartTime ? (Date.now() - window.requestStartTime) : 0;
+      
+      extras += `<div style="margin-top: 6px; font-size: 11px; color: var(--text-dim);">⏱ Độ trễ E2E (Mạng + API): ${e2e_ms}ms</div>`;
+      extras += `<div style="margin-top: 6px; font-size: 11px; color: var(--accent2);">☁️ Đã xử lý qua Cloud API</div>`;
+      
+      // Để so sánh công bằng: Ta lấy "Intent" và "Entities" của Cloud (vì đây là phần tốn thời gian nhất),
+      // nhưng vứt bỏ "Câu trả lời" (reply) của Cloud đi để nhường lại cho BusinessController ở Local xử lý.
+      // Như vậy Giỏ hàng vẫn cập nhật, Motor vẫn quay, Logic y hệt nhau, chỉ khác nhau ở cái độ trễ!
+      executeCommand(intent, {products: items}, "", extras);
+    }
+    // 2. Local API Format Handling (nlp_server.py)
+    else if (data.type === "error" || data.type === "no_speech") {
+      removeTypingIndicator();
+      if (data.message) addBubble("Lỗi: " + data.message, "bot");
+    }
+    else if (data.type === "transcribed") {
+      addBubble(data.text, "user");
+      showTypingIndicator();
+    }
+    else if (data.type === "result") {
+      removeTypingIndicator();
+      
+      const intent = data.intent;
+      const items = data.items || [];
+      
+      let extras = `<span class="intent-tag ${intent === 'unknown' ? 'unknown' : ''}">${intent}</span>`;
+      
+      let ents = [];
+      items.forEach(p => {
+          ents.push(`<span class="entity-chip">product: ${p.product}</span>`);
+          if (p.quantity) ents.push(`<span class="entity-chip qty">quantity: ${p.quantity}</span>`);
+      });
+      if (ents.length > 0) {
+          extras += `<div class="entities-preview">${ents.join('')}</div>`;
+      }
+      
+      if (data.latency_s) {
+          const ms = Math.round(data.latency_s * 1000);
+          extras += `<div style="margin-top: 6px; font-size: 11px; color: var(--text-dim);">⏱ Độ trễ Local: ${ms}ms</div>`;
+      }
+      
+      // Chạy logic bán hàng trên Local Server
+      executeCommand(intent, {products: items}, "", extras);
+    }
+  };
+  
+  socket.onclose = () => {
+    updateWsStatus(false, "Disconnected");
+    setTimeout(connectWS, 3000);
+  };
+}
+
+async function startRecording() {
+  if (!socket || socket.readyState !== WebSocket.OPEN) {
+    alert("Chưa kết nối đến AI Server!");
+    return;
+  }
+  
+  try {
+    audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    audioContext = new (window.AudioContext || window.webkitAudioContext)({ sampleRate: 16000 });
+    const source = audioContext.createMediaStreamSource(audioStream);
+    
+    // We use a ScriptProcessor to get raw PCM data (16kHz, mono, 16-bit)
+    scriptNode = audioContext.createScriptProcessor(4096, 1, 1);
+    
+    scriptNode.onaudioprocess = (audioProcessingEvent) => {
+      const inputBuffer = audioProcessingEvent.inputBuffer;
+      const inputData = inputBuffer.getChannelData(0);
+      
+      // Convert Float32 to Int16
+      const pcmData = new Int16Array(inputData.length);
+      for (let i = 0; i < inputData.length; i++) {
+        let s = Math.max(-1, Math.min(1, inputData[i]));
+        pcmData[i] = s < 0 ? s * 0x8000 : s * 0x7FFF;
+      }
+      
+      if (socket.readyState === WebSocket.OPEN) {
+        socket.send(pcmData.buffer);
+      }
+    };
+    
+    source.connect(scriptNode);
+    scriptNode.connect(audioContext.destination);
+    
+    isRecording = true;
+    document.getElementById('btnMic').classList.add('recording');
+  } catch (err) {
+    console.error("Microphone error:", err);
+    alert("Không thể truy cập Microphone! Lỗi: " + err.name + " - " + err.message);
+  }
+}
+
+function stopRecording() {
+  if (scriptNode) {
+    scriptNode.disconnect();
+    scriptNode = null;
+  }
+  if (audioContext) {
+    audioContext.close();
+    audioContext = null;
+  }
+  if (audioStream) {
+    audioStream.getTracks().forEach(t => t.stop());
+    audioStream = null;
+  }
+  
+  if (socket && socket.readyState === WebSocket.OPEN) {
+    window.requestStartTime = Date.now();
+    socket.send(JSON.stringify({ type: "audio_end" }));
+  }
+  
+  isRecording = false;
+  document.getElementById('btnMic').classList.remove('recording');
+}
+
+function toggleMic() {
+  if (isRecording) {
+    stopRecording();
+  } else {
+    startRecording();
+  }
+}
+
+// ==========================================
+// TEXT INPUT
+// ==========================================
+function sendMessage() {
+  const input = document.getElementById('textInput');
+  const text = input.value.trim();
+  if (!text) return;
+  input.value = '';
+  
+  addBubble(text, 'user');
+  showTypingIndicator();
+  
+  if (socket && socket.readyState === WebSocket.OPEN) {
+    window.requestStartTime = Date.now();
+    socket.send(JSON.stringify({ type: "nlp_request", text: text }));
+  } else {
+    alert("Chưa kết nối đến STT/NLP Server!");
+  }
+}
+
+// Allow Enter key to send message
+document.getElementById('textInput').addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    sendMessage();
+  }
+});
+
+// ==========================================
+// TTS
+// ==========================================
+let availableVoices = [];
+window.speechSynthesis.onvoiceschanged = () => {
+  availableVoices = window.speechSynthesis.getVoices();
+};
+
+function speak(text) {
+  if (!text) return;
+  
+  if (availableVoices.length === 0) {
+    availableVoices = window.speechSynthesis.getVoices();
+  }
+  
+  const viVoice = availableVoices.find(v => v.lang.includes('vi') || v.name.includes('Vietnamese') || v.name.includes('Việt'));
+  
+  if (viVoice) {
+    const msg = new SpeechSynthesisUtterance(text);
+    msg.lang = 'vi-VN';
+    msg.voice = viVoice;
+    window.speechSynthesis.speak(msg);
+  } else {
+    // Fallback to Google Translate TTS if no local Vietnamese voice is found
+    const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(text)}&tl=vi&client=tw-ob`;
+    const audio = new Audio(url);
+    audio.play().catch(e => console.error("Audio fallback error:", e));
+  }
+}
+
+// ==========================================
+// INIT
+// ==========================================
+function clearChat() {
+  const area = document.getElementById('chatArea');
+  area.innerHTML = '';
+}
+
+function updateClock() {
+  const now = new Date();
+  document.getElementById('clock').textContent = now.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' });
+}
+
+function startDemo() {
+  document.getElementById('welcomeOverlay').classList.add('hidden');
+  setTimeout(() => {
+    document.getElementById('welcomeOverlay').style.display = 'none';
+  }, 600);
+}
+
+window.addEventListener('load', () => {
+  fetchState();
+  connectWS();
+  updateClock();
+  setInterval(updateClock, 30000);
+  
+  // Prevent form submit
+  const form = document.querySelector('.chat-input-area');
+  if (form) {
+    // If it's a form, prevent submit
+  }
+});
+
+</script>
+</body>
+</html>

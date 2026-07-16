@@ -1,12 +1,12 @@
-# Voice Vending Machine - Local Edge Demo
+# Voice Vending Machine - Local Edge Demo (Giai đoạn 5)
 
-Dự án này là hệ thống Trợ lý Giọng nói cho Máy Bán hàng tự động (Voice Vending Machine) được thiết kế tối ưu hóa để chạy hoàn toàn trên Thiết bị biên (Local/Edge Computing) không cần phụ thuộc mạng lưới Đám mây (Cloud) cho quá trình xử lý ngôn ngữ NLP.
+Dự án này là hệ thống Trợ lý Giọng nói cho Máy Bán hàng tự động (Voice Vending Machine) được thiết kế tối ưu hóa để chạy một phần trên Local Edge Computing và tích hợp thanh toán tự động qua VietQR (payOS).
 
 Hệ thống bao gồm:
-- **STT (Speech-to-Text)**: Sử dụng API Groq Whisper để nhận dạng giọng nói siêu tốc.
+- **STT (Speech-to-Text)**: Sử dụng API Groq Whisper để nhận dạng giọng nói siêu tốc. Có bộ lọc chống ảo giác mạnh mẽ.
 - **NLP (Natural Language Processing)**: Chạy hoàn toàn dưới Local bằng phần mềm Ollama với mô hình đã được Fine-tune chuyên biệt (`vending-student` 1.5B) cho độ chính xác cao và độ trễ cực thấp (< 3.5s).
-- **Web UI & Business Logic**: Giao diện Kiosk hiển thị trực quan và Server điều phối xử lý bán hàng (Cart, Inventory, Payment).
-- **Hardware Integration**: Kết nối với phần cứng ESP32 qua giao thức MQTT để nhả hàng thực tế (kèm script Mock để giả lập khi không có mạch thật).
+- **Web UI & Business Logic**: Giao diện Kiosk hiển thị trực quan và Server điều phối xử lý bán hàng (Cart, Inventory, Thanh toán tự động qua PayOS).
+- **Hardware Integration (ESP32)**: Kết nối với phần cứng ESP32 qua giao thức MQTT (HiveMQ) để nhả hàng thực tế. Hỗ trợ phát âm thanh TTS trực tiếp từ ESP32 qua giao thức I2S.
 
 ---
 
@@ -17,6 +17,7 @@ Hệ thống bao gồm:
 1. **Python 3.10+**: Đảm bảo đã thêm Python vào `PATH`.
 2. **Git**: Để clone mã nguồn.
 3. **Ollama**: Phần mềm để chạy Local LLM. Tải và cài đặt tại [ollama.com](https://ollama.com/).
+4. **Ngrok**: Dùng để mở Webhook ra public cho PayOS gọi về máy tính local.
 
 ---
 
@@ -57,36 +58,37 @@ ollama create vending-student -f Modelfile
      ```powershell
      $env:GROQ_API_KEY="gsk_xxxxxxxxxxxxxxxxxxxx"
      ```
-   - **MacOS/Linux**:
-     ```bash
-     export GROQ_API_KEY="gsk_xxxxxxxxxxxxxxxxxxxx"
-     ```
 
-### Bước 5: Cài đặt Giọng đọc Tiếng Việt (Cho Windows)
-Để hệ thống phản hồi bằng giọng nói tự nhiên, bạn cần đảm bảo Windows đã cài sẵn gói giọng nói Tiếng Việt:
-1. Mở **Settings** (Win + I) -> **Time & Language** -> **Speech**.
-2. Chọn **Add voices** -> Tìm **`Vietnamese`** và cài đặt.
-3. Khởi động lại trình duyệt web để nó cập nhật danh sách giọng nói.
+### Bước 5: Thiết lập Mạng cho ESP32 (Khi mang ra Lab)
+Khi chạy thực tế ở địa điểm mới (như Lab):
+1. Cấp nguồn cho ESP32. Nếu không có WiFi cũ, ESP32 sẽ phát WiFi tên `AutoConnectAP` (Mật khẩu: `12345678`).
+2. Dùng điện thoại kết nối vào `AutoConnectAP`. Truy cập `192.168.4.1`, chọn cấu hình WiFi của Lab và nhập mật khẩu.
+3. ESP32 sẽ tự khởi động lại và kết nối mạng.
+4. **LƯU Ý QUAN TRỌNG:** Laptop chạy Server (file `start_demo.bat`) cũng phải **BẮT BUỘC** kết nối chung mạng WiFi với ESP32 để ESP32 có thể tải file âm thanh TTS từ Laptop.
 
 ### Bước 6: Khởi động Toàn bộ Hệ thống
-Chỉ cần chạy file Batch sau để bật đồng loạt 4 luồng xử lý:
+Chỉ cần chạy file Batch sau để bật đồng loạt toàn bộ server:
 ```cmd
 start_demo.bat
 ```
-Script này sẽ tự động:
-- Bật Mock ESP32 Hardware (Giả lập phần cứng motor).
-- Bật Local NLP Server (Gọi Ollama).
-- Bật Web App Server (FastAPI).
-- Tự động mở trình duyệt web lên trang giao diện máy bán hàng (`http://localhost:8000`).
+Script này sẽ tự động trải qua 5 bước:
+1. Giải phóng Port 8000 và dọn dẹp các luồng Ngrok chạy ngầm.
+2. Bỏ qua Mock ESP32 (vì dùng phần cứng thật).
+3. Bật Local NLP Server (Xử lý STT + LLM bằng luồng bất đồng bộ để tránh bị văng mic).
+4. Bật Web App Server (FastAPI).
+5. Tự động bật Ngrok mở Webhook cho PayOS với tên miền tĩnh.
+
+Sau 3 giây, giao diện Kiosk sẽ tự động hiện trên trình duyệt web (`http://localhost:8000`).
 
 ---
 
 ## 🎮 Cách sử dụng Giao diện Demo
 
-1. Trên trình duyệt, bấm nút **Bắt đầu Trải nghiệm**.
-2. Bấm vào biểu tượng **Microphone**, sau đó nói lệnh (Ví dụ: *"Cho mình một chai coca"* hoặc *"Cho thêm hai chai aquafina nữa"*).
-3. Hệ thống sẽ nhận diện, cập nhật giỏ hàng lập tức và máy giả lập ESP32 sẽ hiển thị log đang quay motor rớt hàng.
-4. Tận hưởng độ trễ E2E siêu mượt (< 3.5s) của hệ thống Local Edge AI!
+1. Trên trình duyệt, bấm vào biểu tượng **Microphone**, sau đó nói lệnh (Ví dụ: *"Cho mình một chai coca"* hoặc *"Cho thêm hai chai pepsi nữa"*).
+2. Khi đã chọn đủ, nói *"Thanh toán"*. Hệ thống sẽ sinh mã QR VietQR (thông qua PayOS).
+3. Sử dụng App Ngân hàng quét mã QR để chuyển khoản thực tế. 
+4. Hệ thống sẽ tự động bắt Webhook từ PayOS, báo "Thanh toán thành công" và gửi lệnh nhả hàng (kèm link âm thanh) xuống ESP32.
+5. Nếu trong lúc mở QR khách hàng lỡ thay đổi ý định (ví dụ nói *"Thêm 1 sting"*), mã QR sẽ tự động ẩn đi để hiển thị giỏ hàng mới cập nhật. Nếu mã QR hết 5 phút sẽ tự mờ đi cảnh báo hết hạn.
 
 ---
 
@@ -96,7 +98,7 @@ Dưới đây là cây thư mục các tệp tin trong bản Demo này và tác 
 
 ```text
 Voice_Interaction_For_Robot/
-├── start_demo.bat        # Script khởi động tự động toàn bộ hệ thống
+├── start_demo.bat        # Script khởi động tự động toàn bộ hệ thống (gồm cả Ngrok)
 ├── Modelfile             # File cấu hình để nạp model GGUF vào Ollama
 ├── requirements.txt      # Danh sách các thư viện Python cần cài đặt
 ├── stt_server.py         # Server chuyển Giọng nói thành Văn bản (Dùng Groq API)

@@ -1,7 +1,7 @@
 """
-Business Controller (Workflow Orchestrator).
-Receives AI Backend responses and routes them to the correct Handler.
-Uses Handler Pattern to comply with Open/Closed Principle.
+Business Controller (Trình điều phối Luồng công việc).
+Nhận phản hồi từ AI Backend và định tuyến chúng đến Handler (Bộ xử lý) phù hợp.
+Sử dụng Handler Pattern để tuân thủ Nguyên lý Đóng/Mở (Open/Closed Principle).
 """
 
 import logging
@@ -14,6 +14,7 @@ from client.business.handlers.remove_product_handler import RemoveProductHandler
 from client.business.handlers.change_product_handler import ChangeProductHandler
 from client.business.handlers.cancel_handler import CancelHandler
 from client.business.handlers.confirm_handler import ConfirmHandler
+from client.business.handlers.payment_handler import PaymentHandler
 from client.business.handlers.show_menu_handler import ShowMenuHandler
 from client.business.handlers.simple_text_handler import SimpleTextHandler
 from client.core.inventory.json_inventory import JsonInventory
@@ -23,16 +24,16 @@ logger = logging.getLogger("business_controller")
 
 class BusinessController:
     """
-    Central orchestrator for the vending machine client.
+    Trình điều phối trung tâm cho máy bán hàng tự động.
 
-    Responsibilities:
-    - Receive JSON from AI Backend
-    - Look up the correct Handler based on intent
-    - Delegate execution to that Handler
-    - Return the TTS response string
+    Trách nhiệm:
+    - Nhận JSON từ AI Backend
+    - Tìm Handler phù hợp dựa trên ý định (intent)
+    - Ủy quyền thực thi cho Handler đó
+    - Trả về chuỗi phản hồi TTS
 
-    To add a new intent: create a new Handler file and register it in _register_handlers().
-    No modification to this class is needed (Open/Closed Principle).
+    Để thêm ý định mới: tạo tệp Handler mới và đăng ký nó trong _register_handlers().
+    Không cần sửa đổi lớp này (Nguyên lý Đóng/Mở).
     """
 
     def __init__(self, order_service: OrderService,
@@ -46,14 +47,14 @@ class BusinessController:
         self._register_handlers()
 
     def _register_handlers(self) -> None:
-        """Wire up all intent handlers with their dependencies."""
+        """Liên kết tất cả các bộ xử lý ý định (intent handlers) với các phụ thuộc của chúng."""
         self._handlers["buy_product"] = BuyProductHandler(self._order_service)
-        self._handlers["add_product"] = BuyProductHandler(self._order_service)  # Same logic
+        self._handlers["add_product"] = BuyProductHandler(self._order_service)
         self._handlers["remove_product"] = RemoveProductHandler(self._order_service)
         self._handlers["change_product"] = ChangeProductHandler(self._order_service)
         self._handlers["cancel"] = CancelHandler(self._order_service)
         self._handlers["confirm"] = ConfirmHandler(self._order_service, self._device_service)
-        self._handlers["payment"] = self._handlers["confirm"]  # Payment is confirming the order
+        self._handlers["payment"] = PaymentHandler(self._order_service)  # Thanh toán mở QR
         self._handlers["show_menu"] = ShowMenuHandler(self._inventory)
         self._handlers["check_stock"] = ShowMenuHandler(self._inventory)
         self._handlers["greeting"] = SimpleTextHandler("Xin chào! Tôi có thể giúp gì cho bạn?")
@@ -61,8 +62,8 @@ class BusinessController:
 
     def process(self, response_data: Dict[str, Any]) -> str:
         """
-        Main entry point. Takes the full AI Backend JSON response,
-        finds the correct handler, and returns TTS text.
+        Điểm vào chính. Nhận toàn bộ phản hồi JSON từ AI Backend,
+        tìm handler phù hợp và trả về văn bản TTS.
         """
         intent = response_data.get("intent", "unknown")
         logger.info(f"Processing intent: '{intent}'")

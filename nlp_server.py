@@ -1,15 +1,15 @@
 """
-Full Pipeline STT + NLP Server
+Máy chủ STT + NLP Đầy đủ (Full Pipeline)
 =============================
-- Receives audio from browser via WebSocket
-- Transcribes audio using OpenRouter Whisper API v1
-- Extracts intent + entities using Ollama (local Qwen 2.5 1.5B)
-- Returns structured JSON result
+- Nhận âm thanh từ trình duyệt qua WebSocket
+- Chuyển âm thanh thành văn bản (Transcribe) sử dụng OpenRouter Whisper API v1
+- Trích xuất ý định + thực thể (intent + entities) sử dụng Ollama (chạy local Qwen 2.5 1.5B)
+- Trả về kết quả JSON có cấu trúc
 
-Dependencies:
+Phụ thuộc (Dependencies):
     pip install websockets openai requests
 
-Usage:
+Cách dùng:
     python nlp_server.py [--port PORT]
 """
 
@@ -27,7 +27,7 @@ import requests
 import websockets
 from openai import OpenAI
 
-# ─── Config ────────────────────────────────────────────────────────────────────
+# ─── Cấu hình ────────────────────────────────────────────────────────────────────
 
 import os
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
@@ -58,21 +58,21 @@ VALID_INTENTS = {
 }
 VALID_PRODUCTS = {"coca", "pepsi", "sting", "aquafina"}
 
-# ─── Clients ──────────────────────────────────────────────────────────────────
+# ─── Các Client ──────────────────────────────────────────────────────────────────
 
 # Khởi tạo Ollama client một lần duy nhất với /v1 base_url đúng chuẩn
 ollama_client = OpenAI(api_key="ollama", base_url=OLLAMA_BASE_URL)
-print("Connecting to Ollama...")
+print("Đang kết nối với Ollama...")
 try:
     ollama_client.chat.completions.create(model=OLLAMA_MODEL, messages=[{"role": "user", "content": "hi"}], max_tokens=5)
-    print(f"Ollama ready with model: {OLLAMA_MODEL}")
+    print(f"Ollama đã sẵn sàng với model: {OLLAMA_MODEL}")
 except Exception as e:
-    print(f"Ollama warning: {e}")
+    print(f"Cảnh báo Ollama: {e}")
 
-# ─── Helpers ───────────────────────────────────────────────────────────────────
+# ─── Các hàm hỗ trợ ─────────────────────────────────────────────────────────────
 
 def bytes_to_wav(audio_bytes: bytes, sample_rate: int = 16000) -> bytes:
-    """Wrap raw PCM int16 mono bytes into a WAV file."""
+    """Gói các byte PCM int16 mono thô vào một file WAV."""
     wav = bytearray()
     wav.extend(b'RIFF')
     wav.extend(struct.pack('<I', 36 + len(audio_bytes)))
@@ -92,7 +92,7 @@ def bytes_to_wav(audio_bytes: bytes, sample_rate: int = 16000) -> bytes:
 
 
 def extract_json(text: str) -> dict:
-    """Parse JSON from LLM output, stripping markdown code blocks."""
+    """Phân tích JSON từ đầu ra của LLM, loại bỏ các khối mã markdown."""
     text = text.strip()
     if "```json" in text:
         text = text.split("```json")[1].split("```")[0].strip()
@@ -107,7 +107,7 @@ def extract_json(text: str) -> dict:
 
 
 def nlp_pipeline(text: str) -> dict:
-    """Call Ollama to extract intent + entities."""
+    """Gọi Ollama để trích xuất ý định + thực thể."""
     t0 = time.time()
     response = ollama_client.chat.completions.create(
         model=OLLAMA_MODEL,
@@ -139,9 +139,9 @@ def nlp_pipeline(text: str) -> dict:
             quantity = 1
         items.append({"product": product, "quantity": quantity})
 
-    # ── Post-processing: rule-based override for critical misclassifications ──
+    # ── Hậu xử lý: ghi đè dựa trên quy tắc đối với các trường hợp phân loại sai nghiêm trọng ──
     # Web Speech API đôi khi trả text không dấu → model có thể bị nhầm intent.
-    # Safety net này chỉ override khi keyword rõ ràng.
+    # Lớp bảo vệ (Safety net) này chỉ ghi đè khi từ khóa thực sự rõ ràng.
     text_lower = text.lower()
     REMOVE_TRIGGERS = [
         "bỏ bớt", "bo bot", "giảm", "bớt", "xóa", "xoa", "trừ", "tru",
@@ -175,7 +175,7 @@ def nlp_pipeline(text: str) -> dict:
 import base64
 
 def stt_pipeline(audio_bytes: bytes) -> str:
-    """Transcribe audio using Groq Whisper API (fastest) or OpenRouter fallback."""
+    """Chuyển đổi âm thanh bằng Groq Whisper API (nhanh nhất) hoặc dùng OpenRouter làm phương án dự phòng."""
     wav_bytes = bytes_to_wav(audio_bytes)
     
     text = ""
@@ -289,7 +289,7 @@ async def handle_client(websocket):
                         try:
                             # 1. Speech-to-Text
                             t0 = time.time()
-                            transcribed = stt_pipeline(audio_data)
+                            transcribed = await asyncio.to_thread(stt_pipeline, audio_data)
                             stt_time = time.time() - t0
 
                             if not transcribed:
@@ -300,7 +300,7 @@ async def handle_client(websocket):
                                 continue
 
                             # 2. NLP
-                            nlp_result = nlp_pipeline(transcribed)
+                            nlp_result = await asyncio.to_thread(nlp_pipeline, transcribed)
 
                             response = {
                                 "type": "result",

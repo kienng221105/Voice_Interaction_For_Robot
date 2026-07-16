@@ -1,8 +1,8 @@
 """
-Command Queue Service.
+Dịch vụ Hàng đợi Lệnh.
 
-Ensures that dispensing commands are executed sequentially and handles
-the ACK/Timeout logic between AI and hardware.
+Đảm bảo rằng các lệnh xả hàng được thực thi theo tuần tự và xử lý
+logic ACK/Timeout (Phản hồi/Hết thời gian) giữa AI và phần cứng.
 """
 
 from __future__ import annotations
@@ -24,22 +24,22 @@ logger = logging.getLogger("command_queue")
 
 @dataclass
 class DispenseJob:
-    """Represents a queued request to dispense a product."""
+    """Đại diện cho một yêu cầu xả hàng được xếp hàng."""
     job_id: str
     product_id: str
     quantity: int
-    callback: Optional[callable] = None  # Called when job finishes
+    callback: Optional[callable] = None  # Được gọi khi công việc hoàn thành
 
 
 class CommandQueue:
     """
-    Manages the sequential execution of dispense commands.
+    Quản lý việc thực thi tuần tự các lệnh xả hàng.
     
-    1. AI queues a product to dispense.
-    2. Queue reserves stock in InventoryManager.
-    3. Worker thread takes job, sends to DeviceAdapter.
-    4. Worker waits for ACK (or simulates delay if Legacy firmware).
-    5. On finish, commits or releases stock based on success rate.
+    1. AI đưa một sản phẩm vào hàng đợi để xả.
+    2. Hàng đợi giữ chỗ (reserve) số lượng trong InventoryManager.
+    3. Luồng (worker thread) nhận công việc, gửi đến DeviceAdapter.
+    4. Luồng chờ ACK (hoặc giả lập độ trễ nếu là firmware cũ).
+    5. Khi hoàn thành, chốt (commit) hoặc nhả (release) tồn kho dựa trên mức độ thành công.
     """
 
     def __init__(self, adapter: DeviceAdapter, inventory: InventoryManager) -> None:
@@ -50,11 +50,11 @@ class CommandQueue:
         self._running = False
         self._worker_thread: Optional[threading.Thread] = None
         
-        # Dictionary to store events for incoming ACKs (mapped by command_id)
+        # Dictionary để lưu trữ sự kiện cho các ACK đến (ánh xạ theo command_id)
         self._pending_acks: dict[str, dict[str, Any]] = {}
         self._ack_events: dict[str, threading.Event] = {}
         
-        # Subscribe to response topic if using JSON protocol
+        # Đăng ký topic phản hồi nếu dùng giao thức JSON
         if self.adapter.protocol_format == "json":
             self.adapter.transport.subscribe(
                 self.adapter.response_topic, 
@@ -62,7 +62,7 @@ class CommandQueue:
             )
 
     def start(self) -> None:
-        """Start the background worker thread."""
+        """Bắt đầu luồng công việc (worker thread) chạy ngầm."""
         if self._running:
             return
         self._running = True
@@ -71,27 +71,28 @@ class CommandQueue:
         logger.info("Command Queue started.")
 
     def stop(self) -> None:
-        """Stop the background worker thread."""
+        """Dừng luồng công việc (worker thread)."""
         self._running = False
         if self._worker_thread:
-            # Push a dummy None job to wake up queue.get()
+            # Gửi một công việc rỗng None để đánh thức queue.get()
             self._queue.put(None)  # type: ignore
+            # Đánh thức luồng worker đang đợi
             self._worker_thread.join(timeout=2.0)
         logger.info("Command Queue stopped.")
 
     def enqueue(self, product_id: str, quantity: int = 1, callback: Optional[callable] = None) -> bool:
         """
-        Add a dispense job to the queue.
-        Returns True if successfully queued (stock reserved), False if out of stock.
+        Thêm một công việc xả hàng vào hàng đợi.
+        Trả về True nếu được đưa vào hàng đợi thành công (đã giữ chỗ tồn kho), False nếu hết hàng.
         """
-        # 1. Reserve stock first to prevent race conditions
+        # 1. Giữ chỗ tồn kho trước để tránh điều kiện đua (race conditions)
         try:
             self.inventory.reserve(product_id, quantity)
         except OutOfStockError as e:
             logger.warning(f"Failed to enqueue {quantity}x '{product_id}': {e}")
             return False
             
-        # 2. Add to queue
+        # 2. Thêm vào hàng đợi
         job = DispenseJob(
             job_id=f"cmd_{uuid.uuid4().hex[:8]}",
             product_id=product_id,
@@ -103,12 +104,12 @@ class CommandQueue:
         return True
 
     def _worker_loop(self) -> None:
-        """Background thread processing jobs sequentially."""
+        """Luồng chạy ngầm xử lý các công việc một cách tuần tự."""
         while self._running:
             try:
                 job = self._queue.get(timeout=1.0)
                 if job is None:
-                    continue  # Stop signal
+                    continue  # Tín hiệu dừng
                     
                 self._process_job(job)
                 self._queue.task_done()
@@ -119,10 +120,10 @@ class CommandQueue:
                 logger.error(f"Error in CommandQueue worker loop: {e}")
 
     def _process_job(self, job: DispenseJob) -> None:
-        """Execute a single job and handle inventory logic based on outcome."""
+        """Thực thi một công việc và xử lý logic tồn kho dựa trên kết quả."""
         logger.info(f"Processing job {job.job_id}...")
         
-        # 1. Send command via Adapter
+        # 1. Gửi lệnh qua Adapter
         success_sent = self.adapter.dispense_product(
             job.product_id, 
             quantity=job.quantity, 
@@ -130,24 +131,22 @@ class CommandQueue:
         )
         
         if not success_sent:
-            # Failed to even send (e.g. invalid slot, transport down)
+            # Thất bại ngay từ lúc gửi (ví dụ: slot không hợp lệ, mất kết nối transport)
             logger.error(f"Job {job.job_id}: Failed to send command.")
             self.inventory.release(job.product_id, job.quantity)
             self._invoke_callback(job, success_qty=0, fail_qty=job.quantity)
             return
 
-        # 2. Wait for execution (ACK or simulated delay)
+        # 2. Chờ thực thi (ACK hoặc giả lập độ trễ)
         success_qty = 0
         fail_qty = 0
         
         if self.adapter.protocol_format == "json":
-            # Real hardware with v2 firmware -> Wait for JSON ACK
             success_qty, fail_qty = self._wait_for_json_ack(job)
         else:
-            # Real hardware with v1 (legacy) firmware -> Sleep and assume success
+            # Phần cứng thực tế với firmware v1 (cũ) -> Ngủ và giả định thành công
             success_qty, fail_qty = self._simulate_legacy_execution(job)
             
-        # 3. Update Inventory based on actual hardware outcome
         if success_qty > 0:
             self.inventory.confirm_dispense(job.product_id, success_qty)
         if fail_qty > 0:
@@ -158,40 +157,40 @@ class CommandQueue:
 
     def _simulate_legacy_execution(self, job: DispenseJob) -> tuple[int, int]:
         """
-        Since legacy firmware does not send ACKs, we estimate the time 
-        it takes to drop the items and blindly assume success.
+        Vì firmware cũ không gửi ACK (phản hồi), chúng ta ước tính thời gian 
+        rớt hàng và giả định một cách mù quáng là thành công.
         """
-        # Assume 2.5 seconds per item
+        # Giả định 2.5 giây cho mỗi sản phẩm
         estimated_duration = job.quantity * 2.5
         logger.info(f"Job {job.job_id}: Legacy mode. Sleeping for {estimated_duration:.1f}s...")
         time.sleep(estimated_duration)
         
-        # Assume all succeeded
+        # Giả định tất cả thành công
         return job.quantity, 0
 
     def _wait_for_json_ack(self, job: DispenseJob) -> tuple[int, int]:
         """
-        Wait for a response on MQTT for a specific command_id.
+        Đợi phản hồi trên MQTT cho một command_id cụ thể.
         """
         event = threading.Event()
         self._ack_events[job.job_id] = event
         
-        # Wait up to (timeout_per_item * quantity + 5s buffer)
+        # Chờ đợi lên đến (timeout_per_item * quantity + 5s buffer)
         timeout = job.quantity * 6.0 + 5.0
         
         logger.info(f"Job {job.job_id}: Waiting for JSON ACK (timeout={timeout}s)...")
         event_set = event.wait(timeout)
         
-        # Cleanup event
+        # Dọn dẹp sự kiện
         self._ack_events.pop(job.job_id, None)
         response_data = self._pending_acks.pop(job.job_id, None)
         
         if not event_set or not response_data:
             logger.error(f"Job {job.job_id}: TIMEOUT waiting for ACK.")
-            # Hardware might be hung, release everything
+            # Phần cứng có thể bị treo, nhả tất cả ra
             return 0, job.quantity
             
-        # Parse response results
+        # Phân tích kết quả phản hồi
         success_qty = 0
         results = response_data.get("results", [])
         
@@ -206,7 +205,7 @@ class CommandQueue:
         return success_qty, fail_qty
 
     def _on_device_response(self, topic: str, payload: str) -> None:
-        """Callback for incoming MQTT responses."""
+        """Callback cho phản hồi đến từ thiết bị."""
         try:
             data = json.loads(payload)
             cmd_id = data.get("command_id")
@@ -219,6 +218,7 @@ class CommandQueue:
             pass
 
     def _invoke_callback(self, job: DispenseJob, success_qty: int, fail_qty: int) -> None:
+        """Kích hoạt callback nếu được cung cấp."""
         if job.callback:
             try:
                 job.callback(job.product_id, success_qty, fail_qty)

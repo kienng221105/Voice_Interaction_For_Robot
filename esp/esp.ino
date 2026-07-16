@@ -1,24 +1,28 @@
 #include <WiFi.h>
-#include <WiFiClientSecure.h>
 #include <WiFiManager.h>
 #include <vector>
 #include <PubSubClient.h>
-#include <Audio.h>
+#include "AudioFileSourceHTTPStream.h"
+#include "AudioGeneratorMP3.h"
+#include "AudioOutputI2S.h"
 
 const int MACHINE_ID = 1;
 
-const char *mqtt_server = "";
-const int mqtt_port = 8883; 
+const char *mqtt_server = "broker.hivemq.com";
+const int mqtt_port = 1883; 
 const char *mqtt_user = "";
 const char *mqtt_pass = "";
 
-WiFiClientSecure espClient;
+WiFiClient espClient;
 PubSubClient client(espClient);
 
 #define I2S_BCLK 27
 #define I2S_LRC 26
 #define I2S_DOUT 25
-Audio audio;
+
+AudioGeneratorMP3 *mp3;
+AudioFileSourceHTTPStream *file;
+AudioOutputI2S *out;
 
 const int RELAY_PINS[4] = {22, 23, 4, 13};
 const int SWITCH_PINS[4] = {14, 18, 19, 21};
@@ -68,7 +72,9 @@ bool vendOnce(int index)
         
         while (digitalRead(SWITCH_PINS[index]) == LOW)
         {
-            audio.loop(); // Giữ loa không bị vấp
+            if (mp3->isRunning()) {
+                if (!mp3->loop()) mp3->stop();
+            }
             if (millis() - t0 > TIMEOUT_MS)
             {
                 digitalWrite(RELAY_PINS[index], HIGH); // Tắt khẩn cấp
@@ -80,18 +86,20 @@ bool vendOnce(int index)
         delay(50); // Trễ một chút để lò xo trượt hẳn ra khỏi công tắc
     }
 
-    // 2. CHUẨN BỊ CHU TRÌNH CHÍNH (Xóa cờ nhiễu do quá trình xả kẹt gây ra)
+    // 2. CHUẨN BỊ CHU TRÌNH CHÍNH
     seenClosed[index] = false;
     stopNow[index] = false;
     
     digitalWrite(RELAY_PINS[index], LOW); // Đảm bảo motor ON
     Serial.printf("[VEND] Motor khay %d ON\n", index + 1);
 
-    // 3. Chờ cho đến khi hoàn thành chu trình: OPEN -> CLOSED -> OPEN (Bắt bằng Ngắt ISR)
+    // 3. Chờ cho đến khi hoàn thành chu trình
     t0 = millis();
     while (!stopNow[index])
     {
-        audio.loop();
+        if (mp3->isRunning()) {
+            if (!mp3->loop()) mp3->stop();
+        }
         if (millis() - t0 > TIMEOUT_MS)
         {
             digitalWrite(RELAY_PINS[index], HIGH); // Tắt motor khẩn cấp
@@ -107,26 +115,24 @@ bool vendOnce(int index)
     return true;
 }
 
-// ================= HÀM CỨU MOTOR (NHÍCH 1 CHÚT RỒI NGẮT) =================
 void nudgeMotor(int index)
 {
     Serial.printf("[CỨU HỘ] Dang nhich motor khay %d...\n", index + 1);
-
-    // Bật motor
     digitalWrite(RELAY_PINS[index], LOW);
-
-    // Giữ motor quay trong 100 mili-giây
     uint32_t t0 = millis();
     while (millis() - t0 < 100)
     {
-        audio.loop(); // Nuôi loa liên tục
+        if (mp3->isRunning()) {
+            if (!mp3->loop()) mp3->stop();
+        }
         delay(1);
     }
-
-    // Tắt motor
     digitalWrite(RELAY_PINS[index], HIGH);
     Serial.printf("[CỨU HỘ] Da ngat motor khay %d.\n", index + 1);
 }
+
+// Biến toàn cục lưu TTS
+String pendingTTS = "";
 
 // ================= HÀM XỬ LÝ KHI NHẬN ĐƯỢC LỆNH MUA HÀNG =================
 void mqttCallback(char *topic, uint8_t *payload, unsigned int length)
@@ -142,7 +148,12 @@ void mqttCallback(char *topic, uint8_t *payload, unsigned int length)
     Serial.print("]: ");
     Serial.println(message);
 
-    String loiNhoi = "Bạn đã thanh toán thành công, bạn chờ trong giây lát để lấy nước";
+    if (message.startsWith("PLAY:")) {
+        String url = message.substring(5);
+        Serial.println("Phat am thanh tu URL: " + url);
+        pendingTTS = url;
+        return;
+    }
 
     for (int i = 0; i < 4; i++)
     {
@@ -150,14 +161,6 @@ void mqttCallback(char *topic, uint8_t *payload, unsigned int length)
 
         if (message.indexOf(slotTag) >= 0)
         {
-            Serial.println("Dang phat thong bao...");
-            audio.connecttospeech(loiNhoi.c_str(), "vi");
-            while (audio.isRunning())
-            {
-                audio.loop();
-            }
-
-            // Gọi hàm trả hàng
             bool success = vendOnce(i);
             if (success)
             {
@@ -184,7 +187,7 @@ void reconnectMQTT()
         if (client.connect(clientId.c_str(), mqtt_user, mqtt_pass))
         {
             Serial.println("THANH CONG!");
-            String topicName = "vending/machine/" + String(MACHINE_ID);
+            String topicName = "vending/machine/VM001/command";
             client.subscribe(topicName.c_str());
             Serial.print("Da lang nghe Topic: ");
             Serial.println(topicName);
@@ -197,7 +200,9 @@ void reconnectMQTT()
 
             for (int k = 0; k < 500; k++)
             {
-                audio.loop();
+                if (mp3->isRunning()) {
+                    if (!mp3->loop()) mp3->stop();
+                }
                 delay(10);
             }
         }
@@ -225,30 +230,24 @@ void setup()
     wm.setMenu(menu);
 
     bool res = wm.autoConnect("AutoConnectAP", "12345678");
-
-    if (!res)
-    {
+    if (!res) {
         Serial.println("Failed to connect");
-    }
-    else
-    {
+    } else {
         Serial.println("\nDa ket noi WiFi thanh cong! yeey :)");
     }
 
-    espClient.setInsecure();
     client.setServer(mqtt_server, mqtt_port);
     client.setCallback(mqttCallback);
 
-    audio.setPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
-    audio.setVolume(21);
+    // Khoi tao ESP8266Audio
+    out = new AudioOutputI2S();
+    out->SetPinout(I2S_BCLK, I2S_LRC, I2S_DOUT);
+    out->SetGain(1.0); // Volume (0.0 to 4.0)
+    
+    mp3 = new AudioGeneratorMP3();
+    file = new AudioFileSourceHTTPStream();
 
-    audio.connecttospeech("Hệ thống bán nước tự động đã sẵn sàng", "vi");
-    while (audio.isRunning())
-    {
-        audio.loop();
-    }
-    Serial.println("Da khoi dong xong am thanh!");
-
+    Serial.println("Da khoi dong xong am thanh (Dung ESP8266Audio SIEU NHE)!");
     Serial.println("\n--- HUONG DAN CUU HO MOTOR ---");
     Serial.println("Go vao Serial Monitor: a (khay 1), b (khay 2), c (khay 3), d (khay 4)");
     Serial.println("------------------------------\n");
@@ -257,7 +256,50 @@ void setup()
 // ================= VÒNG LẶP CHÍNH =================
 void loop()
 {
-    audio.loop();
+    if (mp3 && mp3->isRunning()) {
+        if (!mp3->loop()) {
+            mp3->stop();
+            if (file) file->close();
+            Serial.println("Phat xong!");
+        }
+    }
+
+    // Xử lý phát TTS
+    if (pendingTTS != "") {
+        Serial.println("Bat dau phat: " + pendingTTS);
+        if (mp3 && mp3->isRunning()) {
+            mp3->stop();
+        }
+        if (mp3) {
+            delete mp3;
+            mp3 = NULL;
+        }
+        if (file) {
+            file->close();
+            delete file;
+            file = NULL;
+        }
+        
+        file = new AudioFileSourceHTTPStream();
+        mp3 = new AudioGeneratorMP3();
+        
+        if (file->open(pendingTTS.c_str())) {
+            Serial.println("Mo URL thanh cong!");
+            mp3->begin(file, out);
+            
+            // Cho phat xong am thanh (giong code goc)
+            while(mp3->isRunning()) {
+                if (!mp3->loop()) {
+                    mp3->stop();
+                    Serial.println("Phat xong!");
+                }
+            }
+        } else {
+            Serial.println("Loi mo URL!");
+        }
+        
+        pendingTTS = ""; // Xóa hàng đợi
+    }
 
     if (!client.connected())
     {

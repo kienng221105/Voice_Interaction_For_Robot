@@ -1,24 +1,24 @@
 """
-Mock ESP32 — Simulates ESP32 vending machine firmware.
+Mock ESP32 — Giả lập phần mềm vi điều khiển máy bán hàng ESP32.
 
-This module provides a MockESP32 class that replicates the behavior of the
-real ESP32 firmware (esp.ino) without requiring actual hardware.
+Module này cung cấp lớp MockESP32 tái tạo lại hành vi của 
+firmware ESP32 thực tế (esp.ino) mà không cần phần cứng thật.
 
-The real firmware:
-  - Subscribes to MQTT topic ``vending/machine/{id}``
-  - Parses ``SLOT:X`` commands from plain-text payloads
-  - Drives motors via relay with ISR-based cycle detection
-  - Has 5-second timeout per motor operation
-  - Does NOT publish responses (one-way communication)
+Firmware thực tế:
+  - Đăng ký (Subscribe) vào MQTT topic ``vending/machine/{id}``
+  - Phân tích cú pháp lệnh ``SLOT:X`` từ chuỗi văn bản thuần
+  - Điều khiển motor qua relay kết hợp với cơ chế ngắt ISR để phát hiện vòng quay
+  - Có thời gian chờ (timeout) 5 giây cho mỗi lần chạy motor
+  - KHÔNG phản hồi kết quả (giao tiếp một chiều)
 
-The mock extends this by:
-  - Tracking inventory (stock per slot)
-  - Publishing structured JSON responses
-  - Simulating motor delays, jams, timeouts, and random failures
-  - Supporting both legacy ``SLOT:X`` and new JSON command formats
+Bản giả lập (Mock) mở rộng thêm:
+  - Theo dõi kho hàng (số lượng tồn kho mỗi khe)
+  - Trả về phản hồi cấu trúc JSON
+  - Giả lập độ trễ motor, kẹt hàng, hết thời gian (timeout), và các lỗi ngẫu nhiên
+  - Hỗ trợ cả định dạng lệnh ``SLOT:X`` cũ và định dạng JSON mới
 
-Designed to run as a **standalone process** (separate from the AI server),
-just like the real ESP32 is a separate physical device.
+Được thiết kế để chạy như một **tiến trình độc lập** (tách biệt với AI server),
+giống hệt như cách mạch ESP32 thực tế là một thiết bị vật lý tách biệt.
 """
 
 from __future__ import annotations
@@ -41,7 +41,7 @@ logger = logging.getLogger("mock_esp32")
 
 
 class DispenseStatus(Enum):
-    """Possible outcomes of a dispense operation."""
+    """Kết quả khả thi của một thao tác xả hàng."""
 
     SUCCESS = "success"
     OUT_OF_STOCK = "out_of_stock"
@@ -53,7 +53,7 @@ class DispenseStatus(Enum):
 
 @dataclass
 class DispenseResult:
-    """Result of a single dispense operation."""
+    """Kết quả của một thao tác xả hàng."""
 
     slot: int
     status: DispenseStatus
@@ -64,16 +64,16 @@ class DispenseResult:
 
 @dataclass
 class MockESP32Config:
-    """Configuration for the Mock ESP32 simulator.
+    """Cấu hình cho trình giả lập Mock ESP32.
 
-    Attributes:
-        machine_id: Unique identifier for this machine.
-        num_slots: Number of physical slots (default 4).
-        initial_stock: Starting stock per slot.
-        dispense_time_range: (min, max) seconds for motor simulation.
-        failure_rate: Probability [0.0, 1.0] of random failure per dispense.
-        jam_slots: List of slot numbers that are permanently jammed.
-        timeout_ms: Motor timeout in milliseconds (matches firmware TIMEOUT_MS).
+    Thuộc tính:
+        machine_id: Định danh duy nhất cho máy này.
+        num_slots: Số lượng khe chứa vật lý (mặc định 4).
+        initial_stock: Số lượng tồn kho ban đầu mỗi khe.
+        dispense_time_range: (min, max) giây để giả lập thời gian chạy motor.
+        failure_rate: Tỷ lệ [0.0, 1.0] lỗi ngẫu nhiên mỗi lần xả hàng.
+        jam_slots: Danh sách các số thứ tự khe bị kẹt vĩnh viễn.
+        timeout_ms: Thời gian chờ motor tính bằng mili-giây (khớp với TIMEOUT_MS của firmware).
     """
 
     machine_id: str = "VM001"
@@ -88,12 +88,12 @@ class MockESP32Config:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> MockESP32Config:
-        """Create config from a dictionary (e.g. parsed YAML)."""
+        """Tạo cấu hình từ một từ điển (ví dụ: đã phân tích từ YAML)."""
         machine = data.get("machine", {})
         mock = data.get("mock_esp", {})
 
         initial_stock = mock.get("initial_stock", {1: 10, 2: 8, 3: 5, 4: 12})
-        # YAML may parse keys as strings; normalise to int
+        # YAML có thể phân tích khóa là chuỗi; chuẩn hóa thành int
         initial_stock = {int(k): int(v) for k, v in initial_stock.items()}
 
         time_range = mock.get("dispense_time_range", [0.8, 2.0])
@@ -115,15 +115,15 @@ class MockESP32Config:
 
 
 class MockESP32:
-    """Simulates ESP32 vending machine firmware.
+    """Giả lập phần mềm vi điều khiển ESP32.
 
-    This class contains **no MQTT logic**.  It only knows how to:
-    - Parse command payloads (legacy and JSON)
-    - Simulate motor operation with realistic delays
-    - Track stock per slot
-    - Return structured results
+    Lớp này **không chứa logic MQTT**. Nó chỉ biết cách:
+    - Phân tích payload của lệnh (cũ và JSON)
+    - Giả lập hoạt động của motor với độ trễ thực tế
+    - Theo dõi tồn kho mỗi khe
+    - Trả về kết quả có cấu trúc
 
-    MQTT wiring is handled externally (see ``run_mock_esp.py``).
+    Việc kết nối MQTT được xử lý bên ngoài (xem ``run_mock_esp.py``).
     """
 
     def __init__(self, config: MockESP32Config) -> None:
@@ -131,11 +131,11 @@ class MockESP32:
         self.machine_id: str = config.machine_id
         self.num_slots: int = config.num_slots
 
-        # Mutable state
+        # Trạng thái có thể thay đổi
         self.stock: dict[int, int] = dict(config.initial_stock)
         self.jam_slots: list[int] = list(config.jam_slots)
 
-        # Statistics
+        # Số liệu thống kê
         self._dispense_count: dict[int, int] = {
             i: 0 for i in range(1, config.num_slots + 1)
         }
@@ -153,22 +153,22 @@ class MockESP32:
             logger.info(f"  Slot {slot}: stock = {stock}")
         logger.info("=" * 60)
 
-    # ── Command Parsing ─────────────────────────────────────
+    # ── Phân tích lệnh ─────────────────────────────────────
 
     def handle_message(self, payload: str) -> list[DispenseResult]:
-        """Parse an incoming message and execute commands.
+        """Phân tích tin nhắn đến và thực thi lệnh.
 
-        Supports two formats:
+        Hỗ trợ 2 định dạng:
 
-        1. **Legacy** (current firmware): ``"SLOT:1 SLOT:2"``
-        2. **JSON** (future protocol):
+        1. **Cũ (Legacy)** (firmware hiện tại): ``"SLOT:1 SLOT:2"``
+        2. **JSON** (giao thức tương lai):
            ``{"command":"dispense","payload":{"items":[{"slot":1,"quantity":1}]}}``
 
-        Args:
-            payload: Raw message string from MQTT.
+        Tham số:
+            payload: Chuỗi tin nhắn thô từ MQTT.
 
-        Returns:
-            List of DispenseResult for each dispensed item.
+        Trả về:
+            Danh sách DispenseResult cho từng sản phẩm được xả.
         """
         self._total_commands += 1
         payload = payload.strip()
@@ -178,7 +178,7 @@ class MockESP32:
         logger.info(f"  Payload: {payload}")
         logger.info("=" * 60)
 
-        # Try JSON first
+        # Thử định dạng JSON trước
         try:
             data = json.loads(payload)
             if isinstance(data, dict) and data.get("command") == "dispense":
@@ -186,7 +186,7 @@ class MockESP32:
         except (json.JSONDecodeError, KeyError, TypeError):
             pass
 
-        # Fall back to legacy SLOT:X
+        # Quay lại lệnh SLOT:X cũ
         if "SLOT:" in payload.upper():
             return self._handle_legacy_command(payload)
 
@@ -194,7 +194,7 @@ class MockESP32:
         return []
 
     def _handle_legacy_command(self, payload: str) -> list[DispenseResult]:
-        """Parse ``SLOT:X`` format.  Multiple slots allowed in one message."""
+        """Phân tích định dạng ``SLOT:X``. Cho phép nhiều khe trong một tin nhắn."""
         results: list[DispenseResult] = []
         upper = payload.upper()
 
@@ -208,7 +208,7 @@ class MockESP32:
         return results
 
     def _handle_json_command(self, data: dict[str, Any]) -> list[DispenseResult]:
-        """Parse JSON command format."""
+        """Phân tích định dạng lệnh JSON."""
         results: list[DispenseResult] = []
         items = data.get("payload", {}).get("items", [])
 
@@ -221,29 +221,29 @@ class MockESP32:
 
         return results
 
-    # ── Motor Simulation ────────────────────────────────────
+    # ── Giả lập Motor ────────────────────────────────────
 
     def dispense(self, slot: int) -> DispenseResult:
-        """Simulate dispensing one item from *slot*.
+        """Giả lập việc xả một mặt hàng từ *slot*.
 
-        Mirrors the real ``vendOnce(index)`` logic:
-        1. Validate slot number
-        2. Check stock
-        3. Check for motor jam
-        4. Random failure chance
-        5. Simulate motor spin delay
-        6. Decrement stock on success
+        Sao chép logic ``vendOnce(index)`` thực tế:
+        1. Xác thực số khe
+        2. Kiểm tra tồn kho
+        3. Kiểm tra kẹt motor
+        4. Tỉ lệ lỗi ngẫu nhiên
+        5. Giả lập độ trễ quay motor
+        6. Giảm tồn kho khi thành công
 
-        Args:
-            slot: 1-based slot number.
+        Tham số:
+            slot: Số thứ tự khe (bắt đầu từ 1).
 
-        Returns:
-            DispenseResult with status and metadata.
+        Trả về:
+            DispenseResult với trạng thái và siêu dữ liệu.
         """
         logger.info("-" * 40)
         logger.info(f"  [DISPENSE] Slot {slot} — START")
 
-        # 1. Validate
+        # 1. Xác thực
         if slot < 1 or slot > self.num_slots:
             logger.error(f"  [DISPENSE] Slot {slot} — INVALID (valid: 1-{self.num_slots})")
             return DispenseResult(
@@ -252,7 +252,7 @@ class MockESP32:
                 message=f"Slot {slot} does not exist (valid: 1-{self.num_slots})",
             )
 
-        # 2. Check stock
+        # 2. Kiểm tra tồn kho
         current_stock = self.stock.get(slot, 0)
         if current_stock <= 0:
             logger.warning(f"  [DISPENSE] Slot {slot} — OUT OF STOCK")
@@ -263,7 +263,7 @@ class MockESP32:
                 message=f"Slot {slot} is empty",
             )
 
-        # 3. Motor jam
+        # 3. Kẹt motor
         if slot in self.jam_slots:
             delay = random.uniform(2.0, 4.0)
             logger.info(f"  [DISPENSE] Slot {slot} — Motor spinning...")
@@ -280,7 +280,7 @@ class MockESP32:
                 message=f"Motor jam at slot {slot}",
             )
 
-        # 4. Random failure
+        # 4. Lỗi ngẫu nhiên
         if random.random() < self.config.failure_rate:
             failure = random.choice(
                 [DispenseStatus.MOTOR_TIMEOUT, DispenseStatus.ERROR]
@@ -300,13 +300,13 @@ class MockESP32:
                 message=f"Random failure: {failure.value}",
             )
 
-        # 5. Normal dispense — simulate motor delay
+        # 5. Xả hàng bình thường — giả lập độ trễ motor
         min_t, max_t = self.config.dispense_time_range
         delay = random.uniform(min_t, max_t)
         logger.info(f"  [DISPENSE] Slot {slot} — Motor spinning... ({delay:.1f}s)")
         time.sleep(delay)
 
-        # 6. Success — decrement stock
+        # 6. Thành công — giảm tồn kho
         self.stock[slot] = current_stock - 1
         self._dispense_count[slot] += 1
 
@@ -322,14 +322,14 @@ class MockESP32:
             message=f"Dispensed 1 item from slot {slot}",
         )
 
-    # ── Queries ─────────────────────────────────────────────
+    # ── Truy vấn ─────────────────────────────────────────────
 
     def get_stock(self, slot: int) -> int:
-        """Return current stock for *slot*."""
+        """Trả về tồn kho hiện tại cho *slot*."""
         return self.stock.get(slot, 0)
 
     def get_status(self) -> dict[str, Any]:
-        """Return full machine status as a dictionary."""
+        """Trả về trạng thái máy đầy đủ dưới dạng từ điển."""
         return {
             "machine_id": self.machine_id,
             "timestamp": datetime.now(timezone.utc).isoformat(),
@@ -344,10 +344,10 @@ class MockESP32:
             "total_commands": self._total_commands,
         }
 
-    # ── Admin helpers (for testing / runtime control) ───────
+    # ── Trình trợ giúp quản trị (để kiểm tra / điều khiển thời gian chạy) ───────
 
     def set_jam(self, slot: int, jammed: bool = True) -> None:
-        """Set or clear jam state for a slot."""
+        """Đặt hoặc xóa trạng thái kẹt của một khe."""
         if jammed and slot not in self.jam_slots:
             self.jam_slots.append(slot)
             logger.warning(f"  Slot {slot} marked as JAMMED")
@@ -356,7 +356,7 @@ class MockESP32:
             logger.info(f"  Slot {slot} jam CLEARED")
 
     def restock(self, slot: int, quantity: int) -> None:
-        """Set stock for a slot to *quantity*."""
+        """Đặt tồn kho cho một khe thành *quantity*."""
         self.stock[slot] = quantity
         logger.info(f"  [RESTOCK] Slot {slot} → stock = {quantity}")
 

@@ -37,3 +37,8 @@ SYSTEM_DOCS.md
 demo.py
 .pytest_cache/
 .github/
+ngrok.exe
+ngrok.zip
+original_esp/
+pptx_content.txt
+product_image/

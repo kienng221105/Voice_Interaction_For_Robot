@@ -1,8 +1,8 @@
 """
-Inventory Manager.
+Trình quản lý Kho hàng (Inventory Manager).
 
-Manages products, mapping to slots, and stock levels.
-Completely independent of MQTT and hardware specifics.
+Quản lý các sản phẩm, ánh xạ đến khe chứa (slots) và mức tồn kho.
+Hoàn toàn độc lập với MQTT và các đặc thù của phần cứng.
 """
 
 from __future__ import annotations
@@ -18,7 +18,7 @@ logger = logging.getLogger("inventory")
 
 
 class InventoryError(Exception):
-    """Base exception for inventory operations."""
+    """Lỗi cơ bản cho các thao tác kho hàng."""
     pass
 
 
@@ -32,24 +32,24 @@ class InvalidProductError(InventoryError):
 
 class InventoryManager:
     """
-    Manages vending machine inventory.
+    Quản lý kho hàng của máy bán hàng tự động.
     
-    Thread-safe implementation for checking stock, reserving items (during payment),
-    and confirming/releasing dispenses.
+    Triển khai an toàn luồng (Thread-safe) để kiểm tra tồn kho, giữ chỗ sản phẩm (trong khi thanh toán),
+    và xác nhận/nhả lệnh xả hàng.
     """
 
     def __init__(self, config_path: str) -> None:
         self.config_path = config_path
         self.machine_id: str = ""
         self._products: dict[str, Product] = {}
-        # In-memory transient reservations mapping product_id to reserved qty
+        # Map giữ chỗ tạm thời trong bộ nhớ: product_id -> số lượng giữ chỗ
         self._reservations: dict[str, int] = {}
         self._lock = threading.RLock()
         
         self.load_inventory()
 
     def load_inventory(self) -> None:
-        """Load inventory from JSON file."""
+        """Tải kho hàng từ tệp JSON."""
         with self._lock:
             try:
                 with open(self.config_path, "r", encoding="utf-8") as f:
@@ -66,20 +66,19 @@ class InventoryManager:
                     self._products[pid] = product
                     self._reservations[pid] = 0
                     
-                logger.info(f"Loaded {len(self._products)} products from {self.config_path}")
+                logger.info(f"Đã tải {len(self._products)} sản phẩm từ {self.config_path}")
             except Exception as e:
-                logger.error(f"Failed to load inventory: {e}")
+                logger.error(f"Không thể tải kho hàng: {e}")
                 raise
 
     def save_inventory(self) -> None:
-        """Persist current stock back to JSON file."""
+        """Lưu tồn kho hiện tại vào tệp JSON."""
         with self._lock:
             try:
-                # Read original file to keep structure
                 with open(self.config_path, "r", encoding="utf-8") as f:
                     data = json.load(f)
                 
-                # Update only the stock values
+                # Cập nhật chỉ các giá trị tồn kho
                 for pid, product in self._products.items():
                     if pid in data.get("products", {}):
                         data["products"][pid]["stock"] = product.stock
@@ -87,50 +86,50 @@ class InventoryManager:
                 with open(self.config_path, "w", encoding="utf-8") as f:
                     json.dump(data, f, ensure_ascii=False, indent=2)
                     
-                logger.debug("Inventory persisted to disk.")
+                logger.debug("Kho hàng đã được lưu xuống đĩa.")
             except Exception as e:
-                logger.error(f"Failed to save inventory: {e}")
+                logger.error(f"Không thể lưu kho hàng: {e}")
 
     # ── Queries ──────────────────────────────────────────────────
 
     def get_product(self, product_id: str) -> Optional[Product]:
-        """Get product by ID."""
+        """Lấy sản phẩm theo ID."""
         with self._lock:
             return self._products.get(product_id)
 
     def find_slot(self, product_id: str) -> Optional[int]:
-        """Get slot number for a product."""
+        """Lấy số thứ tự khe chứa của một sản phẩm."""
         product = self.get_product(product_id)
         if product and product.enabled:
             return product.slot
         return None
 
     def get_price(self, product_id: str) -> int:
-        """Get price for a product."""
+        """Lấy giá của sản phẩm."""
         product = self.get_product(product_id)
         if not product:
-            raise InvalidProductError(f"Product '{product_id}' not found.")
+            raise InvalidProductError(f"Không tìm thấy sản phẩm '{product_id}'.")
         return product.price
 
     def resolve_alias(self, alias: str) -> Optional[str]:
         """
-        Convert a spoken alias to canonical product_id.
-        E.g. 'bep si' -> 'pepsi'.
+        Chuyển đổi một tên gọi (alias) thành product_id chuẩn.
+        Ví dụ: 'bep si' -> 'pepsi'.
         """
         alias_lower = alias.lower().strip()
         with self._lock:
-            # Check direct match first
+            # Kiểm tra khớp trực tiếp trước
             if alias_lower in self._products:
                 return alias_lower
                 
-            # Check aliases
+            # Kiểm tra các tên gọi khác
             for pid, product in self._products.items():
                 if alias_lower in product.aliases:
                     return pid
         return None
 
     def get_all_available(self) -> list[Product]:
-        """Get list of products that are enabled and in stock."""
+        """Lấy danh sách các sản phẩm đang bật và còn hàng."""
         with self._lock:
             return [
                 p for p in self._products.values()
@@ -140,7 +139,7 @@ class InventoryManager:
     # ── Stock Operations ─────────────────────────────────────────
 
     def check_stock(self, product_id: str, quantity: int = 1) -> bool:
-        """Check if enough unreserved stock is available."""
+        """Kiểm tra xem có đủ hàng chưa được đặt trước hay không."""
         with self._lock:
             product = self.get_product(product_id)
             if not product or not product.enabled or product.slot is None:
@@ -151,52 +150,51 @@ class InventoryManager:
 
     def reserve(self, product_id: str, quantity: int) -> None:
         """
-        Temporarily reserve stock (e.g. while waiting for hardware to dispense).
-        Raises OutOfStockError if not enough stock.
+        Giữ chỗ tồn kho tạm thời (ví dụ: trong khi chờ phần cứng xả hàng).
+        Báo lỗi OutOfStockError nếu không đủ hàng.
         """
         with self._lock:
             if not self.check_stock(product_id, quantity):
-                raise OutOfStockError(f"Not enough stock for '{product_id}'")
+                raise OutOfStockError(f"Không đủ hàng cho '{product_id}'")
             self._reservations[product_id] += quantity
-            logger.debug(f"Reserved {quantity}x '{product_id}'. Total reserved: {self._reservations[product_id]}")
+            logger.debug(f"Đã giữ chỗ {quantity}x '{product_id}'. Tổng đã giữ: {self._reservations[product_id]}")
 
     def confirm_dispense(self, product_id: str, quantity: int) -> None:
         """
-        Hardware successfully dispensed. Deduct from actual stock and clear reservation.
+        Phần cứng đã xả hàng thành công. Trừ vào tồn kho thực tế và xóa giữ chỗ.
         """
         with self._lock:
             if product_id not in self._products:
-                raise InvalidProductError(f"Product '{product_id}' not found.")
+                raise InvalidProductError(f"Không tìm thấy sản phẩm '{product_id}'.")
                 
-            # Decrease actual stock
+            # Trừ tồn kho thực tế
             self._products[product_id].stock -= quantity
             
-            # Decrease reservation (clamp to 0 just in case)
+            # Giảm số lượng giữ chỗ (giới hạn ở mức 0 để phòng hờ)
             self._reservations[product_id] = max(0, self._reservations[product_id] - quantity)
             
-            logger.info(f"Confirmed dispense {quantity}x '{product_id}'. New stock: {self._products[product_id].stock}")
+            logger.info(f"Xác nhận xả {quantity}x '{product_id}'. Tồn kho mới: {self._products[product_id].stock}")
             
-            # Auto-save after successful dispense
+            # Tự động lưu sau khi xả hàng thành công
             self.save_inventory()
 
     def release(self, product_id: str, quantity: int) -> None:
         """
-        Hardware failed to dispense. Release the reserved stock back.
+        Phần cứng xả hàng thất bại. Nhả lại số lượng tồn kho đã giữ chỗ.
         """
         with self._lock:
             if product_id in self._reservations:
                 self._reservations[product_id] = max(0, self._reservations[product_id] - quantity)
-                logger.info(f"Released reservation for {quantity}x '{product_id}'.")
+                logger.info(f"Đã nhả giữ chỗ cho {quantity}x '{product_id}'.")
 
     # ── Admin ────────────────────────────────────────────────────
 
     def restock(self, product_id: str, quantity: int) -> None:
-        """Admin command to add stock."""
+        """Lệnh quản trị để thêm số lượng tồn kho."""
         with self._lock:
             product = self.get_product(product_id)
             if not product:
-                raise InvalidProductError(f"Product '{product_id}' not found.")
+                raise InvalidProductError(f"Không tìm thấy sản phẩm '{product_id}'.")
                 
             product.stock = min(product.max_stock, product.stock + quantity)
-            logger.info(f"Restocked '{product_id}'. New stock: {product.stock}")
             self.save_inventory()

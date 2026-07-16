@@ -1,15 +1,15 @@
 """
-Run Mock ESP32 — Entry point that wires MockESP32 to an MQTT broker.
+Chạy Mock ESP32 — Điểm vào (Entry point) kết nối MockESP32 với MQTT broker.
 
-This script:
-  1. Loads config from ``voice_vending/config/config.yaml``
-  2. Creates a MockESP32 instance
-  3. Connects to the MQTT broker
-  4. Subscribes to the command topic
-  5. On each message: parses, simulates dispense, publishes response
-  6. Runs forever (Ctrl+C to stop)
+Tập lệnh này:
+  1. Tải cấu hình từ ``voice_vending/config/config.yaml``
+  2. Tạo một phiên bản (instance) MockESP32
+  3. Kết nối đến MQTT broker
+  4. Đăng ký (Subscribe) topic nhận lệnh
+  5. Đối với mỗi tin nhắn: phân tích, giả lập xả hàng, xuất bản phản hồi
+  6. Chạy vô hạn (Bấm Ctrl+C để dừng)
 
-Usage::
+Cách dùng::
 
     python run_mock_esp.py
     python run_mock_esp.py --config path/to/config.yaml
@@ -27,7 +27,6 @@ from pathlib import Path
 import paho.mqtt.client as mqtt
 import yaml
 
-# Ensure package is importable when run from project root
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from voice_vending.core.logger import setup_logger
@@ -54,7 +53,7 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    # ── Load config ─────────────────────────────────────────
+    # ── Tải cấu hình ─────────────────────────────────────────
     config_data = load_config(args.config)
     log_level = getattr(
         logging, config_data.get("logging", {}).get("level", "INFO").upper()
@@ -63,11 +62,11 @@ def main() -> None:
     setup_logger("paho.mqtt", level=logging.WARNING)
     logger = logging.getLogger("mock_esp32")
 
-    # ── Create Mock ESP ─────────────────────────────────────
+    # ── Tạo Mock ESP ─────────────────────────────────────
     esp_config = MockESP32Config.from_dict(config_data)
     esp = MockESP32(esp_config)
 
-    # ── MQTT setup ──────────────────────────────────────────
+    # ── Thiết lập MQTT ──────────────────────────────────────────
     mqtt_cfg = config_data.get("mqtt", {})
     broker = mqtt_cfg.get("broker", "broker.hivemq.com")
     port = int(mqtt_cfg.get("port", 1883))
@@ -84,11 +83,11 @@ def main() -> None:
         "response", "vending/machine/{machine_id}/response"
     ).format(machine_id=machine_id)
 
-    # paho-mqtt client (v2 API with VERSION1 callbacks for broad compat)
+    # Client paho-mqtt (API v2 với callback VERSION1 để tương thích rộng)
     try:
         client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, client_id=f"mock_esp32_{machine_id}")
     except (AttributeError, TypeError):
-        # paho-mqtt v1 fallback
+        # Dự phòng paho-mqtt v1
         client = mqtt.Client(client_id=f"mock_esp32_{machine_id}")
 
     if username:
@@ -111,7 +110,7 @@ def main() -> None:
     def on_message(client: mqtt.Client, userdata: object, msg: mqtt.MQTTMessage) -> None:
         payload = msg.payload.decode("utf-8", errors="replace")
 
-        # Extract command_id if JSON
+        # Trích xuất command_id nếu là JSON
         command_id = ""
         try:
             parsed = json.loads(payload)
@@ -119,16 +118,16 @@ def main() -> None:
         except (json.JSONDecodeError, TypeError):
             pass
 
-        # Process command
+        # Xử lý lệnh
         results = esp.handle_message(payload)
 
         if results:
-            # Build and publish response
+            # Xây dựng và xuất bản phản hồi
             response = esp.build_response(results, command_id=command_id)
             response_json = json.dumps(response, ensure_ascii=False)
             client.publish(response_topic, response_json, qos=1)
 
-            # Summary log
+            # Ghi log tóm tắt
             success_count = sum(
                 1 for r in results if r.status.value == "success"
             )
@@ -149,7 +148,7 @@ def main() -> None:
     client.on_message = on_message
     client.on_disconnect = on_disconnect
 
-    # ── Connect & run ───────────────────────────────────────
+    # ── Kết nối & chạy ───────────────────────────────────────
     logger.info(f"Connecting to MQTT broker {broker}:{port}...")
     try:
         client.connect(broker, port, keepalive=60)

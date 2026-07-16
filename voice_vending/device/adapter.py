@@ -1,8 +1,8 @@
 """
-Device Adapter.
+Bộ chuyển đổi Thiết bị (Device Adapter).
 
-Translates high-level AI commands into hardware-specific protocols.
-Combines InventoryManager (to resolve slots) and Transport (to send).
+Biên dịch các lệnh AI cấp cao thành các giao thức đặc thù của phần cứng.
+Kết hợp InventoryManager (để xác định khe chứa) và Transport (để gửi đi).
 """
 
 from __future__ import annotations
@@ -23,10 +23,10 @@ class AdapterError(Exception):
 
 class DeviceAdapter:
     """
-    Bridges the Application Layer and Infrastructure Layer.
+    Cầu nối giữa Tầng Ứng dụng (Application) và Tầng Hạ tầng (Infrastructure).
     
-    Takes requests for "products" and translates them into "slots",
-    then publishes them over the Transport.
+    Nhận yêu cầu mua "sản phẩm", dịch thành "khe chứa" (slots),
+    sau đó xuất bản (publish) chúng thông qua Transport.
     """
 
     def __init__(
@@ -39,10 +39,10 @@ class DeviceAdapter:
         self.inventory = inventory
         self.config = config
         
-        # Determine protocol format (default to legacy for current firmware)
+        # Xác định định dạng giao thức (mặc định là legacy cho firmware hiện tại)
         self.protocol_format = config.get("protocol_format", "legacy")
         
-        # Load topic configuration
+        # Tải cấu hình topic
         mqtt_cfg = config.get("mqtt", {})
         self.machine_id = self.inventory.machine_id
         
@@ -57,25 +57,25 @@ class DeviceAdapter:
 
     def dispense_product(self, product_id: str, quantity: int = 1, command_id: str = "") -> bool:
         """
-        Dispense a specific product.
+        Xuất một sản phẩm cụ thể.
         
-        Workflow:
-        1. Query Inventory for slot.
-        2. Format command string based on configured protocol.
-        3. Publish to Transport.
+        Quy trình:
+        1. Truy vấn Kho (Inventory) để tìm khe chứa (slot).
+        2. Định dạng chuỗi lệnh dựa trên giao thức đã cấu hình.
+        3. Xuất bản lên Transport.
         
-        Note: Actual stock deduction (confirm_dispense) should happen 
-        when the hardware responds with success (handled by CommandQueue later).
+        Lưu ý: Việc trừ kho thực tế (confirm_dispense) sẽ chỉ diễn ra
+        khi phần cứng phản hồi thành công (được xử lý bởi CommandQueue sau đó).
         """
         logger.info(f"Adapter asked to dispense {quantity}x '{product_id}'")
         
-        # 1. Resolve slot
+        # 1. Xác định khe chứa
         slot = self.inventory.find_slot(product_id)
         if slot is None:
             logger.error(f"Cannot dispense '{product_id}': No valid slot found.")
             return False
             
-        # 2. Build Payload
+        # 2. Xây dựng Payload
         if self.protocol_format == "json":
             payload = build_json_command(
                 machine_id=self.machine_id,
@@ -84,14 +84,14 @@ class DeviceAdapter:
                 quantity=quantity
             )
         else:
-            # Fallback to current real firmware
+            # Dự phòng cho firmware thực tế hiện tại
             payload = build_legacy_command(slot, quantity)
             
         if not payload:
             logger.error("Generated empty payload.")
             return False
 
-        # 3. Publish
+        # 3. Xuất bản (Publish)
         logger.debug(f"Adapter generated payload: {payload}")
         logger.info(f"Publishing command to {self.command_topic}")
         

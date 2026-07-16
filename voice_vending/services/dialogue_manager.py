@@ -1,9 +1,9 @@
 """
-Dialogue Manager Service.
+Dịch vụ Quản lý Hội thoại.
 
-Handles the state machine of the conversation. Decoupled from NLU logic.
-Takes structured Intents & Entities and returns TTS strings (responses).
-Issues commands to the Inventory and CommandQueue when an order is finalized.
+Xử lý máy trạng thái (state machine) của cuộc hội thoại. Tách biệt với logic NLU.
+Nhận Ý định & Thực thể (Intents & Entities) có cấu trúc và trả về chuỗi TTS (phản hồi).
+Gửi lệnh đến kho hàng (Inventory) và Hàng đợi lệnh (CommandQueue) khi đơn hàng được chốt.
 """
 
 from __future__ import annotations
@@ -27,7 +27,7 @@ class DialogueState(Enum):
 
 @dataclass
 class ConversationContext:
-    """Stores the ongoing order details."""
+    """Lưu trữ chi tiết của đơn hàng đang diễn ra."""
     product_id: Optional[str] = None
     product_name: Optional[str] = None
     quantity: int = 0
@@ -40,7 +40,7 @@ class ConversationContext:
 
 class DialogueManager:
     """
-    Manages conversation states and executes vending logic based on AI intents.
+    Quản lý các trạng thái hội thoại và thực thi logic bán hàng dựa trên ý định (intents) từ AI.
     """
 
     def __init__(self, inventory: InventoryManager, queue: CommandQueue) -> None:
@@ -52,7 +52,7 @@ class DialogueManager:
 
     def process_intent(self, intent: str, entities: dict[str, Any]) -> str:
         """
-        Process an NLP intent and return the textual response for TTS.
+        Xử lý một ý định NLP và trả về phản hồi văn bản cho TTS.
         """
         logger.info(f"State: {self.state.value} | Intent: {intent} | Entities: {entities}")
         
@@ -76,7 +76,7 @@ class DialogueManager:
             elif intent == "confirm_no":
                 return self._handle_cancel()
                 
-        # Fallback for unexpected intents given the state
+        # Dự phòng cho các ý định không mong đợi trong trạng thái hiện tại
         self.state = DialogueState.IDLE
         self.context.clear()
         return "Xin lỗi, tôi chưa hiểu ý bạn. Bạn muốn mua nước gì?"
@@ -101,7 +101,7 @@ class DialogueManager:
                     return f"Xin lỗi, {product_raw} đã hết hàng."
             return f"Xin lỗi, máy không bán {product_raw}."
             
-        # No specific product asked, list available
+        # Không hỏi sản phẩm cụ thể, liệt kê danh sách có sẵn
         available = self.inventory.get_all_available()
         if not available:
             return "Hiện tại máy đã hết sạch hàng, xin lỗi quý khách."
@@ -122,10 +122,10 @@ class DialogueManager:
         if not prod or not prod.enabled or prod.slot is None:
             return f"Xin lỗi, {prod.display_name if prod else product_raw} hiện không phục vụ."
             
-        # Check quantity
+        # Kiểm tra số lượng
         qty = entities.get("quantity")
         if not qty or int(qty) <= 0:
-            # Missing quantity, ask user
+            # Thiếu số lượng, hỏi người dùng
             self.context.product_id = pid
             self.context.product_name = prod.display_name
             self.state = DialogueState.WAITING_QUANTITY
@@ -147,7 +147,7 @@ class DialogueManager:
         )
 
     def _prepare_confirmation(self, pid: str, name: str, qty: int) -> str:
-        """Verify stock before asking for confirmation."""
+        """Kiểm tra kho trước khi yêu cầu xác nhận."""
         if not self.inventory.check_stock(pid, qty):
             prod = self.inventory.get_product(pid)
             available = prod.stock if prod else 0
@@ -158,7 +158,7 @@ class DialogueManager:
             else:
                 return f"Xin lỗi, {name} hiện đã hết hàng."
                 
-        # Stock is good, proceed to confirm
+        # Kho còn hàng, tiếp tục xác nhận
         self.context.product_id = pid
         self.context.product_name = name
         self.context.quantity = qty
@@ -178,7 +178,7 @@ class DialogueManager:
         if not pid or qty <= 0:
             return "Đã có lỗi xảy ra, vui lòng thử lại."
             
-        # Attempt to queue the order
+        # Thử đưa đơn hàng vào hàng đợi
         success = self.queue.enqueue(pid, qty)
         if success:
             return f"Đang xuất {qty} {name}. Vui lòng đợi ở khe nhận hàng."

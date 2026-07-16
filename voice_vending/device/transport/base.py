@@ -13,58 +13,48 @@ logger = logging.getLogger("transport")
 
 class Transport(ABC):
     """
-    Abstract Base Class for network transport.
+    Lớp cơ sở trừu tượng (Abstract Base Class) cho network transport.
     
-    Provides a common interface for publishing and subscribing to messages,
-    regardless of the underlying protocol (MQTT, HTTP, Serial, etc.).
+    Cung cấp giao diện chung để xuất bản (publish) và đăng ký (subscribe) tin nhắn,
+    bất kể giao thức bên dưới là gì (MQTT, HTTP, Serial, v.v.).
     """
 
     @abstractmethod
     def connect(self, config: dict[str, Any]) -> bool:
         """
-        Establish connection using provided configuration.
+        Thiết lập kết nối sử dụng cấu hình được cung cấp.
         
-        Args:
-            config: Dictionary containing connection parameters.
-        Returns:
-            True if connection was successful, False otherwise.
+        Tham số:
+            config: Từ điển chứa các thông số kết nối.
+        Trả về:
+            True nếu kết nối thành công, ngược lại False.
         """
         pass
 
     @abstractmethod
     def disconnect(self) -> None:
-        """Close the connection."""
+        """Đóng kết nối."""
         pass
 
     @abstractmethod
     def is_connected(self) -> bool:
-        """Return True if currently connected."""
+        """Trả về True nếu hiện đang kết nối."""
         pass
 
     @abstractmethod
     def publish(self, topic: str, payload: str, qos: int = 1) -> bool:
-        """
-        Publish a message to a specific topic/endpoint.
-        
-        Args:
-            topic: The destination address or topic.
-            payload: The string payload to send.
-            qos: Quality of Service (used if applicable, e.g. MQTT).
-        Returns:
-            True if successful, False otherwise.
-        """
         pass
 
     @abstractmethod
     def subscribe(self, topic: str, callback: Callable[[str, str], None]) -> bool:
         """
-        Subscribe to a topic/endpoint to receive messages.
+        Đăng ký một topic/endpoint để nhận tin nhắn.
         
-        Args:
-            topic: The address or topic to listen to.
-            callback: Function to call when a message arrives.
-                      Signature should be: callback(topic: str, payload: str)
-        Returns:
-            True if successful.
+        Tham số:
+            topic: Địa chỉ hoặc topic để lắng nghe.
+            callback: Hàm được gọi khi có tin nhắn đến.
+                      Chữ ký (Signature) phải là: callback(topic: str, payload: str)
+        Trả về:
+            True nếu thành công.
         """
         pass

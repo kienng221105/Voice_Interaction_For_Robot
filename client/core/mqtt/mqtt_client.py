@@ -29,6 +29,10 @@ class MQTTClient:
         if username and password:
             self._client.username_pw_set(username, password)
 
+        if broker_port == 8883:
+            import ssl
+            self._client.tls_set(tls_version=ssl.PROTOCOL_TLS_CLIENT)
+
         self._client.on_connect = self._on_connect
         self._client.on_disconnect = self._on_disconnect
         self._client.on_message = self._on_message
@@ -51,10 +55,16 @@ class MQTTClient:
         self._connected = False
         logger.info("MQTT disconnected")
 
-    def publish(self, topic: str, payload: str) -> None:
-        """Publish a message to a topic."""
-        self._client.publish(topic, payload)
-        logger.debug(f"Published to {topic}: {payload}")
+    def publish(self, topic: str, payload: str, qos: int = 1) -> None:
+        """Publish a message."""
+        if not self._connected:
+            logger.warning(f"Cannot publish, MQTT not connected. (Topic: {topic})")
+            return
+        
+        try:
+            self._client.publish(topic, payload, qos=qos)
+        except Exception as e:
+            logger.error(f"Publish error: {e}")
 
     def subscribe(self, topic: str, callback: Callable[[str, str], None]) -> None:
         """Subscribe to a topic with a callback."""

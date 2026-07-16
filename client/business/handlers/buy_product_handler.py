@@ -1,6 +1,6 @@
 """
-Handler for 'buy_product' intent.
-Adds requested products to the cart after checking inventory.
+Bộ xử lý (Handler) cho ý định 'buy_product' (mua sản phẩm).
+Thêm các sản phẩm được yêu cầu vào giỏ hàng sau khi kiểm tra kho.
 """
 
 import logging
@@ -17,8 +17,8 @@ class BuyProductHandler(BaseHandler):
 
     def handle(self, response_data: Dict[str, Any]) -> str:
         """
-        Process buy_product intent.
-        Returns a TTS message for the user.
+        Xử lý ý định mua sản phẩm.
+        Trả về tin nhắn TTS cho người dùng.
         """
         entities = response_data.get("entities", {})
         products = entities.get("products", [])
@@ -38,7 +38,7 @@ class BuyProductHandler(BaseHandler):
             else:
                 failed.append(product_id)
 
-        # Build response
+        # Xây dựng phản hồi
         if added and not failed:
             return response_data.get("reply", f"Đã thêm {', '.join(added)} vào giỏ.")
         elif failed:

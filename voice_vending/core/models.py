@@ -1,5 +1,5 @@
 """
-Data Models for Voice Vending Machine.
+Mô hình dữ liệu cho Hệ thống máy bán hàng tự động bằng giọng nói.
 """
 
 from __future__ import annotations
@@ -11,7 +11,7 @@ from dataclasses import dataclass, field
 class Product:
     """Represents a vendable product."""
 
-    id: str  # internal key, e.g. "coca"
+    id: str  # khóa nội bộ, ví dụ: "coca"
     display_name: str
     price: int
     stock: int

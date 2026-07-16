@@ -1,5 +1,5 @@
 """
-MQTT implementation of the Transport interface using paho-mqtt.
+Bản triển khai MQTT của giao diện Transport sử dụng paho-mqtt.
 """
 
 from __future__ import annotations
@@ -18,13 +18,13 @@ logger = logging.getLogger("mqtt_transport")
 
 class MQTTTransport(Transport):
     """
-    Concrete Transport implementation using MQTT protocol.
+    Bản triển khai Transport cụ thể sử dụng giao thức MQTT.
     """
 
     def __init__(self, client_id: str = "") -> None:
         self.client_id = client_id
         
-        # Support both paho-mqtt v1 and v2 APIs
+        # Hỗ trợ cả API paho-mqtt v1 và v2
         try:
             self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION1, client_id=self.client_id)
         except (AttributeError, TypeError):
@@ -33,13 +33,13 @@ class MQTTTransport(Transport):
         self._connected = False
         self._callbacks: dict[str, list[Callable[[str, str], None]]] = {}
         
-        # Wire up internal callbacks
+        # Gắn các callback nội bộ
         self.client.on_connect = self._on_connect
         self.client.on_disconnect = self._on_disconnect
         self.client.on_message = self._on_message
 
     def connect(self, config: dict[str, Any]) -> bool:
-        """Connect to MQTT broker."""
+        """Kết nối đến broker MQTT."""
         broker = config.get("broker", "localhost")
         port = int(config.get("port", 1883))
         keepalive = int(config.get("keepalive", 60))
@@ -53,44 +53,43 @@ class MQTTTransport(Transport):
             self.client.tls_set()
 
         try:
-            logger.info(f"Connecting to MQTT broker at {broker}:{port}...")
+            logger.info(f"Đang kết nối đến MQTT broker tại {broker}:{port}...")
             self.client.connect(broker, port, keepalive=keepalive)
-            self.client.loop_start()  # Start background thread for networking
+            self.client.loop_start()  # Bắt đầu luồng nền cho kết nối mạng
             
-            # Wait briefly to confirm connection
+            # Đợi một chút để xác nhận kết nối
             deadline = time.time() + 5.0
             while not self._connected and time.time() < deadline:
                 time.sleep(0.1)
                 
             if not self._connected:
-                logger.error("Timeout waiting for MQTT connection.")
+                logger.error("Hết thời gian chờ kết nối MQTT.")
                 return False
                 
             return True
         except Exception as e:
-            logger.error(f"MQTT connection failed: {e}")
+            logger.error(f"Kết nối MQTT thất bại: {e}")
             return False
 
     def disconnect(self) -> None:
-        """Disconnect from broker and stop background thread."""
-        logger.info("Disconnecting MQTT...")
+        """Ngắt kết nối khỏi broker và dừng luồng chạy ngầm."""
+        logger.info("Đang ngắt kết nối MQTT...")
         self.client.loop_stop()
         self.client.disconnect()
         self._connected = False
 
     def is_connected(self) -> bool:
-        """Return True if connected to broker."""
+        """Trả về True nếu đã kết nối với broker."""
         return self._connected
 
     def publish(self, topic: str, payload: str, qos: int = 1) -> bool:
-        """Publish message to MQTT topic."""
+        """Xuất bản tin nhắn lên topic MQTT."""
         if not self._connected:
-            logger.error(f"Cannot publish to {topic}: not connected")
+            logger.error(f"Không thể xuất bản tới {topic}: chưa kết nối")
             return False
             
         try:
             info = self.client.publish(topic, payload, qos=qos)
-            # info.wait_for_publish() could block, we just assume success if it didn't throw
             return True
         except Exception as e:
             logger.error(f"Publish failed: {e}")

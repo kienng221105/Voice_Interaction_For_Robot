@@ -1,14 +1,14 @@
 """
-STT + NLP WebSocket Server
+Máy chủ STT + NLP WebSocket
 ==========================
-- Receives audio from browser via WebSocket
-- Transcribes audio using OpenAI Whisper API v1
-- Runs NLP (Intent + Entity extraction) on transcribed text
-- Returns structured JSON result
+- Nhận âm thanh từ trình duyệt qua WebSocket
+- Chuyển âm thanh thành văn bản (Transcribe) sử dụng OpenAI Whisper API v1
+- Chạy NLP (Trích xuất Ý định + Thực thể) trên văn bản đã nhận dạng
+- Trả về kết quả JSON có cấu trúc
 
-Usage:
+Cách dùng:
     python stt_server.py [--api-key KEY] [--port PORT]
-    # Set OPENAI_API_KEY env var as fallback
+    # Đặt biến môi trường OPENAI_API_KEY làm phương án dự phòng
 """
 
 import argparse
@@ -33,7 +33,7 @@ except ImportError:
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 
-# ─── NLP Engine ───────────────────────────────────────────────────────────────
+# ─── Động cơ NLP (NLP Engine) ──────────────────────────────────────────────────
 
 PRODUCT_NAMES = {
     'coca': 'Coca Cola',

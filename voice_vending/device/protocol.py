@@ -1,7 +1,7 @@
 """
-Protocol builders for Device Adapter.
+Bộ dựng Giao thức cho Device Adapter.
 
-Handles formatting of payloads to match firmware expectations.
+Xử lý định dạng payload sao cho khớp với những gì firmware mong đợi.
 """
 
 import json
@@ -11,15 +11,15 @@ from typing import Any
 
 def build_legacy_command(slot: int, quantity: int) -> str:
     """
-    Build command for current ESP32 firmware.
-    Repeats 'SLOT:X' for the given quantity.
+    Xây dựng lệnh cho firmware ESP32 hiện tại.
+    Lặp lại chuỗi 'SLOT:X' ứng với số lượng (quantity) yêu cầu.
     
-    Args:
-        slot: The hardware slot number (e.g. 1)
-        quantity: Number of items to dispense
+    Tham số:
+        slot: Số khe cứng (ví dụ: 1)
+        quantity: Số lượng mặt hàng cần xả
         
-    Returns:
-        e.g. "SLOT:1 SLOT:1"
+    Trả về:
+        Ví dụ: "SLOT:1 SLOT:1"
     """
     if quantity <= 0:
         return ""
@@ -34,10 +34,10 @@ def build_json_command(
     quantity: int
 ) -> str:
     """
-    Build command for future v2 firmware.
+    Xây dựng lệnh cho firmware v2 trong tương lai.
     
-    Returns:
-        JSON string containing structured command.
+    Trả về:
+        Chuỗi JSON chứa lệnh đã được cấu trúc.
     """
     payload = {
         "version": "1.0",

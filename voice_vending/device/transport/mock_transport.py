@@ -1,5 +1,5 @@
 """
-Mock implementation of the Transport interface for testing.
+Bản triển khai giả lập (Mock) của interface Transport phục vụ cho kiểm thử (testing).
 """
 
 from __future__ import annotations
@@ -17,26 +17,26 @@ class MockTransport(Transport):
     """
     In-memory Mock Transport.
     
-    Instead of sending messages over the network, it simply routes published 
-    messages directly to any subscribed callbacks in the same Python process.
-    Supports basic MQTT wildcard matching (+ and #).
+    Thay vì gửi tin nhắn qua mạng, nó chỉ định tuyến các tin nhắn đã xuất bản
+    trực tiếp đến bất kỳ callback nào đã đăng ký trong cùng một tiến trình Python.
+    Hỗ trợ khớp mẫu MQTT cơ bản (+ và #).
     """
 
     def __init__(self) -> None:
         self._connected = False
         # topic_pattern -> list of callbacks
         self._subscriptions: dict[str, list[Callable[[str, str], None]]] = {}
-        # History of all published messages for assertions in tests
+        # Lịch sử của tất cả các tin nhắn đã xuất bản để phục vụ xác nhận (assertion) trong kiểm thử
         self.published_messages: list[tuple[str, str]] = []
 
     def connect(self, config: dict[str, Any]) -> bool:
-        """Simulate connection."""
+        """Giả lập kết nối."""
         self._connected = True
         logger.info("Mock Transport connected.")
         return True
 
     def disconnect(self) -> None:
-        """Simulate disconnection."""
+        """Giả lập ngắt kết nối."""
         self._connected = False
         logger.info("Mock Transport disconnected.")
 
@@ -45,7 +45,7 @@ class MockTransport(Transport):
 
     def publish(self, topic: str, payload: str, qos: int = 1) -> bool:
         """
-        Record the published message and route it to matching subscribers.
+        Ghi lại tin nhắn đã xuất bản và định tuyến nó đến các subscriber phù hợp.
         """
         if not self._connected:
             logger.error(f"Cannot publish to {topic}: mock transport not connected.")
@@ -66,7 +66,7 @@ class MockTransport(Transport):
         return True
 
     def subscribe(self, topic: str, callback: Callable[[str, str], None]) -> bool:
-        """Register a callback for a topic pattern."""
+        """Đăng ký một callback cho một mẫu topic."""
         if topic not in self._subscriptions:
             self._subscriptions[topic] = []
         self._subscriptions[topic].append(callback)
@@ -76,21 +76,21 @@ class MockTransport(Transport):
     # ── Utilities ────────────────────────────────────────────
 
     def clear_history(self) -> None:
-        """Clear published message history (useful between test cases)."""
+        """Xóa lịch sử tin nhắn đã xuất bản (hữu ích giữa các trường hợp kiểm thử)."""
         self.published_messages.clear()
 
     @staticmethod
     def _topic_matches(pattern: str, topic: str) -> bool:
         """
-        Check if a topic matches an MQTT subscription pattern.
-        Supports '+' (single level) and '#' (multi level).
+        Kiểm tra xem một topic có khớp với mẫu đăng ký MQTT hay không.
+        Hỗ trợ '+' (một cấp) và '#' (nhiều cấp).
         """
         if pattern == topic:
             return True
 
-        # Convert MQTT pattern to Regex
-        # Replace '+' with '[^/]+'
-        # Replace '#' with '.*'
+        # Chuyển đổi mẫu MQTT sang Regex
+        # Thay thế '+' bằng '[^/]+'
+        # Thay thế '#' bằng '.*'
         regex_pattern = pattern.replace("+", r"[^/]+")
         regex_pattern = regex_pattern.replace("#", r".*")
         

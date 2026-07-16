@@ -4,28 +4,28 @@
     "coca": {
       "display_name": "Coca-Cola",
       "slot": 1,
-      "stock": 0,
+      "stock": 85,
       "price": 12000,
       "enabled": true
     },
     "pepsi": {
       "display_name": "Pepsi",
       "slot": 2,
-      "stock": 3,
+      "stock": 88,
       "price": 12000,
       "enabled": true
     },
     "sting": {
       "display_name": "Sting",
       "slot": 3,
-      "stock": 10,
+      "stock": 92,
       "price": 10000,
       "enabled": true
     },
     "aquafina": {
       "display_name": "Aquafina",
       "slot": 4,
-      "stock": 4,
+      "stock": 90,
       "price": 8000,
       "enabled": true
     }
